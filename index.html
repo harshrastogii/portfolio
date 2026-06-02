@@ -51,7 +51,9 @@
   }
   /* contour overlay (decorative SVG drawn in CSS via background) */
   .contour {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: 0.5;
+    position: absolute; top: 0; left: 0; right: 0; height: 520px; z-index: 0; pointer-events: none; opacity: 0.4;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+            mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
   }
 
   .wrap { max-width: 940px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
@@ -186,13 +188,12 @@
 <body>
 
 <div class="grid-bg"></div>
-<svg class="contour" width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+<svg class="contour" width="100%" height="520" preserveAspectRatio="none" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
   <g fill="none" stroke="#d0d0cc" stroke-width="1">
-    <path d="M-50 180 C 250 120, 420 260, 650 200 S 1050 120, 1260 220" />
-    <path d="M-50 240 C 250 190, 440 320, 660 260 S 1060 190, 1260 290" />
-    <path d="M-50 300 C 260 260, 450 380, 670 320 S 1070 260, 1260 360" />
-    <path d="M-50 520 C 240 470, 430 600, 650 540 S 1070 470, 1260 560" opacity="0.7"/>
-    <path d="M-50 580 C 250 540, 440 660, 660 600 S 1080 540, 1260 620" opacity="0.6"/>
+    <path d="M-50 140 C 250 90, 420 220, 650 160 S 1050 90, 1260 180" />
+    <path d="M-50 200 C 250 150, 440 280, 660 220 S 1060 150, 1260 250" />
+    <path d="M-50 260 C 260 220, 450 340, 670 280 S 1070 220, 1260 320" opacity="0.7"/>
+    <path d="M-50 320 C 250 280, 440 400, 660 340 S 1080 280, 1260 380" opacity="0.5"/>
   </g>
 </svg>
 
