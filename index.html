@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Harsh Rastogi · Data Scientist</title>
+<meta name="description" content="Harsh Rastogi — Master of Data Science at Charles Darwin University. Building data tools for biodiversity, public services, and the not-for-profit sector in the Northern Territory, Australia." />
+
+<!-- Open Graph (controls how the link previews on LinkedIn) -->
+<meta property="og:title" content="Harsh Rastogi · Data Scientist" />
+<meta property="og:description" content="Treasury analyst turned data scientist. Deployed dashboards, ecoacoustic ML, RAG systems — built in Darwin, NT." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spline+Sans+Mono:wght@400;500;600&family=Spline+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --paper: #f4f1ea;
+    --paper-2: #ebe7dc;
+    --ink: #1a2826;
+    --ink-soft: #3d4f4b;
+    --teal: #0f5a57;
+    --teal-bright: #14807b;
+    --rust: #b5482e;
+    --line: #d6d0c2;
+    --display: "Fraunces", Georgia, serif;
+    --sans: "Spline Sans", system-ui, sans-serif;
+    --mono: "Spline Sans Mono", monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    background-image:
+      radial-gradient(circle at 15% 12%, rgba(20,128,123,0.06), transparent 40%),
+      radial-gradient(circle at 85% 8%, rgba(181,72,46,0.05), transparent 35%);
+    background-attachment: fixed;
+  }
+
+  /* subtle paper grain */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 28px; position: relative; z-index: 2; }
+
+  /* ---------- HERO ---------- */
+  header { padding: 90px 0 60px; }
+
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 22px;
+    opacity: 0;
+    animation: rise 0.7s ease forwards;
+  }
+
+  h1 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: rise 0.7s ease 0.08s forwards;
+  }
+  h1 em { font-style: italic; color: var(--teal); }
+
+  .lede {
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    max-width: 600px;
+    color: var(--ink-soft);
+    margin-bottom: 34px;
+    opacity: 0;
+    animation: rise 0.7s ease 0.16s forwards;
+  }
+
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    opacity: 0;
+    animation: rise 0.7s ease 0.24s forwards;
+  }
+  .meta-row span { display: inline-flex; align-items: center; gap: 7px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal-bright); }
+
+  /* ---------- SECTION SHELL ---------- */
+  section { padding: 46px 0; border-top: 1px solid var(--line); }
+
+  .sec-label {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 28px;
+  }
+
+  /* ---------- LINKS GRID ---------- */
+  .links { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 620px) { .links { grid-template-columns: 1fr; } }
+
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--paper-2);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 22px 24px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .card::after {
+    content: "↗";
+    position: absolute;
+    top: 18px; right: 20px;
+    font-family: var(--mono);
+    color: var(--teal);
+    opacity: 0.4;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 30px -16px rgba(15,90,87,0.45);
+    border-color: var(--teal-bright);
+  }
+  .card:hover::after { opacity: 1; transform: translate(2px, -2px); }
+
+  .card .k {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    display: block;
+    margin-bottom: 8px;
+  }
+  .card .t {
+    font-family: var(--display);
+    font-size: 1.35rem;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .card .d { font-size: 0.88rem; color: var(--ink-soft); }
+
+  /* ---------- PROJECTS ---------- */
+  .proj { padding: 24px 0; border-bottom: 1px solid var(--line); }
+  .proj:last-child { border-bottom: none; }
+  .proj-top { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .proj h3 { font-family: var(--display); font-weight: 500; font-size: 1.5rem; letter-spacing: -0.01em; }
+  .proj .tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--line);
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .proj .tag.live { color: var(--teal-bright); border-color: var(--teal-bright); }
+  .proj p { color: var(--ink-soft); margin: 10px 0 12px; font-size: 0.95rem; }
+  .stack { font-family: var(--mono); font-size: 0.76rem; color: var(--ink); opacity: 0.7; }
+  .proj a.view {
+    font-family: var(--mono); font-size: 0.78rem; color: var(--teal-bright);
+    text-decoration: none; border-bottom: 1px solid currentColor; padding-bottom: 1px;
+  }
+  .proj a.view:hover { color: var(--rust); }
+
+  /* ---------- FOOTER ---------- */
+  footer { padding: 50px 0 70px; border-top: 1px solid var(--line); }
+  .foot-cta { font-family: var(--display); font-size: 1.5rem; font-weight: 500; margin-bottom: 18px; }
+  .foot-cta em { font-style: italic; color: var(--teal); }
+  .foot-links { display: flex; flex-wrap: wrap; gap: 18px; font-family: var(--mono); font-size: 0.82rem; }
+  .foot-links a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+  .foot-links a:hover { color: var(--teal-bright); border-color: var(--teal-bright); }
+  .sign { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 30px; }
+
+  @keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">Data Scientist · Darwin, NT 🇦🇺</div>
+    <h1>Harsh <em>Rastogi</em></h1>
+    <p class="lede">I build data tools for biodiversity, public services, and the not-for-profit sector. Treasury analyst turned data scientist, now finishing a Master of Data Science at Charles Darwin University.</p>
+    <div class="meta-row">
+      <span><span class="dot"></span>Master of Data Science @ CDU</span>
+      <span><span class="dot"></span>Grad Nov 2026</span>
+      <span><span class="dot"></span>Open to opportunities</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-label">Find me / live work</div>
+    <div class="links">
+      <a class="card" href="https://github.com/harshrastogii" target="_blank" rel="noopener">
+        <span class="k">Code</span>
+        <span class="t">GitHub</span>
+        <span class="d">Profile, projects & source</span>
+      </a>
+      <a class="card" href="https://huggingface.co/harshrastogii" target="_blank" rel="noopener" data-edit="nt-crime-dashboard">
+        <span class="k">Live app</span>
+        <span class="t">NT Crime Atlas</span>
+        <span class="d">Deployed dashboard (Dash)</span>
+      </a>
+      <a class="card" href="https://nt-protected-areas.vercel.app/" target="_blank" rel="noopener">
+        <span class="k">Live app</span>
+        <span class="t">NT Protected Areas</span>
+        <span class="d">Full-stack map (React + FastAPI)</span>
+      </a>
+      <a class="card" href="https://huggingface.co/harshrastogii" target="_blank" rel="noopener">
+        <span class="k">Models / Spaces</span>
+        <span class="t">Hugging Face</span>
+        <span class="d">ML demos & spaces</span>
+      </a>
+      <a class="card" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">
+        <span class="k">Connect</span>
+        <span class="t">LinkedIn</span>
+        <span class="d">Background & updates</span>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-label">Selected projects</div>
+
+    <div class="proj">
+      <div class="proj-top">
+        <h3>NT Crime Intelligence Dashboard</h3>
+        <span class="tag live">● Live</span>
+      </div>
+      <p>An interactive dashboard on Northern Territory recorded-offence data. Switching from raw counts to a per-capita view completely reorders which communities are most affected — a reminder that how you frame data shapes who gets served by it.</p>
+      <span class="stack">Python · pandas · Plotly Dash · Docker</span>
+      &nbsp;&nbsp;<a class="view" href="https://huggingface.co/harshrastogii" target="_blank" rel="noopener" data-edit="nt-crime-dashboard">visit →</a>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top">
+        <h3>NT Protected-Area Coverage</h3>
+        <span class="tag live">● Live</span>
+      </div>
+      <p>A full-stack spatial analysis of whether the Territory's parks protect a representative cross-section of its land. The reserve network over-represents rugged northern country and under-protects the arid interior — the Tanami, the NT's largest bioregion at ~538,000 km², is a statistically significant cold spot at just 0.6% coverage.</p>
+      <span class="stack">React · Leaflet · FastAPI · Python · GeoPandas</span>
+      &nbsp;&nbsp;<a class="view" href="https://nt-protected-areas.vercel.app/" target="_blank" rel="noopener">visit →</a>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top">
+        <h3>NT Birds — Acoustic Classification</h3>
+        <span class="tag">Master's research</span>
+      </div>
+      <p>A deep-learning pipeline that identifies NT bird species from field audio, with a dashboard for ecologists. Tackles a real gap, since most ecoacoustic models are trained on Northern-Hemisphere species.</p>
+      <span class="stack">Python · PyTorch · Librosa · Streamlit</span>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top">
+        <h3>Student Central — RAG AI Assistant</h3>
+        <span class="tag">Early stage</span>
+      </div>
+      <p>A retrieval-augmented assistant answering student questions from official CDU content with source citations, drafting an escalation email when it can't confidently answer.</p>
+      <span class="stack">Python · FastAPI · LangChain · ChromaDB · React</span>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top">
+        <h3>Australian Charities Analytics</h3>
+        <span class="tag">PRT564</span>
+      </div>
+      <p>Descriptive, predictive, and diagnostic analysis on the ACNC Charity Register — research-question design through to a finished visualisation pipeline.</p>
+      <span class="stack">Python · scikit-learn · Power BI · SQL</span>
+      &nbsp;&nbsp;<a class="view" href="https://github.com/harshrastogii/PRT564-Group2-CharityAnalysis" target="_blank" rel="noopener">repo →</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-cta">Let's <em>talk</em>.</div>
+    <div class="foot-links">
+      <a href="mailto:harshrastogi636@gmail.com">harshrastogi636@gmail.com</a>
+      <a href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <div class="sign">Built & deployed by Harsh Rastogi · Darwin, Northern Territory</div>
+  </footer>
+
+</div>
+</body>
+</html>
