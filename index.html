@@ -398,6 +398,8 @@
   }, 1500);
 
   window.addEventListener('load', () => {
+    const loading = document.getElementById('loading');
+    if (loading) { loading.style.opacity = '0'; loading.style.visibility = 'hidden'; }
     try { initParticleBackground(); }
     catch (e) { document.getElementById('particle-canvas').style.display = 'none'; }
 
