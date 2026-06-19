@@ -11,6 +11,30 @@ window.ARTICLES = [
     ],
     "readMins": 1,
     "featured": true
+  },
+  {
+    "slug": "my-first-article",
+    "title": "We Are Using AI Wrong — Not Because of the Tools, but Because of Us",
+    "dek": "Each AI has a personality, and the real skill is knowing which to use, when, and why — the future of AI is about better users, not just better models.",
+    "date": "2026-01-17",
+    "tags": [
+      "AI",
+      "OPINION"
+    ],
+    "readMins": 3,
+    "featured": true
+  },
+  {
+    "slug": "using-ai-wrong",
+    "title": "We Are Using AI Wrong — Not Because of the Tools, but Because of Us",
+    "dek": "Each AI has a personality, and the real skill is knowing which to use, when, and why — the future of AI is about better users, not just better models.",
+    "date": "2026-01-17",
+    "tags": [
+      "AI",
+      "OPINION"
+    ],
+    "readMins": 3,
+    "featured": true
   }
 ];
 
