@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>AI Will Not Build Your Startup For You · Harsh Rastogi</title>
+<meta name="description" content="One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated." />
+<meta property="og:title" content="AI Will Not Build Your Startup For You" />
+<meta property="og:description" content="One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated." />
+<link rel="canonical" href="https://harshrastogii.com/articles/ai-wont-build-your-startup.html" />
+<meta property="og:type" content="article" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<link rel="stylesheet" href="../assets/site.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "AI Will Not Build Your Startup For You",
+  "description": "One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated.",
+  "datePublished": "2026-06-23",
+  "author": { "@type": "Person", "name": "Harsh Rastogi", "url": "https://harshrastogii.com/" },
+  "mainEntityOfPage": "https://harshrastogii.com/articles/ai-wont-build-your-startup.html"
+}
+</script>
+</head>
+<body data-slug="ai-wont-build-your-startup">
+
+<div class="progress" id="progress"></div>
+<canvas id="particle-canvas"></canvas>
+
+<div class="topbar">
+  <a class="brand" href="../index.html">HR</a>
+  <nav>
+    <a href="../index.html#work">Work</a>
+    <a href="index.html">Articles</a>
+    <a href="mailto:harshrastogii@zohomail.com.au">Email</a>
+  </nav>
+</div>
+
+<div class="grid-bg"></div>
+<svg class="contour" id="contour-svg" width="100%" height="520" preserveAspectRatio="none" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <linearGradient id="contourGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#d0d0cc;stop-opacity:0.8" />
+      <stop offset="50%" style="stop-color:#e0e0dc;stop-opacity:0.9" />
+      <stop offset="100%" style="stop-color:#d0d0cc;stop-opacity:0.8" />
+    </linearGradient>
+  </defs>
+  <g fill="none" stroke="url(#contourGrad)" stroke-width="1.2">
+    <path d="M-50 140 C 250 90, 420 220, 650 160 S 1050 90, 1260 180" />
+    <path d="M-50 200 C 250 150, 440 280, 660 220 S 1060 150, 1260 250" />
+    <path d="M-50 260 C 260 220, 450 340, 670 280 S 1070 220, 1260 320" opacity="0.7"/>
+    <path d="M-50 320 C 250 280, 440 400, 660 340 S 1080 280, 1260 380" opacity="0.5"/>
+  </g>
+</svg>
+
+<div class="reg tl"></div><div class="reg tr"></div><div class="reg bl"></div><div class="reg br"></div>
+
+<div class="wrap wrap--reading">
+
+  <header class="article-head">
+    <a class="article-back" href="index.html">← All articles</a>
+    <div class="article-kicker" id="article-kicker"></div>
+    <h1 class="article-title">AI Will Not Build Your Startup For You</h1>
+    <p class="article-dek">One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated.</p>
+    <div class="article-tags" id="article-tags"></div>
+  </header>
+
+  <div class="reading-layout">
+    <article class="prose" id="prose">
+<p>Over the past few months, I have spent countless hours building products with AI.</p>
+<p>Like many founders, I use AI for almost everything. Coding, brainstorming, writing, research, debugging, planning, problem-solving, and even challenging my own assumptions.</p>
+<p>There is no doubt that AI has made me significantly more productive.</p>
+<p>But recently, after spending an entire day working alongside AI, I realised something that I don&#39;t see enough people talking about.</p>
+<p>AI will not build your startup for you.</p>
+<h2>The Biggest Misconception</h2>
+<p>Every day I see people online claiming that AI has changed everything.</p>
+<p>People say that if you have Claude, ChatGPT, Cursor, or any other AI tool, you can build anything.</p>
+<p>That sounds great in theory.</p>
+<p>The reality is very different.</p>
+<p>AI can write code.</p>
+<p>AI can explain concepts.</p>
+<p>AI can help you brainstorm.</p>
+<p>AI can help you move faster.</p>
+<p>But AI does not replace creativity, judgment, taste, or vision.</p>
+<p>In fact, sometimes it actively works against them.</p>
+<h2>AI Loves Safe Decisions</h2>
+<p>One thing I have noticed repeatedly is that AI naturally pushes you towards safer decisions.</p>
+<p>Whenever I wanted to try something experimental, different, or unconventional, the response was often the same.</p>
+<p>Be careful.</p>
+<p>That might create risk.</p>
+<p>That could cause issues.</p>
+<p>Maybe we should avoid that.</p>
+<p>Maybe we should keep things simple.</p>
+<p>Maybe we should focus on stability.</p>
+<p>None of these suggestions were wrong.</p>
+<p>The problem is that startups are not built entirely through safe decisions.</p>
+<p>If every founder only followed the safest possible path, innovation would barely exist.</p>
+<p>Experimentation is part of the process.</p>
+<p>Trying things that might fail is part of the process.</p>
+<p>Building something unique is part of the process.</p>
+<p>AI understands optimisation.</p>
+<p>It does not always understand experimentation.</p>
+<h2>Sometimes AI Creates The Barrier</h2>
+<p>The surprising thing is that sometimes AI becomes the thing slowing you down.</p>
+<p>You ask it to help implement an idea.</p>
+<p>Instead of helping you test the idea, it starts explaining why the idea might not work.</p>
+<p>You ask it to build something.</p>
+<p>It starts creating additional steps, additional checks, additional discussions, and additional caution.</p>
+<p>Again, those things have value.</p>
+<p>But after a certain point, they become barriers rather than safeguards.</p>
+<p>As founders, we already know there are risks.</p>
+<p>We already know things can break.</p>
+<p>Sometimes we simply want to test an idea and see what happens.</p>
+<p>That willingness to experiment is often where the best ideas come from.</p>
+<h2>AI Is Not The Source Of Creativity</h2>
+<p>This is probably the biggest lesson I have learned.</p>
+<p>AI is incredibly powerful.</p>
+<p>But AI is not the source of creativity.</p>
+<p>The founder is.</p>
+<p>The founder decides what problem is worth solving.</p>
+<p>The founder decides what is worth building.</p>
+<p>The founder decides what is worth experimenting with.</p>
+<p>AI can help execute those ideas.</p>
+<p>AI can improve them.</p>
+<p>AI can challenge them.</p>
+<p>AI can even point out flaws.</p>
+<p>But it cannot replace the creative spark that started the idea in the first place.</p>
+<h2>The Real Skill</h2>
+<p>I no longer think the biggest advantage is having access to AI.</p>
+<p>Millions of people have access to the same models.</p>
+<p>The real advantage is knowing how to work with them.</p>
+<p>Knowing when to listen.</p>
+<p>Knowing when to challenge.</p>
+<p>Knowing when to push back.</p>
+<p>Knowing when the AI is right.</p>
+<p>And knowing when the AI is simply being too cautious.</p>
+<p>The people who will get the most value from AI are not the people who blindly follow every recommendation.</p>
+<p>They are the people who treat AI like a highly capable assistant rather than an all-knowing decision maker.</p>
+<h2>Final Thoughts</h2>
+<p>AI has completely changed the way I build.</p>
+<p>I would not want to build without it.</p>
+<p>It has helped me learn faster, move faster, and accomplish things that would have taken significantly longer in the past.</p>
+<p>But one thing has become very clear.</p>
+<p>Having AI does not mean you can build anything.</p>
+<p>Having AI does not automatically make you a founder.</p>
+<p>Having AI does not replace creativity.</p>
+<p>The technology is powerful.</p>
+<p>The judgment still has to come from you.</p>
+<p>And sometimes, the best thing you can do is tell the AI to stop talking and help you build.</p>
+
+    </article>
+
+    <aside class="toc" id="toc" aria-label="Table of contents">
+      <div class="toc-label">On this page</div>
+      <ul id="toc-list"></ul>
+    </aside>
+  </div>
+
+  <section id="related">
+    <div class="sec-head"><span class="num">→</span><span>Related reading</span><span class="rule"></span></div>
+    <div class="cards related" id="related-cards" data-slug="ai-wont-build-your-startup" data-base="" data-count="2"></div>
+  </section>
+
+  <footer id="footer">
+    <div class="foot-cta">Keep reading.</div>
+    <div class="foot-links">
+      <a href="index.html">← ALL ARTICLES</a>
+      <a href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LINKEDIN</a>
+      <a href="mailto:harshrastogii@zohomail.com.au">EMAIL</a>
+    </div>
+    <div class="sign">// Writing by Harsh Rastogi · Darwin, Northern Territory · 🇦🇺</div>
+  </footer>
+
+</div>
+
+<script src="../assets/articles-data.js"></script>
+<script src="../assets/articles.js"></script>
+<script src="../assets/page-shell.js"></script>
+<script src="../assets/article-page.js"></script>
+</body>
+</html>

@@ -2,6 +2,19 @@
    Edit articles in articles/posts/*.md and run `npm run build`. */
 window.ARTICLES = [
   {
+    "slug": "ai-wont-build-your-startup",
+    "title": "AI Will Not Build Your Startup For You",
+    "dek": "One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated.",
+    "date": "2026-06-23",
+    "tags": [
+      "AI",
+      "STARTUPS",
+      "OPINION"
+    ],
+    "readMins": 3,
+    "featured": true
+  },
+  {
     "slug": "one-person-startup",
     "title": "The Rise of the One-Person Startup in the Age of AI",
     "dek": "AI is lowering the barriers to building a business — letting a single founder do the work that once required an entire team, and changing what one person is capable of achieving.",
