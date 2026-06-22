@@ -2,6 +2,18 @@
    Edit articles in articles/posts/*.md and run `npm run build`. */
 window.ARTICLES = [
   {
+    "slug": "one-person-startup",
+    "title": "The Rise of the One-Person Startup in the Age of AI",
+    "dek": "AI is lowering the barriers to building a business — letting a single founder do the work that once required an entire team, and changing what one person is capable of achieving.",
+    "date": "2026-01-24",
+    "tags": [
+      "AI",
+      "OPINION"
+    ],
+    "readMins": 3,
+    "featured": true
+  },
+  {
     "slug": "using-ai-wrong",
     "title": "We Are Using AI Wrong — Not Because of the Tools, but Because of Us",
     "dek": "Each AI has a personality, and the real skill is knowing which to use, when, and why — the future of AI is about better users, not just better models.",
