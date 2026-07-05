@@ -15,6 +15,10 @@
   --line-2: #d0d0cc;
   --accent: #1a1a1a;
   --accent-2: #2a2a2a;
+  --hr-green: #16A34A;
+  --hr-teal: #06B6D4;
+  --hr-blue: #2563EB;
+  --hr-gradient: linear-gradient(120deg, #16A34A, #06B6D4, #2563EB);
   --shadow-soft: 0 4px 20px rgba(0,0,0,0.04);
   --shadow-medium: 0 10px 40px rgba(0,0,0,0.08);
   --shadow-strong: 0 20px 60px rgba(0,0,0,0.12);
@@ -106,8 +110,8 @@ header { padding: 100px 0 60px; position: relative; }
 .coord .live { color: var(--ink); font-weight: 500; }
 .coord .live::before {
   content:""; display:inline-block; width:8px; height:8px; border-radius:50%;
-  background: var(--ink); margin-right:10px; vertical-align: middle;
-  animation: blink 2.4s infinite; box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+  background: var(--hr-green); margin-right:10px; vertical-align: middle;
+  animation: blink 2.4s infinite; box-shadow: 0 0 0 4px rgba(22,163,74,0.12);
 }
 @keyframes blink { 0%,100%{opacity:1; transform: scale(1);} 50%{opacity:0.25; transform: scale(0.8);} }
 
@@ -176,8 +180,8 @@ section { padding: 50px 0; border-top: 1px solid var(--line-2); position: relati
 .proj .idx { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-3); padding-top: 8px; font-weight: 500; }
 .proj h3 { font-weight: 800; font-size: 1.5rem; letter-spacing: -0.03em; display: inline; line-height: 1.2; }
 .badge { font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--line-2); padding: 4px 10px; border-radius: 3px; color: var(--ink-3); margin-left: 12px; white-space: nowrap; vertical-align: middle; transition: all var(--transition-fast); }
-.badge.live { color: var(--ink); border-color: var(--ink); background: rgba(0,0,0,0.02); }
-.proj:hover .badge.live { background: var(--ink); color: var(--bg); }
+.badge.live { color: var(--hr-green); border-color: var(--hr-teal); background: rgba(6,182,212,0.06); }
+.proj:hover .badge.live { background: var(--hr-gradient); border-color: transparent; color: #fff; }
 .proj p { color: var(--ink-2); font-size: 0.98rem; margin: 14px 0 16px; line-height: 1.7; }
 .proj .stack { font-family: var(--mono); font-size: 0.76rem; color: var(--ink-3); letter-spacing: 0.02em; }
 .proj .go { font-family: var(--mono); font-size: 0.78rem; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink); padding-bottom: 2px; margin-left: 16px; transition: all var(--transition-fast); position: relative; }
