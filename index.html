@@ -241,8 +241,12 @@
 <script src="assets/articles.js"></script>
 <script>
   gsap.registerPlugin(ScrollTrigger);
+  const useLightweightMotion = window.matchMedia(
+    '(max-width: 768px), (pointer: coarse), (prefers-reduced-motion: reduce)'
+  ).matches;
 
   function initParticleBackground() {
+    if (useLightweightMotion) return;
     const canvas = document.getElementById('particle-canvas');
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
@@ -339,6 +343,15 @@
   });
 
   function initGSAPAnimations() {
+    if (useLightweightMotion) {
+      gsap.set('.coord, .lede, .sec-head, .node, .proj, .foot-cta, .foot-links a, .sign', {
+        clearProps: 'transform'
+      });
+      gsap.set('.coord, .lede, .sec-head, .node, .proj, .foot-cta, .foot-links a, .sign', { opacity: 1 });
+      gsap.set('.sec-head .rule', { scaleX: 1 });
+      return;
+    }
+
     gsap.to('.coord', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.1 });
 
     gsap.fromTo('.char',
@@ -397,6 +410,7 @@
   }
 
   function initCardTilt() {
+    if (useLightweightMotion) return;
     const cards = document.querySelectorAll('.node');
     cards.forEach(card => {
       card.addEventListener('mousemove', (e) => {
@@ -416,9 +430,11 @@
   }
 
   // Failsafe: force title visible if animations glitch
-  setTimeout(() => {
-    gsap.to('.char', { opacity:1, y:0, rotateX:0, duration:0.5 });
-  }, 1500);
+  if (!useLightweightMotion) {
+    setTimeout(() => {
+      gsap.to('.char', { opacity:1, y:0, rotateX:0, duration:0.5 });
+    }, 1500);
+  }
 
   window.addEventListener('load', () => {
     const loading = document.getElementById('loading');
@@ -435,11 +451,13 @@
     setTimeout(() => {
       initGSAPAnimations();
       initCardTilt();
-      ScrollTrigger.refresh();
+      if (!useLightweightMotion) ScrollTrigger.refresh();
     }, 200);
   });
 
-  window.addEventListener('resize', () => { ScrollTrigger.refresh(); });
+  if (!useLightweightMotion) {
+    window.addEventListener('resize', () => { ScrollTrigger.refresh(); });
+  }
 </script>
 </body>
 </html>

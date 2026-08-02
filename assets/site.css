@@ -41,6 +41,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
   position: relative;
   overflow-x: hidden;
+  touch-action: pan-y;
 }
 
 /* ---- loading overlay ---- */
@@ -198,6 +199,17 @@ footer { padding: 60px 0 90px; border-top: 1px solid var(--line-2); position: re
 .sign { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-3); margin-top: 30px; letter-spacing: 0.04em; opacity: 0; }
 
 @media (max-width: 768px) { #particle-canvas { opacity: 0.3; } }
+@media (max-width: 768px), (pointer: coarse), (prefers-reduced-motion: reduce) {
+  #particle-canvas, .grid-bg { display: none; }
+  .topbar {
+    background: rgba(251,251,250,0.97);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .node, .proj, .sec-head, .foot-cta, .foot-links a, .sign, .coord, .lede {
+    will-change: auto;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
