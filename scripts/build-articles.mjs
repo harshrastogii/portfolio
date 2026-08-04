@@ -68,7 +68,7 @@ for (const file of files) {
   });
 
   // fill the template
-  const canonical = `${SITE}/articles/${slug}.html`;
+  const canonical = `${SITE}/articles/${slug}`;
   let page = tpl
     .replaceAll("{{SLUG}}", esc(slug))
     .replaceAll("{{TITLE}}", esc(data.title))
@@ -93,14 +93,15 @@ writeFileSync(DATA_OUT, dataJs);
 console.log(`\nBuilt ${articles.length} article(s) -> assets/articles-data.js`);
 
 // sitemap
+const latestDate = articles[0]?.date;
 const urls = [
-  `${SITE}/`,
-  `${SITE}/articles/`,
-  ...articles.map((a) => `${SITE}/articles/${a.slug}.html`),
+  { loc: `${SITE}/`, lastmod: latestDate },
+  { loc: `${SITE}/articles/`, lastmod: latestDate },
+  ...articles.map((a) => ({ loc: `${SITE}/articles/${a.slug}`, lastmod: a.date })),
 ];
 const sm =
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  urls.map((u) => `  <url><loc>${u}</loc></url>`).join("\n") +
+  urls.map(({ loc, lastmod }) => `  <url><loc>${loc}</loc>${lastmod ? `<lastmod>${lastmod}</lastmod>` : ""}</url>`).join("\n") +
   `\n</urlset>\n`;
 writeFileSync(join(ROOT, "sitemap.xml"), sm);
 console.log("Wrote sitemap.xml");
