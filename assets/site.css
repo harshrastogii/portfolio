@@ -102,9 +102,6 @@ body:hover .grid-bg { opacity: 0.5; }
 
 /* ---- header / hero ---- */
 header { padding: 100px 0 60px; position: relative; }
-.hero-layout { display: grid; grid-template-columns: minmax(0, 1fr) 230px; align-items: end; gap: 48px; }
-.hero-portrait { width: 230px; margin: 0; justify-self: end; }
-.hero-portrait img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; border: 1px solid var(--line-2); border-radius: 2px; box-shadow: var(--shadow-medium); }
 
 .coord {
   font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em;
@@ -135,11 +132,6 @@ h1 {
   opacity: 0; transform: translateY(15px);
 }
 .lede strong { color: var(--ink); font-weight: 700; }
-
-@media (max-width: 700px) {
-  .hero-layout { grid-template-columns: 1fr; gap: 26px; }
-  .hero-portrait { width: min(180px, 52vw); justify-self: start; }
-}
 
 /* ---- sections ---- */
 section { padding: 50px 0; border-top: 1px solid var(--line-2); position: relative; }
