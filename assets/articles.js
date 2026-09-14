@@ -10,21 +10,24 @@
   var U = window.ArticleUtils;
   if (!U) return;
 
-  /* The base is a path prefix that differs per surface: "articles/" from the
-     homepage, and "" from inside /articles/ where the posts are siblings.
-     That empty string is the trap — it is falsy, so `base || "articles/"`
-     quietly turned every link on the library page into articles/articles/…
-     Read the attribute's absence, not its emptiness. */
-  function hrefFor(host, slug) {
-    var base = host.getAttribute("data-base");
-    if (base === null) base = "articles/";
-    return base + slug + ".html";
+  /* Root-absolute and extensionless, which is what the canonical URLs and the
+     sitemap use.
+
+     Document-relative links were the earlier approach and they are unsafe
+     here: the host serves the library at /articles with no trailing slash,
+     and a relative href from there resolves against the site root, not
+     against /articles/. That silently pointed every article link at the top
+     level, where nothing exists. Anchoring at / removes the whole class of
+     problem — the link no longer depends on which page renders the card or
+     whether its URL happens to end in a slash. */
+  function hrefFor(slug) {
+    return "/articles/" + slug;
   }
 
   function card(article, host, featured) {
     var a = document.createElement("a");
     a.className = "post-card" + (featured ? " is-featured" : "");
-    a.href = hrefFor(host, article.slug);
+    a.href = hrefFor(article.slug);
     a.setAttribute("data-cursor", "Read");
 
     var mins = article.readMins ? article.readMins + " min read" : "";

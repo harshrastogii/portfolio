@@ -155,7 +155,7 @@ console.log(`Stamped assets in ${stamped} page(s)`);
 const LIB = join(OUT_DIR, "index.html");
 if (existsSync(LIB)) {
   const items = articles
-    .map((a) => `<li><a class="footer__link" href="${a.slug}.html">${esc(a.title)}</a></li>`)
+    .map((a) => `<li><a class="footer__link" href="/articles/${a.slug}">${esc(a.title)}</a></li>`)
     .join("\n          ");
   const block = `<!-- ARTICLE-LIST:START -->\n        <ul style="list-style:none;display:grid;gap:var(--space-2)">\n          ${items}\n        </ul>\n        <!-- ARTICLE-LIST:END -->`;
   const before = readFileSync(LIB, "utf8");

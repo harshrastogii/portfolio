@@ -451,33 +451,39 @@ a { color: inherit; text-decoration: none; }
 
 /* ============================================================================
    5. MARQUEE
+   Separated by a hairline rule between items, not by a dot. The bar itself
+   carries no top or bottom border — the rules between the items are the only
+   lines in the band.
 ============================================================================ */
 .marquee {
-  position: relative;
   display: flex; overflow: hidden;
-  padding-block: var(--space-6);
-  border-block: 1px solid var(--surface-3);
+  padding-block: var(--space-5);
   user-select: none;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  -webkit-mask-image: linear-gradient(90deg,
+    transparent 0, transparent 100px, #000 200px,
+    #000 calc(100% - 200px), transparent calc(100% - 100px), transparent 100%);
+          mask-image: linear-gradient(90deg,
+    transparent 0, transparent 100px, #000 200px,
+    #000 calc(100% - 200px), transparent calc(100% - 100px), transparent 100%);
 }
+/* The track holds two copies of the list, so translating it exactly half its
+   width returns it to where it started with no seam. */
 .marquee__track {
-  display: flex; flex-shrink: 0; align-items: center; gap: var(--space-10);
-  padding-right: var(--space-10);
-  min-width: 100%;
-  animation: marquee 38s linear infinite;
+  display: flex; width: max-content;
+  animation: marquee 55s linear infinite;
 }
-.marquee:hover .marquee__track { animation-play-state: paused; }
-@keyframes marquee { to { transform: translateX(-100%); } }
+@media (hover: hover) { .marquee:hover .marquee__track { animation-play-state: paused; } }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
 .marquee__item {
-  display: inline-flex; align-items: center; gap: var(--space-10);
+  display: flex; align-items: center;
+  padding: 0 var(--space-12);
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-wide);
   color: var(--text-10);
   white-space: nowrap;
+  border-right: 1px solid var(--ink-4);
 }
-.marquee__item::after { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--accent-dim); opacity: .7; }
 
 /* ============================================================================
    6. SELECTED WORK
@@ -632,68 +638,76 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============================================================================
-   7. APPROACH — sticky header + cards that stack as you scroll
+   7. APPROACH — text that stacks, not cards that stack
+
+   There is no card here: each panel's background is the page's own colour, so
+   as the next one slides up it wipes the last cleanly and the section reads as
+   one column of text replacing itself. An earlier version drew bordered,
+   rounded, lighter panels, which turned it into a pile of boxes.
+
+   The geometry is deliberate and interdependent. Each panel is half the
+   viewport tall and pins just above the middle of the screen. The label block
+   is stretched to the height of the whole run and then pulled back up by
+   almost exactly the same amount, which leaves it barely any room in the flow
+   while giving its sticky header the full run to travel through.
 ============================================================================ */
 .stack { position: relative; }
-.stack__header {
-  position: sticky;
-  top: calc(var(--nav-height) + 16px);
-  z-index: var(--z-sticky);
-  padding-bottom: var(--space-6);
-  background: linear-gradient(var(--surface) 62%, transparent);
+
+.stack__label-wrap {
+  height: calc(var(--card-count) * 50vh - 50vh + 129px);
+  margin-bottom: calc(50vh - var(--card-count) * 50vh + 1rem);
   pointer-events: none;
 }
-.stack__count {
-  display: flex; align-items: flex-start; gap: var(--space-4);
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-tighter);
-  line-height: var(--leading-none);
-  color: var(--text-12);
+.stack__header {
+  position: sticky;
+  top: calc(32vh - 170px);
+  z-index: var(--z-sticky);
 }
-/* an odometer: a column of digits translated by the active index */
-.odo { display: inline-flex; height: 1em; overflow: hidden; }
-.odo__col { display: flex; flex-direction: column; transition: transform var(--duration-slower) var(--ease-out-expo); }
-.odo__col span { height: 1em; line-height: 1em; display: block; }
+.stack__label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--ink-9);
+  margin-bottom: var(--space-20);
+}
+/* an odometer: a column of numbers translated by the active index */
+.odo { display: flex; align-items: baseline; height: var(--space-7); overflow: hidden; }
+.odo__col { display: block; transition: transform var(--duration-slower) var(--ease-out-expo); }
+.odo__col span {
+  display: block;
+  height: var(--space-7); line-height: var(--space-7);
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  color: var(--blue-9);
+}
 
-.stack__cards { display: flex; flex-direction: column; }
 .stack__card {
   position: sticky;
-  /* Each card pins a little lower than the one before it, so a sliver of
-     every previous card stays visible and the pile reads as a pile rather
-     than as one card clipping another. */
-  top: calc(var(--nav-height) + 92px + (var(--i, 0) * 14px));
-  min-height: 360px;
-  display: flex; flex-direction: column; justify-content: center;
-  padding: var(--space-14);
-  border: 1px solid var(--surface-3);
-  border-radius: var(--radius-xl);
-  background: var(--surface-2);
-  /* No drop shadow. Four stacked cards each casting one piled up into a
-     black slab behind the section, which broke the grain running evenly
-     across the page. Depth comes from the scale below instead, which is
-     also what makes the pile read as receding rather than as flat layers. */
+  top: calc(32vh - 25px);
+  display: flex; flex-direction: column;
+  width: 100%; height: 50vh;
+  background: var(--surface);
   transform-origin: center top;
-  transition: transform var(--duration-slow) var(--ease-out-expo),
-              opacity var(--duration-slow) var(--ease-out-expo);
 }
 .stack__card h3 {
   font-family: var(--font-display);
-  font-size: var(--text-3xl);
-  font-weight: var(--weight-medium);
-  letter-spacing: var(--tracking-tight);
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--tracking-tighter);
   line-height: var(--leading-tight);
   color: var(--text-12);
-  max-width: var(--measure-lg);
-  margin-bottom: var(--space-5);
-  text-wrap: balance;
+  margin-bottom: var(--space-7);
+  max-width: 22ch;
 }
-.stack__card p { font-size: var(--text-lg); line-height: var(--leading-normal); color: var(--text-10); max-width: var(--measure-lg); }
-.stack__card .eyebrow { margin-bottom: var(--space-6); }
-@media (max-width: 640px) {
-  .stack__card { padding: var(--space-8); min-height: 300px; }
-  .stack__card p { font-size: var(--text-base); }
+.stack__card p {
+  font-size: var(--text-3xl);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-snug);
+  color: var(--text-9);
+  max-width: 36ch;
 }
 
 /* ============================================================================
@@ -913,7 +927,7 @@ a { color: inherit; text-decoration: none; }
   .js [data-reveal] { opacity: 1; transform: none; }
   .js [data-reveal-lines] .line-inner { transform: none; }
   .js .word-inner { transform: none; }
-  .marquee__track { animation: none; }
+  .marquee__track { animation: none; width: auto; flex-wrap: wrap; }
   .grain { display: none; }
   .intro { display: none !important; }
   .grain.is-animated { animation: none; }
@@ -937,6 +951,17 @@ a { color: inherit; text-decoration: none; }
    the lines are released and the text is allowed to wrap on its own.
 ============================================================================ */
 @media (max-width: 860px) {
+  /* the ticker tightens up and its fade pulls in, or the items are wider
+     than the screen and only one is ever legible */
+  .marquee { padding-block: var(--space-8); }
+  .marquee__item { padding: 0 var(--space-5); font-size: clamp(12px, 3.2vw, 16px); }
+  .marquee {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, transparent 20px,
+      #000 calc(10% + 20px), #000 calc(90% - 20px), transparent calc(100% - 20px), transparent 100%);
+            mask-image: linear-gradient(90deg, transparent 0, transparent 20px,
+      #000 calc(10% + 20px), #000 calc(90% - 20px), transparent calc(100% - 20px), transparent 100%);
+  }
+
   .hero__line { display: inline; }
   .hero__title { max-width: 16ch; }
 
@@ -948,9 +973,8 @@ a { color: inherit; text-decoration: none; }
   .hero__eyebrow { gap: var(--space-2) var(--space-3); }
   .hero__eyebrow .dot { display: none; }
 
-  .stack__card { min-height: auto; padding: var(--space-7); }
-  .stack__header { top: 12px; }
-  .stack__card { top: calc(80px + (var(--i, 0) * 10px)); }
+  .stack__card { height: auto; min-height: 46vh; padding-bottom: var(--space-8); }
+  .stack__label { margin-bottom: var(--space-10); }
   .offer-card { min-height: auto; padding: var(--space-7); }
   .work-item__title { font-size: var(--text-2xl); }
   .footer { padding-top: var(--space-20); }

@@ -4,6 +4,9 @@ Identical to `python -m http.server` except for two development conveniences:
 
   * every response carries `Cache-Control: no-store`, so edits to CSS and JS
     show up on reload instead of being masked by a cached copy;
+  * extensionless paths fall back to `<path>.html`, matching the `cleanUrls`
+    setting the site is deployed with. Without this, local and production
+    disagree about what a URL means, and a link that works here 404s there;
   * `POST /__capture/<name>.png` writes a base64 image body to
     `.captures/<name>.png`, which lets a page hand a rendered <canvas> back
     for inspection without squeezing it through the console.
@@ -20,6 +23,15 @@ CAPTURE_DIR = ".captures"
 
 
 class DevHandler(SimpleHTTPRequestHandler):
+    def translate_path(self, path):
+        """Resolve /articles/foo to articles/foo.html, the way cleanUrls does."""
+        local = super().translate_path(path)
+        if os.path.isdir(local) or os.path.exists(local):
+            return local
+        if not os.path.splitext(local)[1] and os.path.exists(local + ".html"):
+            return local + ".html"
+        return local
+
     def end_headers(self):
         self.send_header("Cache-Control", "no-store, must-revalidate")
         self.send_header("Pragma", "no-cache")

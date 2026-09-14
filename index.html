@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Harsh Rastogi — Data Scientist, Northern Territory</title>
 
-<link rel="icon" href="favicon.ico" sizes="any"/>
-<link rel="icon" type="image/svg+xml" href="assets/hr-icon.svg"/>
-<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<link rel="icon" href="/favicon.ico" sizes="any"/>
+<link rel="icon" type="image/svg+xml" href="/assets/hr-icon.svg"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png"/>
 
 <meta name="description" content="Harsh Rastogi is a Darwin-based data scientist building environmental intelligence, biodiversity, public-service and not-for-profit data tools for the Northern Territory." />
 <meta name="robots" content="index,follow,max-image-preview:large" />
@@ -46,8 +46,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<link rel="stylesheet" href="assets/tokens.css?v=2e08cb8c" />
-<link rel="stylesheet" href="assets/site.css?v=4cb3ac48" />
+<link rel="stylesheet" href="/assets/tokens.css?v=2e08cb8c" />
+<link rel="stylesheet" href="/assets/site.css?v=7b4f4e3e" />
 
 <script type="application/ld+json">
 {
@@ -87,13 +87,13 @@
 <!-- ==================================================================== NAV -->
 <nav class="nav" aria-label="Primary">
   <div class="nav__logo">
-    <a class="nav__name" href="index.html" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
   </div>
   <div class="nav__menu">
     <ul class="nav__links">
       <li><a href="#work" data-roll>Work</a></li>
       <li><a href="#approach" data-roll>Approach</a></li>
-      <li><a href="articles/index.html" data-roll>Writing</a></li>
+      <li><a href="/articles/" data-roll>Writing</a></li>
     </ul>
   </div>
   <div class="nav__actions">
@@ -106,7 +106,7 @@
     <ul class="nav__mobile-links">
       <li><a href="#work">Work</a></li>
       <li><a href="#approach">Approach</a></li>
-      <li><a href="articles/index.html">Writing</a></li>
+      <li><a href="/articles/">Writing</a></li>
     </ul>
     <a class="btn" href="mailto:harshrastogi636@gmail.com">Email</a>
   </div>
@@ -151,7 +151,7 @@
 
       <div class="hero__actions" data-reveal data-reveal-stagger="0.68">
         <a class="btn btn--solid btn--lg" href="#work">See the work <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
-        <a class="btn btn--ghost btn--lg" href="articles/index.html">Read the writing</a>
+        <a class="btn btn--ghost btn--lg" href="/articles/">Read the writing</a>
       </div>
     </div>
   </header>
@@ -380,47 +380,39 @@
   <!-- ============================================================ APPROACH -->
   <section class="section" id="approach">
     <div class="container">
-      <div class="stack" data-stack>
-        <div class="stack__header">
-          <p class="section-label" style="margin-bottom:var(--space-6)">How I work</p>
-          <p class="stack__count">
-            <span class="odo" aria-hidden="true"><span class="odo__col">
+      <div class="stack" data-stack style="--card-count:4">
+        <div class="stack__label-wrap">
+          <div class="stack__header">
+            <p class="stack__label">How I work</p>
+            <p class="odo" aria-hidden="true"><span class="odo__col">
               <span>01</span><span>02</span><span>03</span><span>04</span>
-            </span></span>
-          </p>
+            </span></p>
+          </div>
         </div>
 
         <div class="stack__cards">
-          <article class="stack__card" style="--i:0">
-            <p class="eyebrow">Principle 01</p>
+          <article class="stack__card">
             <h3>I start with the question, not the dataset.</h3>
-            <p>Open data is easy to download and hard to make mean anything. Before I write a
-               query I want to know what decision is waiting on the answer — otherwise you get
-               a dashboard nobody opens twice.</p>
+            <p>Open data is easy to download and hard to make mean anything. Before I write
+               a query I want to know what decision is waiting on the answer.</p>
           </article>
 
-          <article class="stack__card" style="--i:1">
-            <p class="eyebrow">Principle 02</p>
+          <article class="stack__card">
             <h3>I ship the tool, not the notebook.</h3>
-            <p>Analysis that lives in a notebook dies with the kernel. Every project here ends
-               as something deployed and reachable — a map, an endpoint, a scheduled job — so
-               the finding survives past the week it was found.</p>
+            <p>Analysis that lives in a notebook dies with the kernel. Every project here
+               ends as something deployed and reachable.</p>
           </article>
 
-          <article class="stack__card" style="--i:2">
-            <p class="eyebrow">Principle 03</p>
+          <article class="stack__card">
             <h3>I say what the data doesn't support.</h3>
-            <p>The surrogate validation concluded the surrogates were only modestly useful.
-               Conflux expected two detectors to agree and they didn't. Reporting that plainly
-               is the part that makes the rest of it worth trusting.</p>
+            <p>The surrogate validation found the surrogates only modestly useful. Conflux
+               expected two detectors to agree and they didn't.</p>
           </article>
 
-          <article class="stack__card" style="--i:3">
-            <p class="eyebrow">Principle 04</p>
+          <article class="stack__card">
             <h3>I build it so it keeps running without me.</h3>
-            <p>Scheduled jobs, no servers to babysit, plain-English readings attached to every
-               chart. If a council or a researcher has to ring me to interpret it, I haven't
-               finished the job.</p>
+            <p>Scheduled jobs, no servers to babysit, a plain-English reading on every
+               chart. If you have to ring me to interpret it, I haven't finished.</p>
           </article>
         </div>
       </div>
@@ -465,12 +457,12 @@
     <div class="container">
       <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap">
         <p class="section-label" data-reveal>Writing</p>
-        <a class="index__go" href="articles/index.html" style="margin-bottom:var(--space-10)">All articles &rarr;</a>
+        <a class="index__go" href="/articles/" style="margin-bottom:var(--space-10)">All articles &rarr;</a>
       </div>
       <div class="writing__grid" id="writing-cards" data-base="articles/" data-count="3"></div>
       <noscript>
         <p class="lib-empty">The article cards are rendered from the article index.
-        <a class="footer__link" href="articles/index.html" style="margin-left:var(--space-3)">Browse all writing &rarr;</a></p>
+        <a class="footer__link" href="/articles/" style="margin-left:var(--space-3)">Browse all writing &rarr;</a></p>
       </noscript>
     </div>
   </section>
@@ -490,7 +482,7 @@
       <a class="footer__link" href="mailto:harshrastogi636@gmail.com">harshrastogi636@gmail.com</a>
       <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
       <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
-      <a class="footer__link" href="articles/index.html">Writing</a>
+      <a class="footer__link" href="/articles/">Writing</a>
     </div>
 
     <div class="footer__legal">
@@ -501,9 +493,9 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
-<script src="assets/articles-data.js?v=e7e26773" defer></script>
-<script src="assets/articles.js?v=405e5082" defer></script>
-<script src="assets/app.js?v=1f13f519" defer></script>
-<script src="assets/particle-text.js?v=ee258e55" defer></script>
+<script src="/assets/articles-data.js?v=e7e26773" defer></script>
+<script src="/assets/articles.js?v=799fb2ee" defer></script>
+<script src="/assets/app.js?v=08e40ab4" defer></script>
+<script src="/assets/particle-text.js?v=ee258e55" defer></script>
 </body>
 </html>

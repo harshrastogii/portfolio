@@ -262,10 +262,18 @@
   function initMarquee() {
     document.querySelectorAll("[data-marquee]").forEach(function (m) {
       var track = m.querySelector(".marquee__track");
-      if (!track) return;
-      var clone = track.cloneNode(true);
-      clone.setAttribute("aria-hidden", "true");
-      m.appendChild(clone);
+      if (!track || track.dataset.doubled) return;
+      /* Duplicate the items inside the one track rather than cloning the
+         track. The loop then translates the track by exactly half its own
+         width, which lands the second copy where the first began — no seam,
+         and no dependence on the content happening to fill the viewport. */
+      var items = [].slice.call(track.children);
+      items.forEach(function (item) {
+        var copy = item.cloneNode(true);
+        copy.setAttribute("aria-hidden", "true");
+        track.appendChild(copy);
+      });
+      track.dataset.doubled = "1";
     });
   }
 
@@ -285,25 +293,16 @@
       /* The active card is the last one whose top edge has crossed a little
          past the middle of the viewport — by then it is the card the reader
          is actually looking at, even though the one beneath is still pinned. */
-      var anchor = window.innerHeight * 0.55;
+      // panels pin just above mid-screen, so that is where the count turns over
+      var anchor = window.innerHeight * 0.34;
       var active = 0;
       cards.forEach(function (card, i) {
         if (card.getBoundingClientRect().top <= anchor) active = i;
       });
-      col.style.transform = "translateY(" + (-active) + "em)";
-
-      /* Cards already passed shrink and dim a little for each card stacked
-         on top of them, so the pile reads as receding into the page. */
-      cards.forEach(function (card, i) {
-        var depth = Math.max(0, active - i);
-        if (!depth) {
-          card.style.transform = "";
-          card.style.opacity = "";
-        } else {
-          card.style.transform = "scale(" + (1 - Math.min(depth, 3) * 0.022) + ")";
-          card.style.opacity = String(Math.max(0.55, 1 - depth * 0.15));
-        }
-      });
+      /* The clip is one step tall, so the column moves by whole steps. The
+         panels themselves need no transform: each one's background is the
+         page colour, so sliding up wipes the one before it. */
+      col.style.transform = "translateY(calc(" + (-active) + " * var(--space-7)))";
     }
     window.addEventListener("scroll", function () {
       if (!ticking) { ticking = true; requestAnimationFrame(update); }
