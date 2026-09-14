@@ -1,4 +1,4 @@
-# harshrastogii.com
+# harshrastogi.au
 
 A static site. No framework, no client-side router, no build output directory —
 the HTML in this repo is the HTML that ships. A small Node step turns Markdown

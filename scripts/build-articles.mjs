@@ -20,7 +20,7 @@ const POSTS_DIR = join(ROOT, "articles", "posts");
 const OUT_DIR = join(ROOT, "articles");
 const TEMPLATE = join(ROOT, "articles", "_article.template.html");
 const DATA_OUT = join(ROOT, "assets", "articles-data.js");
-const SITE = "https://harshrastogii.com"; // <- change if your domain differs
+const SITE = "https://harshrastogi.au"; // <- change if your domain differs
 
 // reading time: ~220 wpm from the rendered text
 function readingMins(html) {
@@ -97,7 +97,7 @@ console.log(`\nBuilt ${articles.length} article(s) -> assets/articles-data.js`);
 const latestDate = articles[0]?.date;
 const urls = [
   { loc: `${SITE}/`, lastmod: latestDate },
-  { loc: `${SITE}/articles/`, lastmod: latestDate },
+  { loc: `${SITE}/articles`, lastmod: latestDate },
   ...articles.map((a) => ({ loc: `${SITE}/articles/${a.slug}`, lastmod: a.date })),
 ];
 const sm =
