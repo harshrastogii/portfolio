@@ -130,6 +130,7 @@ for (const file of readdirSync(ASSET_DIR)) {
 
 const pages = [
   join(ROOT, "index.html"),
+  join(ROOT, "404.html"),
   join(ROOT, "articles", "index.html"),
   ...articles.map((a) => join(OUT_DIR, `${a.slug}.html`)),
 ];
