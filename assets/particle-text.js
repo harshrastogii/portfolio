@@ -77,11 +77,14 @@
   var WORLD_SPAN = 10 * Math.tan(25 * Math.PI / 180);
   var TAU = Math.PI * 2;
 
+  /* Runs on phones too. It used to bail on a coarse pointer and on any narrow
+     screen, which left the hero word as flat type on exactly the device most
+     people will see it on. The only hard stop is a request for reduced
+     motion; the simulation scales itself to the element, so a smaller word
+     simply means fewer dots. */
   function supported() {
     if (!window.matchMedia) return false;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
-    if (window.matchMedia("(pointer: coarse)").matches) return false;
-    if (window.innerWidth < 760) return false;
     return true;
   }
 
@@ -402,14 +405,27 @@
     this.root.__particleWord = this;
 
     var self = this;
-    this._move = function (e) {
+    function place(clientX, clientY) {
       var box = self.holder.getBoundingClientRect();
-      self.pointer.x = e.clientX - box.left;
-      self.pointer.y = e.clientY - box.top;
-    };
+      self.pointer.x = clientX - box.left;
+      self.pointer.y = clientY - box.top;
+    }
+    this._move = function (e) { place(e.clientX, e.clientY); };
     this._leave = function () { self.pointer.x = -99999; self.pointer.y = -99999; };
 
+    /* A finger dragged across the word should scatter it exactly as a cursor
+       does. The listener is passive, so dragging still scrolls the page —
+       the word reacts to the finger passing over it rather than trapping it. */
+    this._touch = function (e) {
+      var t = e.touches && e.touches[0];
+      if (t) place(t.clientX, t.clientY);
+    };
+
     window.addEventListener("mousemove", this._move, { passive: true });
+    window.addEventListener("touchstart", this._touch, { passive: true });
+    window.addEventListener("touchmove", this._touch, { passive: true });
+    window.addEventListener("touchend", this._leave, { passive: true });
+    window.addEventListener("touchcancel", this._leave, { passive: true });
     window.addEventListener("blur", this._leave);
 
     function play() {

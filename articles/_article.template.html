@@ -72,8 +72,16 @@
 <div class="curtain" data-curtain aria-hidden="true"></div>
 
 <nav class="nav" aria-label="Primary">
-  <div class="nav__logo">
-    <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
   </div>
   <div class="nav__menu">
     <ul class="nav__links">
@@ -85,18 +93,15 @@
   <div class="nav__actions">
     <a class="btn nav__cta" href="mailto:harshrastogi636@gmail.com">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
   </div>
-</nav>
-
-<div class="nav__mobile">
-  <div class="nav__mobile-inner">
-    <ul class="nav__mobile-links">
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
       <li><a href="/#work">Work</a></li>
       <li><a href="/#approach">Approach</a></li>
       <li><a href="/articles/">Writing</a></li>
+      <li><a href="mailto:harshrastogi636@gmail.com">Email</a></li>
     </ul>
-    <a class="btn" href="mailto:harshrastogi636@gmail.com">Email</a>
   </div>
-</div>
+</nav>
 
 <main>
   <div class="container">

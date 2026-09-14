@@ -338,36 +338,79 @@ a { color: inherit; text-decoration: none; }
 .nav__actions { display: flex; align-items: center; justify-content: flex-end; }
 .nav__cta { --btn-blob: var(--accent); height: 44px; }
 
-/* ---- mobile: the pill becomes a bottom bar ------------------------- */
-.nav__mobile { display: none; }
-@media (max-width: 860px) {
-  .nav { display: none; }
-  .nav__mobile {
-    position: fixed; left: 0; right: 0; bottom: 0; z-index: var(--z-nav);
-    display: block;
-    padding: 0 var(--space-4) calc(var(--space-4) + env(safe-area-inset-bottom));
-    pointer-events: none;
-  }
-  .nav__mobile-inner {
-    pointer-events: auto;
-    display: flex; align-items: center; justify-content: space-between;
-    width: 100%; height: 68px; padding: 0 var(--space-3);
-    background: var(--nav-mobile-bg);
-    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+/* ---- the header row: only laid out as a row on a phone -------------- */
+.nav__header { display: contents; }
+.nav__caret { display: none; }
+.nav__drawer { display: none; }
+
+/* ---- phones: the pill moves to the bottom and folds open ------------
+   One nav, restyled — not a second bar duplicated underneath. The pill
+   anchors to the bottom of the screen showing the wordmark and a caret, and
+   column-reverse means the menu it reveals grows upward out of it rather
+   than off the bottom of the screen. An earlier version put a separate row
+   of links down there with no name on it at all, which left the site
+   unsigned on a phone.
+-------------------------------------------------------------------- */
+@media (max-width: 768px) and (orientation: portrait), (max-width: 599px) {
+  .nav {
+    top: auto;
+    bottom: calc(var(--space-5) + env(safe-area-inset-bottom));
+    left: 0; right: 0; margin: 0 auto;
+    transform: none;
+    display: flex; flex-direction: column-reverse; align-items: stretch;
+    width: min(400px, 100% - 40px);
+    min-width: min(320px, 100% - 40px);
+    height: auto;
+    padding: 0;
+    overflow: hidden;
     border: 1px solid var(--surface-3);
-    border-radius: var(--radius-full);
-    box-shadow: 0 -2px 24px rgba(0,0,0,.35);
+    border-radius: var(--radius-xl);
+    background: var(--nav-scrolled-bg);
+    backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 4px 24px rgba(0,0,0,.30);
   }
-  .nav__mobile-links { display: flex; flex: 1; align-items: center; justify-content: center; gap: 2px; list-style: none; }
-  .nav__mobile-links a {
-    display: inline-flex; align-items: center; height: 44px; padding: 0 13px;
-    border-radius: var(--radius-full);
-    font-size: var(--text-sm); font-weight: var(--weight-semibold);
+  /* the frosted pill is always frosted here, scrolled or not */
+  .nav.is-scrolled { width: min(400px, 100% - 40px); padding: 0; }
+
+  .nav__header {
+    display: flex; align-items: center; justify-content: space-between;
+    height: 52px;
+    padding: 0 var(--space-2) 0 var(--space-5);
+    flex-shrink: 0;
+  }
+  .nav__logo { padding: 0; min-width: 0; }
+  .nav__name { font-size: var(--text-sm); height: auto; pointer-events: none; }
+  /* the wordmark stays whole down here — there is room, and the pill never
+     contracts on a phone, so the initials collapse has nothing to react to */
+  .nav.is-scrolled .nav__ch--drop { opacity: 1; max-width: 18px; }
+
+  .nav__caret {
+    display: flex; align-items: center; justify-content: center;
+    min-width: 44px; min-height: 44px;
+    padding: var(--space-2);
     color: var(--text-10);
-    transition: color var(--duration-base), background var(--duration-base);
+    transition: transform var(--duration-medium) var(--ease-in-out);
   }
-  .nav__mobile-links a[aria-current="page"] { color: var(--accent); background: var(--surface-3); }
-  .nav__mobile .btn { height: 44px; padding: 0 var(--space-4); }
+  .nav.is-open .nav__caret { transform: rotate(180deg); }
+
+  .nav__menu, .nav__actions { display: none !important; }
+
+  .nav__drawer {
+    display: block; overflow: hidden;
+    max-height: 0;
+    transition: max-height var(--duration-base) var(--ease-in-out);
+  }
+  .nav.is-open .nav__drawer { max-height: 320px; }
+  .nav__drawer-links { list-style: none; padding: var(--space-4) 0; }
+  .nav__drawer-links a {
+    display: block;
+    padding: var(--space-4) var(--space-7);
+    text-align: right;
+    font-size: var(--text-base);
+    font-weight: var(--weight-medium);
+    color: var(--text-12);
+  }
+  .nav__drawer-links a[aria-current="page"] { color: var(--accent); }
 }
 
 /* ============================================================================
@@ -934,6 +977,24 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============================================================================
+   15. TOUCH
+   A touch screen has no hover, so every hover-driven affordance on the site
+   simply never happens there and the page can feel inert next to the desktop
+   version. A press state gives back the one piece of feedback a finger can
+   actually get.
+============================================================================ */
+@media (hover: none) {
+  .work-item__link:active .work-card,
+  .offer-card:active,
+  .post-card:active {
+    transform: scale(.985);
+    transition: transform var(--duration-fast) var(--ease-in-out);
+  }
+  .index__row:active { background: var(--surface-2); }
+  .btn:active, .footer__link:active { transform: scale(.97); }
+}
+
+/* ============================================================================
    13. UTILITIES
 ============================================================================ */
 .sr-only {
@@ -967,7 +1028,7 @@ a { color: inherit; text-decoration: none; }
 
   /* the bottom nav bar floats over the page; keep the last of the content
      clear of it, including the home-indicator inset */
-  body { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+  body { padding-bottom: calc(92px + env(safe-area-inset-bottom)); }
 
   .hero { min-height: auto; padding-block: calc(var(--nav-height) + 72px) var(--space-16); }
   .hero__eyebrow { gap: var(--space-2) var(--space-3); }

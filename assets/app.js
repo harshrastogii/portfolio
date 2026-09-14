@@ -65,6 +65,7 @@
 
     buildWordmark(nav.querySelector("[data-wordmark]"));
     buildRollLinks(nav);
+    wireDrawer(nav);
 
     var lightZones = [].slice.call(document.querySelectorAll("[data-nav-light]"));
     var ticking = false;
@@ -90,6 +91,33 @@
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll, { passive: true });
     update();
+  }
+
+  /* The phone layout folds the menu out of the pill. Kept in JS rather than a
+     checkbox hack so the caret can carry real aria-expanded state, and so the
+     drawer closes on outside tap, on Escape, and after a link is followed. */
+  function wireDrawer(nav) {
+    var toggle = nav.querySelector("[data-nav-toggle]");
+    if (!toggle) return;
+
+    function setOpen(open) {
+      nav.classList.toggle("is-open", open);
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    }
+    toggle.addEventListener("click", function (e) {
+      e.stopPropagation();
+      setOpen(!nav.classList.contains("is-open"));
+    });
+    nav.querySelectorAll(".nav__drawer-links a").forEach(function (a) {
+      a.addEventListener("click", function () { setOpen(false); });
+    });
+    document.addEventListener("click", function (e) {
+      if (!nav.contains(e.target)) setOpen(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") setOpen(false);
+    });
   }
 
   /* Wrap each character so the non-initials can collapse to zero width.
