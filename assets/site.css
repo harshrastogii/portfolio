@@ -484,7 +484,13 @@ a { color: inherit; text-decoration: none; }
 ============================================================================ */
 .work__list { display: flex; flex-direction: column; gap: var(--space-16); }
 
+/* The anchor wraps the image and nothing else. Wrapping the caption too — as
+   this did at first — makes the whole block clickable, so the pointer turns
+   into a link and the cursor pill appears while you are reading the title or
+   just passing through the gap below the picture. The caption is a sibling of
+   the link, not a child of it. */
 .work-item { display: block; }
+.work-item__link { display: block; text-decoration: none; color: inherit; will-change: transform; }
 .work-card {
   position: relative; overflow: hidden;
   aspect-ratio: 16 / 9;
@@ -499,11 +505,11 @@ a { color: inherit; text-decoration: none; }
 /* The card lifts a little and the artwork inside it pushes past the frame,
    so the crop tightens as you hover rather than the whole tile just moving. */
 @media (hover: hover) and (pointer: fine) {
-  .work-item:hover .work-card {
+  .work-item__link:hover .work-card {
     transform: translateY(-4px) scale(1.015);
     transition: transform var(--duration-medium) var(--ease-in-out);
   }
-  .work-item:hover .work-card__media { transform: scale(1.08); }
+  .work-item__link:hover .work-card__media { transform: scale(1.08); }
 }
 
 .work-card__stamp {
@@ -561,7 +567,10 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(100%);
   transition: transform var(--duration-medium) var(--ease-in-out-strong);
 }
-.work-item:hover .work-item__reveal span { transform: translateY(0); }
+/* Driven from the image link, which is the caption's previous sibling. A
+   general sibling combinator does this without :has(), so it works in older
+   Safari and Firefox too. */
+.work-item__link:hover ~ .work-item__meta .work-item__reveal span { transform: translateY(0); }
 
 /* each card gets its own accent, cycling through the brand ramp */
 .work__list > .work-item:nth-child(3n+1) { --accent-card: var(--teal-9); }
