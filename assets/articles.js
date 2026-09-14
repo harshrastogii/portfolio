@@ -1,192 +1,147 @@
 /* ============================================================================
-   ARTICLES.JS — shared rendering + motion for every article surface
-   Reuses the EXACT GSAP parameters from the original site so new cards move
-   identically to the existing .node / .proj elements. Depends on:
-     articles-data.js (window.ARTICLES, window.ArticleUtils)
-     GSAP + ScrollTrigger (loaded by each page)
+   ARTICLES.JS — renders every article surface: the homepage teaser, the
+   library grid with its tag filter, and the related list at the foot of a
+   post. Reads window.ARTICLES / window.ArticleUtils from articles-data.js,
+   which the build regenerates from articles/posts/*.md.
 ============================================================================ */
 (function () {
-  const U = window.ArticleUtils;
+  "use strict";
 
-  /* -- build one card's inner HTML (shared by homepage teaser + library) -- */
-  function cardMarkup(article) {
-    const mins = article.readMins ? `${article.readMins} min read` : "";
-    const chips = article.tags
-      .map((t) => `<span class="chip">${t}</span>`)
-      .join("");
-    return `
-      <span class="card-arrow">↗</span>
-      <span class="card-meta">
-        <time datetime="${article.date}">${U.prettyDate(article.date)}</time>
-        ${mins ? `<span class="dot"></span><span>${mins}</span>` : ""}
-      </span>
-      <span class="card-t">${article.title}</span>
-      <span class="card-dek">${article.dek}</span>
-      <span class="card-foot">${chips}</span>
-    `;
+  var U = window.ArticleUtils;
+  if (!U) return;
+
+  /* The base is a path prefix that differs per surface: "articles/" from the
+     homepage, and "" from inside /articles/ where the posts are siblings.
+     That empty string is the trap — it is falsy, so `base || "articles/"`
+     quietly turned every link on the library page into articles/articles/…
+     Read the attribute's absence, not its emptiness. */
+  function hrefFor(host, slug) {
+    var base = host.getAttribute("data-base");
+    if (base === null) base = "articles/";
+    return base + slug + ".html";
   }
 
-  function makeCard(article, { featured = false } = {}) {
-    const a = document.createElement("a");
-    a.className = "card" + (featured ? " is-featured" : "");
-    a.href = `articles/${article.slug}.html`;
-    a.setAttribute("data-tags", article.tags.join(","));
-    a.innerHTML = cardMarkup(article);
+  function card(article, host, featured) {
+    var a = document.createElement("a");
+    a.className = "post-card" + (featured ? " is-featured" : "");
+    a.href = hrefFor(host, article.slug);
+    a.setAttribute("data-cursor", "Read");
+
+    var mins = article.readMins ? article.readMins + " min read" : "";
+    a.innerHTML =
+      '<span class="post-card__meta">' +
+        '<time datetime="' + article.date + '">' + U.prettyDate(article.date) + "</time>" +
+        (mins ? '<span class="dot"></span><span>' + mins + "</span>" : "") +
+      "</span>" +
+      '<h3 class="post-card__title">' + article.title + "</h3>" +
+      '<p class="post-card__dek">' + article.dek + "</p>" +
+      '<span class="post-card__foot">' +
+        article.tags.map(function (t) { return '<span class="pill">' + t + "</span>"; }).join("") +
+      "</span>";
     return a;
   }
 
-  /* Path-aware href: the library page sits in /articles/, the homepage at root.
-     We detect by whether a `.cards` container declares data-base. */
-  function hrefFor(container, slug) {
-    const base = container.getAttribute("data-base") || "articles/";
-    return `${base}${slug}.html`;
-  }
-
-  /* -- HOMEPAGE: render the most-recent N into #writing-cards -- */
-  function renderHomepageTeaser() {
-    const host = document.getElementById("writing-cards");
+  /* -- homepage: the most recent N ------------------------------------- */
+  function renderTeaser() {
+    var host = document.getElementById("writing-cards");
     if (!host) return;
-    const n = parseInt(host.getAttribute("data-count") || "3", 10);
-    const items = U.sorted().slice(0, n);
-    items.forEach((article, i) => {
-      const featured = i === 0 && article.featured && items.length >= 3;
-      const card = makeCard(article, { featured });
-      card.href = hrefFor(host, article.slug);
-      host.appendChild(card);
+    var n = parseInt(host.getAttribute("data-count") || "3", 10);
+    U.sorted().slice(0, n).forEach(function (article, i) {
+      var el = card(article, host, false);
+      el.setAttribute("data-reveal", "");
+      el.style.setProperty("--reveal-delay", (i * 0.07) + "s");
+      host.appendChild(el);
     });
-    revealCards(host);
   }
 
-  /* -- LIBRARY: render all + wire the tag filter with FLIP-style motion -- */
+  /* -- library: all of them, filtered by tag --------------------------- */
   function renderLibrary() {
-    const host = document.getElementById("library-cards");
+    var host = document.getElementById("library-cards");
     if (!host) return;
-    const filterHost = document.getElementById("filterbar");
-    let active = "ALL";
+    var bar = document.getElementById("lib-filters");
+    var active = "ALL";
 
     function paint() {
-      const items = U.sorted().filter(
-        (a) => active === "ALL" || a.tags.includes(active)
-      );
+      var items = U.sorted().filter(function (a) {
+        return active === "ALL" || a.tags.indexOf(active) !== -1;
+      });
       host.innerHTML = "";
+
       if (!items.length) {
-        const empty = document.createElement("div");
+        var empty = document.createElement("p");
         empty.className = "lib-empty";
-        empty.textContent = "// no articles under this tag yet";
+        empty.textContent = "Nothing filed under this tag yet.";
         host.appendChild(empty);
         return;
       }
-      items.forEach((article, i) => {
-        const featured = i === 0 && article.featured && active === "ALL";
-        const card = makeCard(article, { featured });
-        card.href = hrefFor(host, article.slug);
-        host.appendChild(card);
+
+      items.forEach(function (article, i) {
+        var featured = i === 0 && article.featured && active === "ALL" && items.length >= 3;
+        var el = card(article, host, featured);
+        el.setAttribute("data-reveal", "");
+        el.style.setProperty("--reveal-delay", (i * 0.06) + "s");
+        host.appendChild(el);
       });
-      revealCards(host, true);
+
+      if (window.Site) { window.Site.refreshReveals(); window.Site.refreshCursor(); }
     }
 
-    // build filter buttons with counts
-    if (filterHost) {
-      U.allTags().forEach((tag) => {
-        const count =
-          tag === "ALL"
-            ? window.ARTICLES.length
-            : window.ARTICLES.filter((a) => a.tags.includes(tag)).length;
-        const btn = document.createElement("button");
-        btn.className = "filter";
+    if (bar) {
+      U.allTags().forEach(function (tag) {
+        var count = tag === "ALL"
+          ? window.ARTICLES.length
+          : window.ARTICLES.filter(function (a) { return a.tags.indexOf(tag) !== -1; }).length;
+
+        var btn = document.createElement("button");
+        btn.className = "lib-filter";
         btn.type = "button";
         btn.setAttribute("aria-pressed", tag === "ALL" ? "true" : "false");
-        btn.innerHTML = `${tag}<span class="count">${count}</span>`;
-        btn.addEventListener("click", () => {
+        btn.innerHTML = tag + '<span class="count">' + count + "</span>";
+        btn.addEventListener("click", function () {
           active = tag;
-          filterHost
-            .querySelectorAll(".filter")
-            .forEach((b) => b.setAttribute("aria-pressed", "false"));
+          bar.querySelectorAll(".lib-filter").forEach(function (b) {
+            b.setAttribute("aria-pressed", "false");
+          });
           btn.setAttribute("aria-pressed", "true");
           paint();
         });
-        filterHost.appendChild(btn);
+        bar.appendChild(btn);
       });
     }
     paint();
   }
 
-  /* -- RELATED: render related cards on an article page -- */
+  /* -- article foot: nearest neighbours by shared tags ----------------- */
   function renderRelated() {
-    const host = document.getElementById("related-cards");
+    var host = document.getElementById("related-cards");
     if (!host) return;
-    const slug = host.getAttribute("data-slug");
-    const items = U.related(slug, parseInt(host.getAttribute("data-count") || "2", 10));
+    var items = U.related(
+      host.getAttribute("data-slug"),
+      parseInt(host.getAttribute("data-count") || "2", 10)
+    );
     if (!items.length) {
-      const section = host.closest("section");
-      if (section) section.style.display = "none";
+      var section = host.closest("section");
+      if (section) section.remove();
       return;
     }
-    items.forEach((article) => {
-      const card = makeCard(article);
-      card.href = hrefFor(host, article.slug);
-      host.appendChild(card);
-    });
-    revealCards(host);
-  }
-
-  /* -- shared reveal: identical easing/stagger to the original .node reveal -- */
-  function revealCards(host, immediate = false) {
-    const cards = host.querySelectorAll(".card");
-    if (!window.gsap) {
-      cards.forEach((c) => (c.style.opacity = 1));
-      return;
-    }
-    cards.forEach((card, i) => {
-      const col = i % 3;
-      const row = Math.floor(i / 3);
-      gsap.to(card, {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        duration: 0.6,
-        ease: "back.out(1.2)",
-        delay: immediate ? col * 0.06 + row * 0.04 : row * 0.15 + col * 0.08,
-        scrollTrigger: immediate
-          ? undefined
-          : { trigger: host, start: "top 80%", toggleActions: "play none none reverse" },
-      });
-    });
-    attachTilt(cards);
-  }
-
-  /* -- 3D mouse tilt: same math as the original initCardTilt() -- */
-  function attachTilt(cards) {
-    if (!window.gsap) return;
-    cards.forEach((card) => {
-      if (card.__tilt) return;
-      card.__tilt = true;
-      card.addEventListener("mousemove", (e) => {
-        const r = card.getBoundingClientRect();
-        const rx = (e.clientY - r.top - r.height / 2) / 20;
-        const ry = (r.width / 2 - (e.clientX - r.left)) / 20;
-        gsap.to(card, { rotateX: rx, rotateY: ry, duration: 0.3, ease: "power2.out" });
-      });
-      card.addEventListener("mouseleave", () => {
-        gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.5, ease: "power3.out" });
-      });
+    items.forEach(function (article, i) {
+      var el = card(article, host, false);
+      el.setAttribute("data-reveal", "");
+      el.style.setProperty("--reveal-delay", (i * 0.07) + "s");
+      host.appendChild(el);
     });
   }
 
-  /* -- topbar: add a hairline border once the page scrolls -- */
-  function wireTopbar() {
-    const bar = document.querySelector(".topbar");
-    if (!bar) return;
-    const onScroll = () => bar.classList.toggle("scrolled", window.scrollY > 8);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+  function run() {
+    renderTeaser();
+    renderLibrary();
+    renderRelated();
+    if (window.Site) { window.Site.refreshReveals(); window.Site.refreshCursor(); }
   }
 
-  window.ArticlesUI = {
-    renderHomepageTeaser,
-    renderLibrary,
-    renderRelated,
-    wireTopbar,
-    revealCards,
-  };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
 })();

@@ -1,0 +1,180 @@
+/* ============================================================================
+   TOKENS.CSS — the design system
+   A 12-step scale system (1 = deepest, 12 = lightest) in the manner of Radix,
+   built around Harsh Rastogi's existing brand gradient: green -> teal -> blue.
+   Every surface, text tone, accent and state in the site resolves to a token
+   here. Nothing downstream hard-codes a colour.
+============================================================================ */
+
+:root {
+  /* ---- ink: the neutral spine of the whole site ---------------------- */
+  --ink-1:  #101112;
+  --ink-2:  #17181a;
+  --ink-3:  #1f2023;
+  --ink-4:  #26282c;
+  --ink-5:  #303237;
+  --ink-6:  #3d4046;
+  --ink-7:  #4e5158;
+  --ink-8:  #63666e;
+  --ink-9:  #7d8189;
+  --ink-10: #9ca0a8;
+  --ink-11: #c0c3c9;
+  --ink-12: #e6e8ec;
+
+  /* ---- teal: the primary accent (from the brand gradient) ------------ */
+  --teal-1:  #041518;
+  --teal-2:  #062229;
+  --teal-3:  #06353f;
+  --teal-4:  #054b5a;
+  --teal-5:  #036679;
+  --teal-6:  #0090ab;
+  --teal-7:  #06b6d4;
+  --teal-8:  #35d3ee;
+  --teal-9:  #8be9f7;
+  --teal-10: #aef0fa;
+  --teal-11: #cdf5fc;
+  --teal-12: #e8fbfe;
+
+  /* ---- green: growth / live / environmental ------------------------- */
+  --green-1:  #04140a;
+  --green-2:  #062213;
+  --green-3:  #08361d;
+  --green-4:  #0a4e28;
+  --green-5:  #0d6b35;
+  --green-6:  #119544;
+  --green-7:  #16a34a;
+  --green-8:  #31d46c;
+  --green-9:  #86eaa9;
+  --green-10: #aaf0c3;
+  --green-11: #cdf7dc;
+  --green-12: #ebfdf1;
+
+  /* ---- blue: research / analysis ------------------------------------ */
+  --blue-1:  #080c1a;
+  --blue-2:  #0d142c;
+  --blue-3:  #121f47;
+  --blue-4:  #182b68;
+  --blue-5:  #1e3a91;
+  --blue-6:  #2450c6;
+  --blue-7:  #2563eb;
+  --blue-8:  #5b8bf5;
+  --blue-9:  #a8c3fb;
+  --blue-10: #c3d6fd;
+  --blue-11: #dbe7fe;
+  --blue-12: #eff4ff;
+
+  /* ---- semantic surfaces + text ------------------------------------- */
+  --surface:    var(--ink-1);
+  --surface-1:  var(--ink-1);
+  --surface-2:  var(--ink-2);
+  --surface-3:  var(--ink-3);
+  --surface-4:  var(--ink-4);
+  --surface-5:  var(--ink-5);
+  --surface-6:  var(--ink-6);
+
+  --text-1:  var(--ink-1);
+  --text-8:  var(--ink-8);
+  --text-9:  var(--ink-9);
+  --text-10: var(--ink-10);
+  --text-11: var(--ink-11);
+  --text-12: var(--ink-12);
+
+  --accent:      var(--teal-9);
+  --accent-dim:  var(--teal-7);
+  --accent-deep: var(--teal-3);
+
+  --nav-scrolled-bg: color-mix(in srgb, var(--ink-2) 72%, transparent);
+  --nav-mobile-bg:   color-mix(in srgb, var(--ink-2) 88%, transparent);
+
+  --grain-rgb: 150, 158, 168;
+  --hr-gradient: linear-gradient(120deg, #16a34a, #06b6d4, #2563eb);
+
+  --shadow-card:  0 1px 5px 0 rgba(0,0,0,.18);
+  --shadow-lift:  1px 5px 40px 0 rgba(0,0,0,.30);
+  --shadow-light: 1px 10px 48px 4px rgba(10,12,15,.22);
+  --shadow-nav:   0 2px 16px rgba(0,0,0,.28);
+
+  /* ---- type --------------------------------------------------------- */
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: var(--font-sans);
+  --font-body: var(--font-sans);
+
+  --weight-light: 300;
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  --tracking-tighter: -.05em;
+  --tracking-tight:   -.03em;
+  --tracking-snug:    -.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    .01em;
+  --tracking-wider:   .06em;
+  --tracking-widest:  .14em;
+
+  --text-2xs:  11px;
+  --text-xs:   12px;
+  --text-sm:   14px;
+  --text-base: 16px;
+  --text-lg:   18px;
+  --text-xl:   20px;
+  --text-2xl:  24px;
+  --text-3xl:  clamp(28px, calc(1.326vw + 23.03px), 40px);
+  --text-4xl:  clamp(40px, calc(2.21vw + 31.71px), 60px);
+  --text-5xl:  clamp(46px, calc(3.536vw + 32.74px), 88px);
+
+  --leading-display: .9;
+  --leading-none:    1;
+  --leading-tight:   1.1;
+  --leading-snug:    1.25;
+  --leading-normal:  1.5;
+  --leading-relaxed: 1.65;
+  --leading-loose:   1.78;
+
+  --measure-xs:   20ch;
+  --measure-sm:   34ch;
+  --measure-body: 44ch;
+  --measure-lg:   52ch;
+  --measure-xl:   64ch;
+
+  /* ---- space -------------------------------------------------------- */
+  --space-1: 4px;   --space-2: 8px;   --space-3: 12px;  --space-4: 16px;
+  --space-5: 20px;  --space-6: 24px;  --space-7: 28px;  --space-8: 32px;
+  --space-9: 36px;  --space-10: 40px; --space-12: 48px; --space-14: 56px;
+  --space-16: 64px; --space-20: 80px; --space-24: 96px; --space-28: 112px;
+  --space-40: 160px;
+  --space-section: 105px;
+
+  --radius-xs: 4px;  --radius-sm: 8px;  --radius-md: 12px;
+  --radius-lg: 20px; --radius-xl: 28px; --radius-2xl: 40px;
+  --radius-full: 9999px;
+
+  --container-max: 1280px;
+  --container-pad: 52px;
+  --nav-height: 60px;
+
+  /* ---- z ------------------------------------------------------------ */
+  --z-base: 0;     --z-raised: 1;   --z-sticky: 10;  --z-ribbon: 990;
+  --z-overlay: 1000; --z-cursor: 9000; --z-modal: 10000;
+  --z-nav: 10050;  --z-curtain: 10060; --z-loading: 100000;
+
+  /* ---- motion ------------------------------------------------------- */
+  --ease-out-expo:       cubic-bezier(.16, 1, .3, 1);
+  --ease-in-out:         cubic-bezier(.4, 0, .2, 1);
+  --ease-in-out-strong:  cubic-bezier(.76, 0, .24, 1);
+  --ease-spring:         cubic-bezier(.34, 1.56, .64, 1);
+
+  --duration-fast:   .15s;
+  --duration-base:   .2s;
+  --duration-medium: .3s;
+  --duration-slow:   .5s;
+  --duration-slower: .7s;
+
+  --background: var(--surface);
+  --foreground: var(--text-12);
+}
+
+@media (max-width: 900px) { :root { --container-pad: 24px; --space-section: 72px; } }
+@media (max-width: 560px) { :root { --container-pad: 20px; --space-section: 60px; } }

@@ -1,2 +1,8 @@
 node_modules/
 .DS_Store
+
+# local editor/preview config
+.claude/
+
+# local render captures from scripts/devserver.py
+.captures/

@@ -3,35 +3,51 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Harsh Rastogi · Data Scientist</title>
+<title>Harsh Rastogi — Data Scientist, Northern Territory</title>
+
 <link rel="icon" href="favicon.ico" sizes="any"/>
 <link rel="icon" type="image/svg+xml" href="assets/hr-icon.svg"/>
 <link rel="apple-touch-icon" href="apple-touch-icon.png"/>
-<meta name="description" content="Harsh Rastogi is a Darwin-based data scientist building environmental intelligence, biodiversity, public-service, and not-for-profit data tools for the Northern Territory." />
+
+<meta name="description" content="Harsh Rastogi is a Darwin-based data scientist building environmental intelligence, biodiversity, public-service and not-for-profit data tools for the Northern Territory." />
 <meta name="robots" content="index,follow,max-image-preview:large" />
-<meta name="theme-color" content="#fbfbfa" />
-<meta property="og:title" content="Harsh Rastogi · Data Scientist" />
-<meta property="og:description" content="Darwin-based data scientist building environmental intelligence, spatial analysis, and AI-powered research tools." />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="Harsh Rastogi — Data Scientist, Northern Territory" />
+<meta property="og:description" content="Environmental intelligence, spatial analysis and full-stack delivery — from raw open data to a tool people actually use." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://harshrastogii.com/" />
 <meta property="og:locale" content="en_AU" />
 <meta property="og:image" content="https://harshrastogii.com/assets/harsh-rastogi-headshot.png" />
 <meta property="og:image:alt" content="Harsh Rastogi, data scientist" />
 <meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Harsh Rastogi · Data Scientist" />
-<meta name="twitter:description" content="Darwin-based data scientist building environmental intelligence, spatial analysis, and AI-powered research tools." />
+<meta name="twitter:title" content="Harsh Rastogi — Data Scientist, Northern Territory" />
+<meta name="twitter:description" content="Environmental intelligence, spatial analysis and full-stack delivery from Darwin." />
 <meta name="twitter:image" content="https://harshrastogii.com/assets/harsh-rastogi-headshot.png" />
 <link rel="canonical" href="https://harshrastogii.com/" />
 
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<link rel="stylesheet" href="assets/site.css" />
+<link rel="stylesheet" href="assets/tokens.css?v=2e08cb8c" />
+<link rel="stylesheet" href="assets/site.css?v=fd7021e3" />
 
 <script type="application/ld+json">
 {
@@ -45,10 +61,7 @@
       "image": "https://harshrastogii.com/assets/harsh-rastogi-headshot.png",
       "jobTitle": "Data Scientist",
       "address": { "@type": "PostalAddress", "addressLocality": "Darwin", "addressRegion": "NT", "addressCountry": "AU" },
-      "sameAs": [
-        "https://github.com/harshrastogii",
-        "https://www.linkedin.com/in/harshrastogii/"
-      ],
+      "sameAs": ["https://github.com/harshrastogii", "https://www.linkedin.com/in/harshrastogii/"],
       "knowsAbout": ["Data science", "Spatial analysis", "Biodiversity", "Environmental intelligence", "Machine learning"]
     },
     {
@@ -64,457 +77,427 @@
 </head>
 <body>
 
-<canvas id="particle-canvas"></canvas>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
 
-<div class="loading-overlay" id="loading">
-  <div class="loading-dots">
-    <span></span>
-    <span></span>
-    <span></span>
+<!-- ==================================================================== NAV -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__logo">
+    <a class="nav__name" href="index.html" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="#work" data-roll>Work</a></li>
+      <li><a href="#approach" data-roll>Approach</a></li>
+      <li><a href="articles/index.html" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:harshrastogi636@gmail.com">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+</nav>
+
+<div class="nav__mobile">
+  <div class="nav__mobile-inner">
+    <ul class="nav__mobile-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="articles/index.html">Writing</a></li>
+    </ul>
+    <a class="btn" href="mailto:harshrastogi636@gmail.com">Email</a>
   </div>
 </div>
 
-<div class="topbar">
-  <a class="brand" href="index.html"><img src="assets/hr-icon.svg" alt="Harsh Rastogi" style="height:24px;width:auto;display:block"/></a>
-  <nav>
-    <a href="index.html#work">Work</a>
-    <a href="articles/index.html">Articles</a>
-    <a href="mailto:harshrastogi636@gmail.com">Email</a>
-  </nav>
-</div>
+<main id="main">
 
-<div class="grid-bg"></div>
-<svg class="contour" id="contour-svg" width="100%" height="520" preserveAspectRatio="none" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <defs>
-    <linearGradient id="contourGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#d0d0cc;stop-opacity:0.8" />
-      <stop offset="50%" style="stop-color:#e0e0dc;stop-opacity:0.9" />
-      <stop offset="100%" style="stop-color:#d0d0cc;stop-opacity:0.8" />
-    </linearGradient>
-  </defs>
-  <g fill="none" stroke="url(#contourGrad)" stroke-width="1.2">
-    <path d="M-50 140 C 250 90, 420 220, 650 160 S 1050 90, 1260 180" />
-    <path d="M-50 200 C 250 150, 440 280, 660 220 S 1060 150, 1260 250" />
-    <path d="M-50 260 C 260 220, 450 340, 670 280 S 1070 220, 1260 320" opacity="0.7"/>
-    <path d="M-50 320 C 250 280, 440 400, 660 340 S 1080 280, 1260 380" opacity="0.5"/>
-  </g>
-</svg>
+  <!-- ================================================================ HERO -->
+  <header class="hero" data-hero>
+    <div class="container">
+      <p class="eyebrow hero__eyebrow">
+        <span class="eyebrow--accent">Data scientist</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span>Darwin &middot; Northern Territory</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="live">Available for work</span>
+      </p>
 
-<div class="reg tl"></div><div class="reg tr"></div><div class="reg bl"></div><div class="reg br"></div>
+      <h1 class="hero__title">
+        <span class="hero__line">
+          <span class="word-clip"><span class="word-inner">I</span></span>
+          <span class="word-clip"><span class="word-inner">turn</span></span>
+          <span class="word-clip"><span class="word-inner">Territory</span></span>
+          <span class="word-clip"><span class="word-inner">data</span></span>
+        </span>
+        <span class="hero__line">
+          <span class="word-clip"><span class="word-inner">into</span></span>
+          <span class="particle-word" data-particle-word><span class="word-clip"><span class="word-inner"><span class="particle-word__source" data-particle-source>decisions</span></span></span></span><span class="word-clip word-clip--tight"><span class="word-inner">,</span></span>
+          <span class="word-clip"><span class="word-inner">not</span></span>
+        </span>
+        <span class="hero__line">
+          <span class="word-clip"><span class="word-inner">just</span></span>
+          <span class="word-clip"><span class="word-inner">dashboards.</span></span>
+        </span>
+      </h1>
 
-<div class="wrap">
+      <p class="lede hero__sub" data-reveal data-reveal-stagger="0.55">
+        Environmental intelligence, spatial analysis and full-stack delivery — taking open
+        Territory data from a raw feed to something a council, a researcher or a traveller
+        can actually act on.
+      </p>
 
-  <header id="hero">
-    <div class="coord">
-      <span>12.4637°S, 130.8444°E</span>
-      <span>DARWIN · NT · AU</span>
-      <span class="live">AVAILABLE FOR WORK</span>
+      <div class="hero__actions" data-reveal data-reveal-stagger="0.68">
+        <a class="btn btn--solid btn--lg" href="#work">See the work <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="articles/index.html">Read the writing</a>
+      </div>
     </div>
-    <h1 id="main-title">Harsh Rastogi</h1>
-    <p class="lede">I build data tools for biodiversity, public services, and the not-for-profit sector. <strong>Treasury analyst turned data scientist</strong>, finishing a Master of Data Science at Charles Darwin University.</p>
   </header>
 
-  <section id="endpoints">
-    <div class="sec-head"><span class="num">01</span><span>Endpoints</span><span class="rule"></span></div>
-    <div class="links">
-      <a class="node" href="https://github.com/harshrastogii" target="_blank" rel="noopener">
-        <span class="node-arrow">↗</span>
-        <span class="node-k">Code</span>
-        <span class="node-t">GitHub</span>
-        <span class="node-d">Profile & source</span>
-      </a>
-      <a class="node" href="https://terraiq-nt.vercel.app/" target="_blank" rel="noopener">
-        <span class="node-arrow">↗</span>
-        <span class="node-k">Live · Environmental data</span>
-        <span class="node-t">TerraIQ</span>
-        <span class="node-d">NT intelligence platform</span>
-      </a>
-      <a class="node" href="https://bushmetrics.vercel.app/" target="_blank" rel="noopener">
-        <span class="node-arrow">↗</span>
-        <span class="node-k">Live · Full-stack</span>
-        <span class="node-t">BushMetrics</span>
-        <span class="node-d">React + FastAPI map</span>
-      </a>
-      <a class="node" href="https://gradaroo.com" target="_blank" rel="noopener">
-        <span class="node-arrow">↗</span>
-        <span class="node-k">Live · Next.js</span>
-        <span class="node-t">Gradaroo</span>
-        <span class="node-d">AI graduate job finder</span>
-      </a>
-      <a class="node" href="https://harshrastogii-nt-crime-dashboard.hf.space/" target="_blank" rel="noopener">
-        <span class="node-arrow">↗</span>
-        <span class="node-k">Live · Dash</span>
-        <span class="node-t">NT Crime Atlas</span>
-        <span class="node-d">Deployed dashboard</span>
-      </a>
-      <a class="node" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">
-        <span class="node-arrow">↗</span>
-        <span class="node-k">Connect</span>
-        <span class="node-t">LinkedIn</span>
-        <span class="node-d">Background & updates</span>
-      </a>
-      <a class="node" href="mailto:harshrastogi636@gmail.com">
-        <span class="node-arrow">↗</span>
-        <span class="node-k">Direct</span>
-        <span class="node-t">Email</span>
-        <span class="node-d">harshrastogi636@gmail.com</span>
-      </a>
+  <!-- ============================================================= MARQUEE -->
+  <div class="marquee" data-marquee aria-hidden="true">
+    <div class="marquee__track">
+      <span class="marquee__item">Master of Data Science &middot; Charles Darwin University</span>
+      <span class="marquee__item">Treasury analyst turned data scientist</span>
+      <span class="marquee__item">Environmental &amp; biodiversity intelligence</span>
+      <span class="marquee__item">Spatial analysis &middot; Python &middot; Next.js</span>
+      <span class="marquee__item">Twelve shipped projects across the NT</span>
     </div>
-  </section>
+  </div>
+  <p class="sr-only">Master of Data Science at Charles Darwin University. Treasury analyst turned data scientist. Environmental and biodiversity intelligence, spatial analysis, and twelve shipped projects across the Northern Territory.</p>
 
-  <section id="work">
-    <div class="sec-head"><span class="num">02</span><span>Selected work</span><span class="rule"></span></div>
+  <!-- ================================================================ WORK -->
+  <section class="section" id="work">
+    <div class="container">
+      <p class="section-label" data-reveal>Selected work</p>
 
-    <div class="proj">
-      <div class="idx">[ NT·01 ]</div>
-      <div>
-        <h3>TerraIQ</h3><span class="badge live">Live</span>
-        <p>A Northern Territory environmental intelligence platform built from 44 Bureau of Meteorology automatic weather stations. It retains observations beyond BOM’s public 72-hour window and turns them into Territory-wide insight through a shared-timeline map, north–south temperature analysis, a derived fire-weather watch, and coastal-versus-inland wind comparisons.</p>
-        <span class="stack">Python · SQLite · GitHub Actions · MapLibre GL · Vercel</span><a class="go" href="https://terraiq-nt.vercel.app/" target="_blank" rel="noopener">open ↗</a>
-      </div>
-    </div>
+      <div class="work__list">
 
-    <div class="proj">
-      <div class="idx">[ NT·02 ]</div>
-      <div>
-        <h3>Avian Observatory</h3><span class="badge">Research</span>
-        <p>An environmental-intelligence platform for acoustic bird monitoring in the Northern Territory. Region-specific models identify 25 local species from field audio, compare results against BirdNET, and connect detections to sites, biodiversity metrics, and reproducible publication assets. Rebuilt from a Streamlit thesis dashboard into a FastAPI and Next.js platform.</p>
-        <span class="stack">Python · FastAPI · Next.js · PostgreSQL · BirdNET · TensorFlow</span><a class="go" href="https://github.com/harshrastogii/AvianObservatory" target="_blank" rel="noopener">repo ↗</a>
-      </div>
-    </div>
+        <!-- ---- TerraIQ ---- -->
+        <a class="work-item" href="https://terraiq-nt.vercel.app/" target="_blank" rel="noopener"
+           data-cursor="Open TerraIQ" data-reveal>
+          <div class="work-card" style="--panel-bg:#e9f5f7; --panel-ink:#20454d">
+            <div class="work-card__media" aria-hidden="true">
+              <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="presentation">
+                <defs>
+                  <linearGradient id="tq" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#06b6d4" stop-opacity=".55"/>
+                    <stop offset="100%" stop-color="#2563eb" stop-opacity=".35"/>
+                  </linearGradient>
+                </defs>
+                <g fill="none" stroke="url(#tq)" stroke-width="2">
+                  <path d="M-60 300 C 260 190, 520 430, 820 320 S 1340 180, 1660 340"/>
+                  <path d="M-60 370 C 260 260, 540 500, 840 390 S 1350 250, 1660 410" opacity=".85"/>
+                  <path d="M-60 440 C 260 330, 560 570, 860 460 S 1360 320, 1660 480" opacity=".7"/>
+                  <path d="M-60 510 C 260 400, 580 640, 880 530 S 1370 390, 1660 550" opacity=".55"/>
+                  <path d="M-60 580 C 260 470, 600 710, 900 600 S 1380 460, 1660 620" opacity=".4"/>
+                  <path d="M-60 650 C 260 540, 620 780, 920 670 S 1390 530, 1660 690" opacity=".28"/>
+                </g>
+                <g fill="#06b6d4">
+                  <circle cx="320" cy="286" r="7"/><circle cx="700" cy="372" r="7"/>
+                  <circle cx="1080" cy="300" r="7"/><circle cx="1360" cy="420" r="7"/>
+                </g>
+              </svg>
+            </div>
+            <span class="work-card__badge is-live">Live</span>
+            <span class="work-card__stamp">NT&middot;01 &mdash; 44 weather stations</span>
+          </div>
+          <div class="work-item__meta">
+            <ul class="tag-row">
+              <li>Environmental data</li><li>Time series</li><li>Spatial</li>
+              <li>Python</li><li>SQLite</li><li>GitHub Actions</li><li>MapLibre GL</li>
+            </ul>
+            <h2 class="work-item__title">A Territory-wide weather memory built from 44 BOM stations<span class="work-item__reveal"><span>&mdash; holding what the public feed drops after 72 hours.</span></span></h2>
+          </div>
+        </a>
 
-    <div class="proj">
-      <div class="idx">[ NT·03 ]</div>
-      <div>
-        <h3>Conflux</h3><span class="badge live">Live</span>
-        <p>A cross-domain anomaly detector pairing Bureau of Meteorology atmospheric data with AIMS marine observations from the same Darwin waters, so air and sea can be compared directly. Four detectors run unattended every three hours on GitHub Actions with no server behind them, ranking ~8,000 scores a run into events that state their own confidence in plain English. Two share most of their input features, so the project expected them to agree; measured against each other, they ranked observations almost independently.</p>
-        <span class="stack">Python · SQLite · scikit-learn · PyTorch · Next.js · Cloudflare Workers</span><a class="go" href="https://conflux.harshlabs.workers.dev/" target="_blank" rel="noopener">open ↗</a>
-      </div>
-    </div>
+        <!-- ---- Conflux ---- -->
+        <a class="work-item" href="https://conflux.harshlabs.workers.dev/" target="_blank" rel="noopener"
+           data-cursor="Open Conflux" data-reveal>
+          <div class="work-card" style="--panel-bg:#eef0fb; --panel-ink:#2a3160">
+            <div class="work-card__media" aria-hidden="true">
+              <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="presentation">
+                <g stroke="#2563eb" stroke-opacity=".22" stroke-width="1.5">
+                  <path d="M0 450 H1600"/><path d="M800 0 V900"/>
+                </g>
+                <g fill="#2563eb" fill-opacity=".30">
+                  <circle cx="180" cy="520" r="6"/><circle cx="260" cy="430" r="5"/><circle cx="330" cy="560" r="7"/>
+                  <circle cx="410" cy="380" r="5"/><circle cx="470" cy="500" r="6"/><circle cx="560" cy="450" r="8"/>
+                  <circle cx="640" cy="600" r="5"/><circle cx="700" cy="340" r="6"/><circle cx="780" cy="480" r="7"/>
+                  <circle cx="860" cy="410" r="5"/><circle cx="930" cy="560" r="6"/><circle cx="1010" cy="460" r="7"/>
+                  <circle cx="1090" cy="360" r="5"/><circle cx="1160" cy="530" r="6"/><circle cx="1240" cy="440" r="8"/>
+                  <circle cx="1320" cy="580" r="5"/><circle cx="1400" cy="400" r="6"/><circle cx="1470" cy="500" r="7"/>
+                </g>
+                <g fill="none" stroke="#16a34a" stroke-width="3">
+                  <circle cx="560" cy="450" r="34"/><circle cx="1240" cy="440" r="34"/><circle cx="330" cy="560" r="28"/>
+                </g>
+              </svg>
+            </div>
+            <span class="work-card__badge is-live">Live</span>
+            <span class="work-card__stamp">NT&middot;02 &mdash; ~8,000 scores per run</span>
+          </div>
+          <div class="work-item__meta">
+            <ul class="tag-row">
+              <li>Anomaly detection</li><li>Machine learning</li><li>Serverless</li>
+              <li>scikit-learn</li><li>PyTorch</li><li>Next.js</li><li>Cloudflare Workers</li>
+            </ul>
+            <h2 class="work-item__title">Air and sea, compared directly, every three hours<span class="work-item__reveal"><span>&mdash; two detectors that shared their inputs and still disagreed.</span></span></h2>
+          </div>
+        </a>
 
-    <div class="proj">
-      <div class="idx">[ NT·04 ]</div>
-      <div>
-        <h3>FairFix NT</h3><span class="badge">CDU IT Code Fair 2026</span>
-        <p>A decision-support prototype for prioritising housing repairs across remote NT communities, where the next trade visit can be weeks away and wet-season roads close for months. It scores need and cost to serve separately and never merges them, so travel time reorders jobs within a priority band but never moves one into a lower band. Delay is reported in days and attributed to named causes; on the worst job in the synthetic dataset, 91 of its 119 days come from waiting for a carpenter specifically rather than from the drive.</p>
-        <span class="stack">Python · TypeScript · Next.js · pytest · Vitest · Golden-fixture parity</span><a class="go" href="https://github.com/harshrastogii/FairFix" target="_blank" rel="noopener">repo ↗</a>
-      </div>
-    </div>
+        <!-- ---- BushMetrics ---- -->
+        <a class="work-item" href="https://bushmetrics.vercel.app/" target="_blank" rel="noopener"
+           data-cursor="Open BushMetrics" data-reveal>
+          <div class="work-card" style="--panel-bg:#ecf6ef; --panel-ink:#1e4a30">
+            <div class="work-card__media" aria-hidden="true">
+              <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="presentation">
+                <g fill="#16a34a">
+                  <rect x="120"  y="140" width="150" height="150" fill-opacity=".55"/>
+                  <rect x="290"  y="140" width="150" height="150" fill-opacity=".38"/>
+                  <rect x="460"  y="140" width="150" height="150" fill-opacity=".62"/>
+                  <rect x="630"  y="140" width="150" height="150" fill-opacity=".22"/>
+                  <rect x="800"  y="140" width="150" height="150" fill-opacity=".46"/>
+                  <rect x="970"  y="140" width="150" height="150" fill-opacity=".30"/>
+                  <rect x="1140" y="140" width="150" height="150" fill-opacity=".52"/>
+                  <rect x="1310" y="140" width="150" height="150" fill-opacity=".18"/>
+                  <rect x="120"  y="310" width="150" height="150" fill-opacity=".28"/>
+                  <rect x="290"  y="310" width="150" height="150" fill-opacity=".14"/>
+                  <rect x="460"  y="310" width="150" height="150" fill-opacity=".40"/>
+                  <rect x="630"  y="310" width="150" height="150" fill-opacity=".08"/>
+                  <rect x="800"  y="310" width="150" height="150" fill-opacity=".33"/>
+                  <rect x="970"  y="310" width="150" height="150" fill-opacity=".11"/>
+                  <rect x="1140" y="310" width="150" height="150" fill-opacity=".44"/>
+                  <rect x="1310" y="310" width="150" height="150" fill-opacity=".26"/>
+                  <rect x="120"  y="480" width="150" height="150" fill-opacity=".10"/>
+                  <rect x="290"  y="480" width="150" height="150" fill-opacity=".06"/>
+                  <rect x="460"  y="480" width="150" height="150" fill-opacity=".16"/>
+                  <rect x="630"  y="480" width="150" height="150" fill-opacity=".04"/>
+                  <rect x="800"  y="480" width="150" height="150" fill-opacity=".12"/>
+                  <rect x="970"  y="480" width="150" height="150" fill-opacity=".05"/>
+                  <rect x="1140" y="480" width="150" height="150" fill-opacity=".20"/>
+                  <rect x="1310" y="480" width="150" height="150" fill-opacity=".09"/>
+                </g>
+                <rect x="630" y="480" width="150" height="150" fill="none" stroke="#16a34a" stroke-width="4"/>
+              </svg>
+            </div>
+            <span class="work-card__badge is-live">Live</span>
+            <span class="work-card__stamp">NT&middot;03 &mdash; Tanami at 0.6% coverage</span>
+          </div>
+          <div class="work-item__meta">
+            <ul class="tag-row">
+              <li>Spatial statistics</li><li>Conservation</li><li>Open data</li>
+              <li>React</li><li>Leaflet</li><li>FastAPI</li><li>GeoPandas</li>
+            </ul>
+            <h2 class="work-item__title">The Territory's parks protect the rugged north and skip the arid interior<span class="work-item__reveal"><span>&mdash; the Tanami is a significant cold spot.</span></span></h2>
+          </div>
+        </a>
 
-    <div class="proj">
-      <div class="idx">[ RE·05 ]</div>
-      <div>
-        <h3>Open-data Biodiversity Surrogate Validation</h3><span class="badge">Research</span>
-        <p>A pre-registered, multi-catchment validation of open spatial biodiversity surrogates against independent expert assessments in the NT. Vegetation-type rarity performed best, but only modestly: open-data surrogates are useful first-pass screens, not substitutes for biodiversity-value mapping.</p>
-        <span class="stack">Python · GeoPandas · GDAL · Spatial statistics · Reproducible research</span><a class="go" href="https://github.com/harshrastogii/biodiversity-surrogate-validation" target="_blank" rel="noopener">repo ↗</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="idx">[ CIV·06 ]</div>
-      <div>
-        <h3>ArmaWatch</h3><span class="badge">Delivery</span>
-        <p>A mobile-friendly rebuild of Wage Peace’s Australian weapons-industry map. It preserves the underlying 127-site dataset while adding clustered mapping, search and filters, location-aware results, live summaries, and CSV export for research and journalism.</p>
-        <span class="stack">React · TypeScript · MapLibre GL · Tailwind CSS · Vite</span><a class="go" href="https://armawatch.vercel.app/" target="_blank" rel="noopener">open ↗</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="idx">[ NT·07 ]</div>
-      <div>
-        <h3>BushMetrics</h3><span class="badge live">Live</span>
-        <p>BushMetrics is a full-stack spatial app analysing whether the Territory's parks protect a representative cross-section of its land. The reserve network over-represents rugged northern country and under-protects the arid interior — the Tanami, the NT's largest bioregion at ~538,000 km², is a statistically significant cold spot at just 0.6% coverage.</p>
-        <span class="stack">React · Leaflet · FastAPI · Python · GeoPandas</span><a class="go" href="https://bushmetrics.vercel.app/" target="_blank" rel="noopener">open ↗</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="idx">[ NT·08 ]</div>
-      <div>
-        <h3>RoadState</h3><span class="badge live">Live</span>
-        <p>An interactive report built from open NT Government traffic data, proving the Territory's real road problem is seasonal access, not congestion. 78% of traffic sits in Darwin alone, while 66% of the year's road closures begin in the wet season — hitting the same remote roads on a predictable schedule. Every chart carries a plain-English reading so travellers, councils, and emergency services can all use it.</p>
-        <span class="stack">Next.js · React · Visx · TypeScript · Python · pandas</span><a class="go" href="https://roadstate.harshrastogii.com" target="_blank" rel="noopener">open ↗</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="idx">[ NT·09 ]</div>
-      <div>
-        <h3>NT Crime Intelligence Dashboard</h3><span class="badge live">Live</span>
-        <p>An interactive dashboard on Northern Territory recorded-offence data. Switching from raw counts to a per-capita view completely reorders which communities are most affected. How you frame the data decides who gets served by it.</p>
-        <span class="stack">Python · pandas · Plotly Dash · Docker</span><a class="go" href="https://harshrastogii-nt-crime-dashboard.hf.space/" target="_blank" rel="noopener">open ↗</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="idx">[ ML·10 ]</div>
-      <div>
-        <h3>Gradaroo</h3><span class="badge live">Live</span>
-        <p>An AI-assisted graduate job finder for Australia. Pick from 40 universities, see their key graduate employers, and browse live openings pulled from the Adzuna API — or upload a resume and let Gemini match roles to your actual skills. Curated employer lists and state-level approximations are labelled distinctly, and nothing is scraped. Now rebuilt on Next.js with server-rendered, individually indexable university pages and native accounts via Supabase.</p>
-        <span class="stack">Next.js · TypeScript · Supabase · Adzuna · Gemini</span><a class="go" href="https://gradaroo.com" target="_blank" rel="noopener">open ↗</a>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="idx">[ ML·11 ]</div>
-      <div>
-        <h3>Student Central — RAG AI Assistant</h3><span class="badge">Early stage</span>
-        <p>A retrieval-augmented assistant answering student questions from official CDU content with source citations, drafting an escalation email when it can't confidently answer.</p>
-        <span class="stack">Python · FastAPI · LangChain · ChromaDB · React</span>
-      </div>
-    </div>
-
-    <div class="proj">
-      <div class="idx">[ DA·12 ]</div>
-      <div>
-        <h3>Australian Charities Analytics</h3><span class="badge">PRT564</span>
-        <p>Descriptive, predictive, and diagnostic analysis on the ACNC Charity Register — research-question design through to a finished visualisation pipeline.</p>
-        <span class="stack">Python · scikit-learn · Power BI · SQL</span><a class="go" href="https://github.com/harshrastogii/PRT564-Group2-CharityAnalysis" target="_blank" rel="noopener">repo ↗</a>
       </div>
     </div>
   </section>
 
-  <section id="writing">
-    <div class="sec-head">
-      <span class="num">03</span><span>Articles</span><span class="rule"></span>
-      <a class="sec-action" href="articles/index.html">all articles ↗</a>
+  <!-- =============================================================== INDEX -->
+  <section class="section section--flush" id="index" aria-label="Everything else">
+    <div class="container">
+      <p class="section-label" data-reveal>Everything else</p>
+      <div class="index" data-reveal>
+
+        <a class="index__row" href="https://github.com/harshrastogii/AvianObservatory" target="_blank" rel="noopener">
+          <span class="index__num">NT&middot;04</span>
+          <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
+          <span class="index__note">Region-specific models identifying 25 local bird species from field audio, benchmarked against BirdNET. Rebuilt from a Streamlit thesis dashboard into a FastAPI and Next.js platform.</span>
+          <span class="index__go">Repo &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://github.com/harshrastogii/FairFix" target="_blank" rel="noopener">
+          <span class="index__num">NT&middot;05</span>
+          <span class="index__name">FairFix NT <span class="pill">CDU Code Fair 2026</span></span>
+          <span class="index__note">Prioritising remote housing repairs without letting travel time outrank need. On the worst job in the dataset, 91 of 119 days came from waiting on a carpenter, not the drive.</span>
+          <span class="index__go">Repo &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://roadstate.harshrastogii.com" target="_blank" rel="noopener">
+          <span class="index__num">NT&middot;06</span>
+          <span class="index__name">RoadState <span class="pill is-live">Live</span></span>
+          <span class="index__note">The Territory's real road problem is seasonal access, not congestion: 78% of traffic sits in Darwin, and 66% of the year's closures begin in the wet.</span>
+          <span class="index__go">Open &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://github.com/harshrastogii/biodiversity-surrogate-validation" target="_blank" rel="noopener">
+          <span class="index__num">RE&middot;07</span>
+          <span class="index__name">Biodiversity Surrogate Validation <span class="pill">Research</span></span>
+          <span class="index__note">A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly — these are screens, not substitutes.</span>
+          <span class="index__go">Repo &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://armawatch.vercel.app/" target="_blank" rel="noopener">
+          <span class="index__num">CIV&middot;08</span>
+          <span class="index__name">ArmaWatch <span class="pill">Delivery</span></span>
+          <span class="index__note">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map — 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</span>
+          <span class="index__go">Open &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://harshrastogii-nt-crime-dashboard.hf.space/" target="_blank" rel="noopener">
+          <span class="index__num">NT&middot;09</span>
+          <span class="index__name">NT Crime Intelligence <span class="pill is-live">Live</span></span>
+          <span class="index__note">Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it.</span>
+          <span class="index__go">Open &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://gradaroo.com" target="_blank" rel="noopener">
+          <span class="index__num">ML&middot;10</span>
+          <span class="index__name">Gradaroo <span class="pill is-live">Live</span></span>
+          <span class="index__note">An AI-assisted graduate job finder for Australia — 40 universities, live Adzuna listings, Gemini resume matching. Curated lists and approximations are labelled distinctly; nothing is scraped.</span>
+          <span class="index__go">Open &rarr;</span>
+        </a>
+
+        <div class="index__row">
+          <span class="index__num">ML&middot;11</span>
+          <span class="index__name">Student Central RAG <span class="pill">Early stage</span></span>
+          <span class="index__note">A retrieval-augmented assistant answering student questions from official CDU content with citations — and drafting an escalation email when it cannot confidently answer.</span>
+          <span class="index__go">In progress</span>
+        </div>
+
+        <a class="index__row" href="https://github.com/harshrastogii/PRT564-Group2-CharityAnalysis" target="_blank" rel="noopener">
+          <span class="index__num">DA&middot;12</span>
+          <span class="index__name">Australian Charities Analytics <span class="pill">PRT564</span></span>
+          <span class="index__note">Descriptive, predictive and diagnostic analysis on the ACNC Charity Register — research-question design through to a finished visualisation pipeline.</span>
+          <span class="index__go">Repo &rarr;</span>
+        </a>
+
+      </div>
     </div>
-    <div class="cards" id="writing-cards" data-base="articles/" data-count="3"></div>
   </section>
 
-  <footer id="footer">
-    <div class="foot-cta">Let's build something.</div>
-    <div class="foot-links">
-      <a href="mailto:harshrastogi636@gmail.com">EMAIL</a>
-      <a href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LINKEDIN</a>
-      <a href="https://github.com/harshrastogii" target="_blank" rel="noopener">GITHUB</a>
+  <!-- ============================================================ APPROACH -->
+  <section class="section" id="approach">
+    <div class="container">
+      <div class="stack" data-stack>
+        <div class="stack__header">
+          <p class="section-label" style="margin-bottom:var(--space-6)">How I work</p>
+          <p class="stack__count">
+            <span class="odo" aria-hidden="true"><span class="odo__col">
+              <span>01</span><span>02</span><span>03</span><span>04</span>
+            </span></span>
+          </p>
+        </div>
+
+        <div class="stack__cards">
+          <article class="stack__card" style="--i:0">
+            <p class="eyebrow">Principle 01</p>
+            <h3>I start with the question, not the dataset.</h3>
+            <p>Open data is easy to download and hard to make mean anything. Before I write a
+               query I want to know what decision is waiting on the answer — otherwise you get
+               a dashboard nobody opens twice.</p>
+          </article>
+
+          <article class="stack__card" style="--i:1">
+            <p class="eyebrow">Principle 02</p>
+            <h3>I ship the tool, not the notebook.</h3>
+            <p>Analysis that lives in a notebook dies with the kernel. Every project here ends
+               as something deployed and reachable — a map, an endpoint, a scheduled job — so
+               the finding survives past the week it was found.</p>
+          </article>
+
+          <article class="stack__card" style="--i:2">
+            <p class="eyebrow">Principle 03</p>
+            <h3>I say what the data doesn't support.</h3>
+            <p>The surrogate validation concluded the surrogates were only modestly useful.
+               Conflux expected two detectors to agree and they didn't. Reporting that plainly
+               is the part that makes the rest of it worth trusting.</p>
+          </article>
+
+          <article class="stack__card" style="--i:3">
+            <p class="eyebrow">Principle 04</p>
+            <h3>I build it so it keeps running without me.</h3>
+            <p>Scheduled jobs, no servers to babysit, plain-English readings attached to every
+               chart. If a council or a researcher has to ring me to interpret it, I haven't
+               finished the job.</p>
+          </article>
+        </div>
+      </div>
     </div>
-    <div class="sign">// Built & deployed by Harsh Rastogi · Darwin, Northern Territory · 🇦🇺</div>
-  </footer>
+  </section>
 
-</div>
+  <!-- =============================================================== OFFER -->
+  <section class="section" id="offer">
+    <div class="container">
+      <p class="section-label" data-reveal>Where I'm useful</p>
+      <div class="offer__grid">
 
-<script src="assets/articles-data.js"></script>
-<script src="assets/articles.js"></script>
-<script>
-  gsap.registerPlugin(ScrollTrigger);
-  const useLightweightMotion = window.matchMedia(
-    '(max-width: 768px), (pointer: coarse), (prefers-reduced-motion: reduce)'
-  ).matches;
+        <article class="offer-card" style="--card-bg:#8be9f7" data-reveal>
+          <p class="eyebrow">For teams</p>
+          <h3>Data science roles</h3>
+          <p>For teams who need someone who can do the analysis <em>and</em> ship the thing
+             around it — the model, the pipeline, the map, the deploy. Finishing a Master of
+             Data Science at CDU, with a Treasury analyst's instinct for what a number is
+             actually going to be used for.</p>
+          <div class="offer-card__foot">
+            <a class="btn btn--on-light" href="mailto:harshrastogi636@gmail.com">Get in touch <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
 
-  function initParticleBackground() {
-    if (useLightweightMotion) return;
-    const canvas = document.getElementById('particle-canvas');
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+        <article class="offer-card" style="--card-bg:#a8c3fb" data-reveal data-reveal-stagger="0.08">
+          <p class="eyebrow">For researchers, councils &amp; not-for-profits</p>
+          <h3>Project collaborations</h3>
+          <p>For people sitting on data they can't yet use. Biodiversity records, sensor feeds,
+             service statistics, survey work — I'll help turn it into something reproducible
+             and public-facing, the way ArmaWatch and the surrogate validation were done.</p>
+          <div class="offer-card__foot">
+            <a class="btn btn--on-light" href="mailto:harshrastogi636@gmail.com">Start a conversation <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+          </div>
+        </article>
 
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      </div>
+    </div>
+  </section>
 
-    const particleCount = window.innerWidth < 768 ? 300 : 600;
-    const geometry = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-    const sizes = new Float32Array(particleCount);
+  <!-- ============================================================= WRITING -->
+  <section class="section" id="writing">
+    <div class="container">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-6);flex-wrap:wrap">
+        <p class="section-label" data-reveal>Writing</p>
+        <a class="index__go" href="articles/index.html" style="margin-bottom:var(--space-10)">All articles &rarr;</a>
+      </div>
+      <div class="writing__grid" id="writing-cards" data-base="articles/" data-count="3"></div>
+      <noscript>
+        <p class="lib-empty">The article cards are rendered from the article index.
+        <a class="footer__link" href="articles/index.html" style="margin-left:var(--space-3)">Browse all writing &rarr;</a></p>
+      </noscript>
+    </div>
+  </section>
 
-    const colorOptions = [
-      new THREE.Color(0x0a0a0a),
-      new THREE.Color(0x3a3a3a),
-      new THREE.Color(0x6e6e6e),
-      new THREE.Color(0x8a8a8a)
-    ];
+</main>
 
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 20;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 10;
+<!-- ================================================================= FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:harshrastogi636@gmail.com" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
 
-      const color = colorOptions[Math.floor(Math.random() * colorOptions.length)];
-      colors[i * 3] = color.r;
-      colors[i * 3 + 1] = color.g;
-      colors[i * 3 + 2] = color.b;
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
 
-      sizes[i] = Math.random() * 0.03 + 0.01;
-    }
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:harshrastogi636@gmail.com">harshrastogi636@gmail.com</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="articles/index.html">Writing</a>
+    </div>
 
-    geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-    geometry.setAttribute('size', new THREE.BufferAttribute(sizes, 1));
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+  </div>
+</footer>
 
-    const material = new THREE.PointsMaterial({
-      size: 0.04, vertexColors: true, transparent: true,
-      opacity: 0.6, blending: THREE.AdditiveBlending, sizeAttenuation: true
-    });
-
-    const particles = new THREE.Points(geometry, material);
-    scene.add(particles);
-    camera.position.z = 5;
-
-    let mouseX = 0, mouseY = 0, targetX = 0, targetY = 0;
-    document.addEventListener('mousemove', (e) => {
-      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-    });
-
-    let scrollY = 0;
-    window.addEventListener('scroll', () => { scrollY = window.scrollY; });
-
-    const clock = new THREE.Clock();
-    function animate() {
-      requestAnimationFrame(animate);
-      const elapsedTime = clock.getElapsedTime();
-      targetX += (mouseX - targetX) * 0.05;
-      targetY += (mouseY - targetY) * 0.05;
-      particles.rotation.y = elapsedTime * 0.05 + targetX * 0.3;
-      particles.rotation.x = elapsedTime * 0.02 + targetY * 0.2;
-      particles.position.y = -scrollY * 0.0005;
-
-      const positions = particles.geometry.attributes.position.array;
-      for (let i = 0; i < particleCount; i++) {
-        const ix = i * 3, iy = i * 3 + 1;
-        positions[iy] += Math.sin(elapsedTime + positions[ix] * 1.5) * 0.001;
-        positions[ix] += Math.cos(elapsedTime * 0.7 + positions[iy] * 1.2) * 0.0005;
-      }
-      particles.geometry.attributes.position.needsUpdate = true;
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    window.addEventListener('resize', () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  }
-
-  // Run title split immediately on page load
-  const title = document.getElementById('main-title');
-  const titleText = title.textContent;
-  title.innerHTML = '';
-  [...titleText].forEach((char) => {
-    const span = document.createElement('span');
-    span.className = 'char';
-    span.textContent = char === ' ' ? '\u00A0' : char;
-    title.appendChild(span);
-  });
-
-  function initGSAPAnimations() {
-    if (useLightweightMotion) {
-      gsap.set('.coord, .lede, .sec-head, .node, .proj, .foot-cta, .foot-links a, .sign', {
-        clearProps: 'transform'
-      });
-      gsap.set('.coord, .lede, .sec-head, .node, .proj, .foot-cta, .foot-links a, .sign', { opacity: 1 });
-      gsap.set('.sec-head .rule', { scaleX: 1 });
-      return;
-    }
-
-    gsap.to('.coord', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.1 });
-
-    gsap.fromTo('.char',
-      { opacity: 0, y: 40, rotateX: -90 },
-      { opacity: 1, y: 0, rotateX:0, duration: 0.8, stagger: 0.03, ease: 'power3.out', delay: 0.3 }
-    );
-
-    gsap.to('.lede', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', delay: 0.7 });
-
-    gsap.utils.toArray('.sec-head').forEach((head) => {
-      gsap.timeline({
-        scrollTrigger: { trigger: head, start: 'top 85%', toggleActions: 'play none none reverse' }
-      })
-      .to(head, { opacity: 1, x: 0, y: 0, duration: 0.8, ease: 'power3.out' })
-      .to(head.querySelector('.rule'), { scaleX: 1, duration: 0.6, ease: 'power2.out' }, '-=0.3');
-    });
-
-    gsap.utils.toArray('.node').forEach((node, i) => {
-      const row = Math.floor(i / 3);
-      const col = i % 3;
-      gsap.to(node, {
-        opacity: 1, y: 0, scale: 1, duration: 0.6, ease: 'back.out(1.2)',
-        scrollTrigger: { trigger: node.closest('.links'), start: 'top 80%', toggleActions: 'play none none reverse' },
-        delay: (row * 0.15) + (col * 0.08)
-      });
-    });
-
-    gsap.utils.toArray('.proj').forEach((proj, i) => {
-      gsap.timeline({
-        scrollTrigger: { trigger: proj, start: 'top 85%', toggleActions: 'play none none reverse' }
-      })
-      .to(proj, { opacity: 1, x: 0, y: 0, duration: 0.8, ease: 'power3.out', delay: i * 0.08 });
-
-      gsap.to(proj, {
-        yPercent: -5, ease: 'none',
-        scrollTrigger: { trigger: proj, start: 'top bottom', end: 'bottom top', scrub: 1 }
-      });
-    });
-
-    gsap.to('#contour-svg', {
-      yPercent: 30, ease: 'none',
-      scrollTrigger: { trigger: '#hero', start: 'top top', end: 'bottom top', scrub: 1 }
-    });
-
-    gsap.timeline({
-      scrollTrigger: { trigger: '#footer', start: 'top 85%', toggleActions: 'play none none reverse' }
-    })
-    .to('.foot-cta', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' })
-    .to('.foot-links a', { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: 'power3.out' }, '-=0.3')
-    .to('.sign', { opacity: 1, duration: 0.6, ease: 'power2.out' }, '-=0.2');
-
-    gsap.to('.grid-bg', {
-      opacity: 0.1, ease: 'none',
-      scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom 50%', scrub: 1 }
-    });
-  }
-
-  function initCardTilt() {
-    if (useLightweightMotion) return;
-    const cards = document.querySelectorAll('.node');
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = (y - centerY) / 20;
-        const rotateY = (centerX - x) / 20;
-        gsap.to(card, { rotateX: rotateX, rotateY: rotateY, duration: 0.3, ease: 'power2.out' });
-      });
-      card.addEventListener('mouseleave', () => {
-        gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.5, ease: 'power3.out' });
-      });
-    });
-  }
-
-  // Failsafe: force title visible if animations glitch
-  if (!useLightweightMotion) {
-    setTimeout(() => {
-      gsap.to('.char', { opacity:1, y:0, rotateX:0, duration:0.5 });
-    }, 1500);
-  }
-
-  window.addEventListener('load', () => {
-    const loading = document.getElementById('loading');
-    if (loading) { loading.style.opacity = '0'; loading.style.visibility = 'hidden'; }
-    try { initParticleBackground(); }
-    catch (e) { document.getElementById('particle-canvas').style.display = 'none'; }
-
-    // Render the Writing teaser cards before animations wire up.
-    if (window.ArticlesUI) {
-      ArticlesUI.wireTopbar();
-      ArticlesUI.renderHomepageTeaser();
-    }
-
-    setTimeout(() => {
-      initGSAPAnimations();
-      initCardTilt();
-      if (!useLightweightMotion) ScrollTrigger.refresh();
-    }, 200);
-  });
-
-  if (!useLightweightMotion) {
-    window.addEventListener('resize', () => { ScrollTrigger.refresh(); });
-  }
-</script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="assets/articles-data.js?v=e7e26773" defer></script>
+<script src="assets/articles.js?v=405e5082" defer></script>
+<script src="assets/app.js?v=1f13f519" defer></script>
+<script src="assets/particle-text.js?v=ee258e55" defer></script>
 </body>
 </html>

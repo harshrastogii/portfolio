@@ -10,6 +10,7 @@
 import { readFileSync, writeFileSync, readdirSync, mkdirSync, existsSync } from "node:fs";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 import matter from "gray-matter";
 import { marked } from "marked";
 
@@ -105,3 +106,65 @@ const sm =
   `\n</urlset>\n`;
 writeFileSync(join(ROOT, "sitemap.xml"), sm);
 console.log("Wrote sitemap.xml");
+
+/* ---------------------------------------------------------------------------
+   Asset versioning.
+
+   Every HTML page references assets/*.css and assets/*.js by a bare path. A
+   host that serves those with a long max-age will keep handing visitors the
+   copy they cached before the last deploy, so a CSS change can land and go
+   unseen. Stamping each reference with a hash of the file's own contents
+   makes the URL change exactly when the file does: unchanged assets stay
+   cached, changed ones are fetched.
+
+   This runs last, over the article pages the build just wrote as well as the
+   hand-written ones, and is idempotent — an existing ?v= stamp is replaced.
+--------------------------------------------------------------------------- */
+const ASSET_DIR = join(ROOT, "assets");
+const assetHashes = new Map();
+for (const file of readdirSync(ASSET_DIR)) {
+  if (!/\.(css|js)$/.test(file)) continue;
+  const hash = createHash("sha1").update(readFileSync(join(ASSET_DIR, file))).digest("hex").slice(0, 8);
+  assetHashes.set(file, hash);
+}
+
+const pages = [
+  join(ROOT, "index.html"),
+  join(ROOT, "articles", "index.html"),
+  ...articles.map((a) => join(OUT_DIR, `${a.slug}.html`)),
+];
+
+let stamped = 0;
+for (const page of pages) {
+  if (!existsSync(page)) continue;
+  const before = readFileSync(page, "utf8");
+  const after = before.replace(
+    /((?:\.\.\/)?assets\/([\w.-]+\.(?:css|js)))(?:\?v=[a-f0-9]+)?/g,
+    (whole, path, file) => (assetHashes.has(file) ? `${path}?v=${assetHashes.get(file)}` : whole)
+  );
+  if (after !== before) { writeFileSync(page, after); stamped++; }
+}
+console.log(`Stamped assets in ${stamped} page(s)`);
+
+/* ---------------------------------------------------------------------------
+   The library grid is rendered by JavaScript from articles-data.js. With
+   scripting off that leaves an empty section, so the library page carries a
+   <noscript> list between two markers and the build keeps it in step with the
+   posts — a hand-maintained copy would go stale on the next publish.
+--------------------------------------------------------------------------- */
+const LIB = join(OUT_DIR, "index.html");
+if (existsSync(LIB)) {
+  const items = articles
+    .map((a) => `<li><a class="footer__link" href="${a.slug}.html">${esc(a.title)}</a></li>`)
+    .join("\n          ");
+  const block = `<!-- ARTICLE-LIST:START -->\n        <ul style="list-style:none;display:grid;gap:var(--space-2)">\n          ${items}\n        </ul>\n        <!-- ARTICLE-LIST:END -->`;
+  const before = readFileSync(LIB, "utf8");
+  const after = before.replace(
+    /<!-- ARTICLE-LIST:START -->[\s\S]*?<!-- ARTICLE-LIST:END -->/,
+    block
+  );
+  if (after !== before) {
+    writeFileSync(LIB, after);
+    console.log(`Refreshed the no-script article list (${articles.length} entries)`);
+  }
+}

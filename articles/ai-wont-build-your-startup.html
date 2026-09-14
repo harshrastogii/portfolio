@@ -3,33 +3,48 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Will Not Build Your Startup For You — Harsh Rastogi</title>
 
-<title>AI Will Not Build Your Startup For You · Harsh Rastogi</title>
 <link rel="icon" href="../favicon.ico" sizes="any"/>
 <link rel="icon" type="image/svg+xml" href="../assets/hr-icon.svg"/>
 <link rel="apple-touch-icon" href="../apple-touch-icon.png"/>
+
 <meta name="description" content="One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated." />
 <meta name="robots" content="index,follow,max-image-preview:large" />
-<meta name="theme-color" content="#fbfbfa" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
 <meta property="og:title" content="AI Will Not Build Your Startup For You" />
 <meta property="og:description" content="One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated." />
-<link rel="canonical" href="https://harshrastogii.com/articles/ai-wont-build-your-startup" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://harshrastogii.com/articles/ai-wont-build-your-startup" />
 <meta property="og:locale" content="en_AU" />
 <meta property="og:image" content="https://harshrastogii.com/assets/harsh-rastogi-headshot.png" />
 <meta property="og:image:alt" content="Harsh Rastogi, data scientist" />
 <meta name="twitter:card" content="summary" />
+<link rel="canonical" href="https://harshrastogii.com/articles/ai-wont-build-your-startup" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-
-<link rel="stylesheet" href="../assets/site.css" />
+<link rel="stylesheet" href="../assets/tokens.css?v=2e08cb8c" />
+<link rel="stylesheet" href="../assets/site.css?v=fd7021e3" />
 
 <script type="application/ld+json">
 {
@@ -48,49 +63,54 @@
 </head>
 <body data-slug="ai-wont-build-your-startup">
 
-<div class="progress" id="progress"></div>
-<canvas id="particle-canvas"></canvas>
+<a class="skip-link" href="#prose">Skip to the article</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
 
-<div class="topbar">
-  <a class="brand" href="../index.html"><img src="../assets/hr-icon.svg" alt="Harsh Rastogi" style="height:24px;width:auto;display:block"/></a>
-  <nav>
-    <a href="../index.html#work">Work</a>
-    <a href="index.html">Articles</a>
-    <a href="mailto:harshrastogi636@gmail.com">Email</a>
-  </nav>
+<nav class="nav" aria-label="Primary">
+  <div class="nav__logo">
+    <a class="nav__name" href="../index.html" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="../index.html#work" data-roll>Work</a></li>
+      <li><a href="../index.html#approach" data-roll>Approach</a></li>
+      <li><a href="index.html" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:harshrastogi636@gmail.com">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+</nav>
+
+<div class="nav__mobile">
+  <div class="nav__mobile-inner">
+    <ul class="nav__mobile-links">
+      <li><a href="../index.html#work">Work</a></li>
+      <li><a href="../index.html#approach">Approach</a></li>
+      <li><a href="index.html">Writing</a></li>
+    </ul>
+    <a class="btn" href="mailto:harshrastogi636@gmail.com">Email</a>
+  </div>
 </div>
 
-<div class="grid-bg"></div>
-<svg class="contour" id="contour-svg" width="100%" height="520" preserveAspectRatio="none" viewBox="0 0 1200 520" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-  <defs>
-    <linearGradient id="contourGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#d0d0cc;stop-opacity:0.8" />
-      <stop offset="50%" style="stop-color:#e0e0dc;stop-opacity:0.9" />
-      <stop offset="100%" style="stop-color:#d0d0cc;stop-opacity:0.8" />
-    </linearGradient>
-  </defs>
-  <g fill="none" stroke="url(#contourGrad)" stroke-width="1.2">
-    <path d="M-50 140 C 250 90, 420 220, 650 160 S 1050 90, 1260 180" />
-    <path d="M-50 200 C 250 150, 440 280, 660 220 S 1060 150, 1260 250" />
-    <path d="M-50 260 C 260 220, 450 340, 670 280 S 1070 220, 1260 320" opacity="0.7"/>
-    <path d="M-50 320 C 250 280, 440 400, 660 340 S 1080 280, 1260 380" opacity="0.5"/>
-  </g>
-</svg>
+<main>
+  <div class="container">
 
-<div class="reg tl"></div><div class="reg tr"></div><div class="reg bl"></div><div class="reg br"></div>
+    <header class="article-head">
+      <a class="article-back" href="index.html">&larr; All writing</a>
+      <p class="article-meta" id="article-meta"></p>
+      <h1 class="article-title">AI Will Not Build Your Startup For You</h1>
+      <p class="article-dek">One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated.</p>
+      <div class="article-tags" id="article-tags"></div>
+    </header>
 
-<div class="wrap wrap--reading">
-
-  <header class="article-head">
-    <a class="article-back" href="index.html">← All articles</a>
-    <div class="article-kicker" id="article-kicker"></div>
-    <h1 class="article-title">AI Will Not Build Your Startup For You</h1>
-    <p class="article-dek">One of the biggest misconceptions today is that having access to AI means you can build anything. After spending months building with AI every day, I have learned that reality is far more complicated.</p>
-    <div class="article-tags" id="article-tags"></div>
-  </header>
-
-  <div class="reading-layout">
-    <article class="prose" id="prose">
+    <div class="reading">
+      <article class="prose" id="prose">
 <p>Over the past few months, I have spent countless hours building products with AI.</p>
 <p>Like many founders, I use AI for almost everything. Coding, brainstorming, writing, research, debugging, planning, problem-solving, and even challenging my own assumptions.</p>
 <p>There is no doubt that AI has made me significantly more productive.</p>
@@ -172,34 +192,48 @@
 <p>The judgment still has to come from you.</p>
 <p>And sometimes, the best thing you can do is tell the AI to stop talking and help you build.</p>
 
-    </article>
+      </article>
 
-    <aside class="toc" id="toc" aria-label="Table of contents">
-      <div class="toc-label">On this page</div>
-      <ul id="toc-list"></ul>
-    </aside>
-  </div>
-
-  <section id="related">
-    <div class="sec-head"><span class="num">→</span><span>Related reading</span><span class="rule"></span></div>
-    <div class="cards related" id="related-cards" data-slug="ai-wont-build-your-startup" data-base="" data-count="2"></div>
-  </section>
-
-  <footer id="footer">
-    <div class="foot-cta">Keep reading.</div>
-    <div class="foot-links">
-      <a href="index.html">← ALL ARTICLES</a>
-      <a href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LINKEDIN</a>
-      <a href="mailto:harshrastogi636@gmail.com">EMAIL</a>
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
     </div>
-    <div class="sign">// Writing by Harsh Rastogi · Darwin, Northern Territory · 🇦🇺</div>
-  </footer>
 
-</div>
+    <section class="section section--flush" aria-label="Related reading">
+      <p class="section-label">Related reading</p>
+      <div class="writing__grid" id="related-cards" data-slug="ai-wont-build-your-startup" data-base="" data-count="2"></div>
+    </section>
 
-<script src="../assets/articles-data.js"></script>
-<script src="../assets/articles.js"></script>
-<script src="../assets/page-shell.js"></script>
-<script src="../assets/article-page.js"></script>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Keep reading, or go look at the work.</p>
+    <a class="btn btn--solid btn--lg" href="index.html" data-reveal>All writing <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:harshrastogi636@gmail.com">harshrastogi636@gmail.com</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="../index.html">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="../assets/articles-data.js?v=e7e26773" defer></script>
+<script src="../assets/articles.js?v=405e5082" defer></script>
+<script src="../assets/app.js?v=1f13f519" defer></script>
+<script src="../assets/article-page.js?v=870a72bf" defer></script>
 </body>
 </html>
