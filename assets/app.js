@@ -38,13 +38,31 @@
     wireAnchors(lenis);
   }
 
+  /* A link points at THIS document when its origin, path and query all match
+     the current URL: from the homepage, "#work" and "/#work" both do. Two
+     behaviours hang off that, which is why it is one shared test rather than
+     an href.startsWith("#") check in each place. Such a link is scrolled
+     rather than navigated, and the curtain must leave it alone — assigning
+     location.href to a same-document URL fires no load and no pageshow, so a
+     curtain drawn for one would stay drawn over a page that never reloads. */
+  function samePageLink(a) {
+    if (!a.getAttribute("href")) return false;
+    if (a.target === "_blank" || a.hasAttribute("download")) return false;
+    return a.protocol === window.location.protocol &&
+           a.host === window.location.host &&
+           a.pathname === window.location.pathname &&
+           a.search === window.location.search;
+  }
+
   function wireAnchors(l) {
     document.addEventListener("click", function (e) {
-      var a = e.target.closest('a[href^="#"]');
-      if (!a) return;
-      var id = a.getAttribute("href");
-      if (id === "#" || id.length < 2) return;
-      var target = document.querySelector(id);
+      var a = e.target.closest("a[href]");
+      if (!a || !samePageLink(a)) return;
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      var id = a.hash;
+      if (!id || id.length < 2) return;
+      var target;
+      try { target = document.querySelector(id); } catch (err) { return; }
       if (!target) return;
       e.preventDefault();
       if (l) l.scrollTo(target, { offset: -90 });
@@ -476,10 +494,16 @@
       if (a.target === "_blank" || a.hasAttribute("download")) return;
       if (a.hostname && a.hostname !== window.location.hostname) return;
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+      if (samePageLink(a)) return; // scrolls or does nothing; never loads
 
       e.preventDefault();
       curtain.classList.add("is-entering");
       setTimeout(function () { window.location.href = href; }, 520);
+      // A drawn curtain is only ever meant to be torn down by the next
+      // document loading. If that load does not arrive — blocked, refused,
+      // or a URL that turns out not to navigate — showing the page again
+      // beats leaving a panel over it, so give up after a slow-load margin.
+      setTimeout(function () { curtain.classList.remove("is-entering"); }, 2500);
     });
 
     // coming back via the bfcache should not leave the curtain drawn
@@ -506,6 +530,64 @@
     initCurtain();
     // reveals run last so any markup the other modules injected is observed
     initReveals();
+    honourInboundHash();
+  }
+
+  /* ==========================================================================
+     INBOUND #HASH
+
+     Arriving at /#approach from another page has to be finished by hand. The
+     browser makes its jump the moment the document parses, which is before
+     Lenis adopts the scroll position and before the fonts and the hero have
+     settled the layout — so the offset it jumped to is the wrong one, and
+     Lenis then starts from zero anyway. Re-applying it once things have
+     stopped moving is what makes the same URL land in the same place whether
+     it was typed, followed from the nav, or restored from history.
+  ========================================================================== */
+  function honourInboundHash() {
+    var hash = window.location.hash;
+    if (!hash || hash.length < 2) return;
+    var target;
+    try { target = document.querySelector(hash); } catch (e) { return; }
+    if (!target) return;
+
+    function jump() {
+      if (lenis) lenis.scrollTo(target, { offset: -90, immediate: true });
+      else target.scrollIntoView({ block: "start" });
+    }
+
+    /* The frame after layout is the right moment to measure, but rAF does
+       not fire in a background tab — open the link in one and the jump would
+       wait for the tab to be looked at. A timer backs it up; whichever
+       arrives first does the work and the other becomes a no-op. */
+    function settleThenJump() {
+      var done = false;
+      function once() { if (done) return; done = true; jump(); }
+      requestAnimationFrame(function () { requestAnimationFrame(once); });
+      setTimeout(once, 200);
+    }
+
+    // the intro holds the page at the top while it plays, so a jump made
+    // underneath it would be undone; wait it out when it is on screen
+    var intro = document.getElementById("intro");
+    var waiting = intro && !intro.classList.contains("is-done");
+
+    var fonts = document.fonts && document.fonts.ready
+      ? document.fonts.ready
+      : Promise.resolve();
+
+    fonts.then(function () { if (!waiting) settleThenJump(); });
+
+    if (waiting) {
+      // the panel adds is-done when it has finished lifting away
+      var seen = new MutationObserver(function () {
+        if (!intro.classList.contains("is-done")) return;
+        seen.disconnect();
+        settleThenJump();
+      });
+      seen.observe(intro, { attributes: true, attributeFilter: ["class"] });
+      setTimeout(function () { seen.disconnect(); settleThenJump(); }, 4000);
+    }
   }
 
   if (document.readyState === "loading") {
