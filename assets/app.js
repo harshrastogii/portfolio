@@ -513,6 +513,45 @@
   }
 
   /* ==========================================================================
+     12. CARD VIDEO — a preview that costs nothing until it is nearly seen
+
+     The markup holds the sources behind preload="none" and a poster cut from
+     the clip's own first frame, so the tile is complete and the page is not
+     several megabytes heavier before anyone has scrolled to it. Playback is
+     tied to visibility in both directions: a card that has gone by stops
+     decoding rather than running on under the fold.
+  ========================================================================== */
+  function initCardVideos() {
+    var vids = [].slice.call(document.querySelectorAll("[data-card-video]"));
+    if (!vids.length) return;
+
+    // the poster is a real frame, so holding it is a complete picture rather
+    // than a gap — which is exactly what reduced motion should get
+    if (reduced) return;
+
+    function start(v) {
+      if (v.getAttribute("preload") === "none") v.preload = "auto";
+      // play() also triggers the fetch; calling load() first would abort it
+      var p = v.play();
+      // autoplay can still be refused (a data saver, a per-site setting).
+      // Nothing to recover: the poster is already the right picture.
+      if (p && p.catch) p.catch(function () {});
+    }
+
+    if (!("IntersectionObserver" in window)) { vids.forEach(start); return; }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        var v = entry.target;
+        if (entry.isIntersecting) start(v);
+        else if (!v.paused) v.pause();
+      });
+    }, { rootMargin: "300px 0px", threshold: 0.2 });
+
+    vids.forEach(function (v) { io.observe(v); });
+  }
+
+  /* ==========================================================================
      BOOT
   ========================================================================== */
   function boot() {
@@ -528,6 +567,7 @@
     initGrain();
     initIntro();
     initCurtain();
+    initCardVideos();
     // reveals run last so any markup the other modules injected is observed
     initReveals();
     honourInboundHash();

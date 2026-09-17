@@ -49,7 +49,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="/assets/tokens.css?v=2e08cb8c" />
-<link rel="stylesheet" href="/assets/site.css?v=78b1f86f" />
+<link rel="stylesheet" href="/assets/site.css?v=b85b1f47" />
 
 <script type="application/ld+json">
 {
@@ -188,26 +188,17 @@
              data-cursor="Open TerraIQ" aria-label="Open TerraIQ (opens in a new tab)">
           <div class="work-card" style="--panel-bg:#e9f5f7; --panel-ink:#20454d">
             <div class="work-card__media" aria-hidden="true">
-              <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="presentation">
-                <defs>
-                  <linearGradient id="tq" x1="0" y1="0" x2="1" y2="1">
-                    <stop offset="0%" stop-color="#06b6d4" stop-opacity=".55"/>
-                    <stop offset="100%" stop-color="#2563eb" stop-opacity=".35"/>
-                  </linearGradient>
-                </defs>
-                <g fill="none" stroke="url(#tq)" stroke-width="2">
-                  <path d="M-60 300 C 260 190, 520 430, 820 320 S 1340 180, 1660 340"/>
-                  <path d="M-60 370 C 260 260, 540 500, 840 390 S 1350 250, 1660 410" opacity=".85"/>
-                  <path d="M-60 440 C 260 330, 560 570, 860 460 S 1360 320, 1660 480" opacity=".7"/>
-                  <path d="M-60 510 C 260 400, 580 640, 880 530 S 1370 390, 1660 550" opacity=".55"/>
-                  <path d="M-60 580 C 260 470, 600 710, 900 600 S 1380 460, 1660 620" opacity=".4"/>
-                  <path d="M-60 650 C 260 540, 620 780, 920 670 S 1390 530, 1660 690" opacity=".28"/>
-                </g>
-                <g fill="#06b6d4">
-                  <circle cx="320" cy="286" r="7"/><circle cx="700" cy="372" r="7"/>
-                  <circle cx="1080" cy="300" r="7"/><circle cx="1360" cy="420" r="7"/>
-                </g>
-              </svg>
+              <!-- preload="none" keeps both files off the wire until the card
+                   is nearly in view; the poster carries the tile until then,
+                   and app.js starts playback on approach. -->
+              <video class="work-card__video" data-card-video
+                     poster="/assets/terraiq-poster.webp"
+                     width="1920" height="1080"
+                     muted loop playsinline disablepictureinpicture
+                     preload="none" tabindex="-1">
+                <source src="/assets/terraiq.webm" type="video/webm; codecs=vp9" />
+                <source src="/assets/terraiq.mp4" type="video/mp4; codecs=avc1.640028" />
+              </video>
             </div>
             <span class="work-card__badge is-live">Live</span>
             <span class="work-card__stamp">NT&middot;01 &mdash; 44 weather stations</span>
@@ -502,7 +493,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
 <script src="/assets/articles-data.js?v=e7e26773" defer></script>
 <script src="/assets/articles.js?v=799fb2ee" defer></script>
-<script src="/assets/app.js?v=46f33b34" defer></script>
+<script src="/assets/app.js?v=5785a210" defer></script>
 <script src="/assets/particle-text.js?v=fc90279f" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 

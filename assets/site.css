@@ -548,8 +548,15 @@ a { color: inherit; text-decoration: none; }
   transition: transform var(--duration-slow) var(--ease-in-out);
 }
 .work-card__media { position: absolute; inset: 0; transition: transform var(--duration-slow) var(--ease-in-out); }
-.work-card__media img { width: 100%; height: 100%; object-fit: cover; }
+.work-card__media img,
+.work-card__media video { width: 100%; height: 100%; object-fit: cover; }
 .work-card__media svg { width: 100%; height: 100%; }
+
+/* The poster is a frame of the clip, so the swap to live video is invisible
+   and there is nothing to fade. What this does buy is the first paint: the
+   card's own panel colour sits behind the tile, so a slow poster shows the
+   project's light ground rather than a dark hole in the page. */
+.work-card__video { background: var(--panel-bg, var(--ink-12)); }
 
 /* The card lifts a little and the artwork inside it pushes past the frame,
    so the crop tightens as you hover rather than the whole tile just moving. */
