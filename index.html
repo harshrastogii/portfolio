@@ -49,7 +49,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="/assets/tokens.css?v=2e08cb8c" />
-<link rel="stylesheet" href="/assets/site.css?v=d0284895" />
+<link rel="stylesheet" href="/assets/site.css?v=cc1dfcac" />
 
 <script type="application/ld+json">
 {
@@ -188,28 +188,21 @@
              data-cursor="Open TerraIQ" aria-label="Open TerraIQ (opens in a new tab)">
           <div class="work-card" style="--panel-bg:#e9f5f7; --panel-ink:#20454d">
             <div class="work-card__media" aria-hidden="true">
-              <!-- The recording draws its own mock browser window, rounded and
-                   shadowed, on dark padding. Sitting that inside the card gave
-                   two nested corners at different radii, the inner one soft
-                   because it is footage rather than a clip. So the frame is
-                   cropped to 2304x1296, a 16:9 box inside the window's straight
-                   edges: the app runs to the card's own edge and the only
-                   corner left is the crisp one. Being a pure crop with no
-                   rescaling, it is also the sharpest cut of the three.
-
-                   The card is 1176px wide, so a 2x screen wants 2352 device
-                   pixels — hence 2304 rather than 1080p, which was upscaled.
-                   A phone gets the 1280 cut; app.js picks before anything
-                   loads, and preload="none" keeps it all off the wire until
-                   the card is nearly in view. -->
+              <!-- The whole recorded frame, at its native 2634x1482: no crop,
+                   no rescale, so nothing of the window is lost and there is no
+                   resampling between the export and the card. The card is
+                   1176px wide, so a 2x screen wants 2352 device pixels and
+                   2634 clears that. A phone gets the 1280 cut; app.js picks
+                   before anything loads, and preload="none" keeps it all off
+                   the wire until the card is nearly in view. -->
               <video class="work-card__video" data-card-video
-                     data-src-narrow="/assets/terraiq-1280.webm"
-                     poster="/assets/terraiq-cover-2304.webp"
-                     width="2304" height="1296"
+                     data-src-narrow="/assets/terraiq-full-1280.webm"
+                     poster="/assets/terraiq-full-cover.webp"
+                     width="2634" height="1482"
                      muted loop playsinline disablepictureinpicture
                      preload="none" tabindex="-1">
-                <source src="/assets/terraiq-2304.webm" type="video/webm; codecs=vp9" />
-                <source src="/assets/terraiq-1920.mp4" type="video/mp4; codecs=avc1.640028" />
+                <source src="/assets/terraiq-full-2634.webm" type="video/webm; codecs=vp9" />
+                <source src="/assets/terraiq-full-1920.mp4" type="video/mp4; codecs=avc1.640028" />
               </video>
             </div>
           </div>
