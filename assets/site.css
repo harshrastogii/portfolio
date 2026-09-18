@@ -558,6 +558,14 @@ a { color: inherit; text-decoration: none; }
    project's light ground rather than a dark hole in the page. */
 .work-card__video { background: var(--panel-bg, var(--ink-12)); }
 
+/* Video is composited on its own layer, and a layer is clipped by the
+   parent's overflow as whole pixels — which is what leaves the stair-stepped
+   corners you get when a <video> sits in a rounded box. Rounding the element
+   itself means the curve is drawn with the video rather than cut out of it.
+   Inherited, so the tighter phone radius follows without a second rule. */
+.work-card__media,
+.work-card__video { border-radius: inherit; }
+
 /* The card lifts a little and the artwork inside it pushes past the frame,
    so the crop tightens as you hover rather than the whole tile just moving. */
 @media (hover: hover) and (pointer: fine) {

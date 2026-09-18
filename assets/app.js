@@ -529,6 +529,23 @@
     // than a gap — which is exactly what reduced motion should get
     if (reduced) return;
 
+    /* A phone renders this card about 335px wide. Even at 3x that is barely
+       1000 device pixels, so the 1440p cut would spend several megabytes on
+       detail the screen cannot resolve. Swapping the source is free here:
+       preload="none" means resource selection has run but nothing has been
+       fetched, so load() re-points the element without discarding a download. */
+    function pickSource(v) {
+      var narrow = v.getAttribute("data-src-narrow");
+      if (!narrow) return;
+      var dpr = window.devicePixelRatio || 1;
+      var wide = (v.getBoundingClientRect().width || window.innerWidth) * dpr;
+      if (wide > 1400) return;
+      var webm = v.querySelector('source[type*="webm"]');
+      if (!webm) return;
+      webm.src = narrow;
+      v.load();
+    }
+
     function start(v) {
       if (v.getAttribute("preload") === "none") v.preload = "auto";
       // play() also triggers the fetch; calling load() first would abort it
@@ -538,7 +555,10 @@
       if (p && p.catch) p.catch(function () {});
     }
 
-    if (!("IntersectionObserver" in window)) { vids.forEach(start); return; }
+    if (!("IntersectionObserver" in window)) {
+      vids.forEach(function (v) { pickSource(v); start(v); });
+      return;
+    }
 
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -548,7 +568,7 @@
       });
     }, { rootMargin: "300px 0px", threshold: 0.2 });
 
-    vids.forEach(function (v) { io.observe(v); });
+    vids.forEach(function (v) { pickSource(v); io.observe(v); });
   }
 
   /* ==========================================================================

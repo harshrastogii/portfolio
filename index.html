@@ -49,7 +49,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="/assets/tokens.css?v=2e08cb8c" />
-<link rel="stylesheet" href="/assets/site.css?v=b85b1f47" />
+<link rel="stylesheet" href="/assets/site.css?v=d0284895" />
 
 <script type="application/ld+json">
 {
@@ -188,19 +188,22 @@
              data-cursor="Open TerraIQ" aria-label="Open TerraIQ (opens in a new tab)">
           <div class="work-card" style="--panel-bg:#e9f5f7; --panel-ink:#20454d">
             <div class="work-card__media" aria-hidden="true">
-              <!-- preload="none" keeps both files off the wire until the card
-                   is nearly in view; the poster carries the tile until then,
-                   and app.js starts playback on approach. -->
+              <!-- 1440p because the card is 1176px wide and a 2x screen asks
+                   for 2352 device pixels: 1080p was being upscaled, which is
+                   what softened the recording's own zoom-ins. A phone is sent
+                   the 720p cut instead (app.js picks before anything loads).
+                   preload="none" keeps all of it off the wire until the card
+                   is nearly in view; the cover frame carries the tile. -->
               <video class="work-card__video" data-card-video
-                     poster="/assets/terraiq-poster.webp"
-                     width="1920" height="1080"
+                     data-src-narrow="/assets/terraiq-720.webm"
+                     poster="/assets/terraiq-cover.webp"
+                     width="2560" height="1440"
                      muted loop playsinline disablepictureinpicture
                      preload="none" tabindex="-1">
-                <source src="/assets/terraiq.webm" type="video/webm; codecs=vp9" />
-                <source src="/assets/terraiq.mp4" type="video/mp4; codecs=avc1.640028" />
+                <source src="/assets/terraiq-1440.webm" type="video/webm; codecs=vp9" />
+                <source src="/assets/terraiq-1080.mp4" type="video/mp4; codecs=avc1.640028" />
               </video>
             </div>
-            <span class="work-card__badge is-live">Live</span>
             <span class="work-card__stamp">NT&middot;01 &mdash; 44 weather stations</span>
           </div>
           </a>
@@ -493,7 +496,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
 <script src="/assets/articles-data.js?v=e7e26773" defer></script>
 <script src="/assets/articles.js?v=799fb2ee" defer></script>
-<script src="/assets/app.js?v=5785a210" defer></script>
+<script src="/assets/app.js?v=b07a6c40" defer></script>
 <script src="/assets/particle-text.js?v=fc90279f" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 
