@@ -188,23 +188,30 @@
              data-cursor="Open TerraIQ" aria-label="Open TerraIQ (opens in a new tab)">
           <div class="work-card" style="--panel-bg:#e9f5f7; --panel-ink:#20454d">
             <div class="work-card__media" aria-hidden="true">
-              <!-- 1440p because the card is 1176px wide and a 2x screen asks
-                   for 2352 device pixels: 1080p was being upscaled, which is
-                   what softened the recording's own zoom-ins. A phone is sent
-                   the 720p cut instead (app.js picks before anything loads).
-                   preload="none" keeps all of it off the wire until the card
-                   is nearly in view; the cover frame carries the tile. -->
+              <!-- The recording draws its own mock browser window, rounded and
+                   shadowed, on dark padding. Sitting that inside the card gave
+                   two nested corners at different radii, the inner one soft
+                   because it is footage rather than a clip. So the frame is
+                   cropped to 2304x1296, a 16:9 box inside the window's straight
+                   edges: the app runs to the card's own edge and the only
+                   corner left is the crisp one. Being a pure crop with no
+                   rescaling, it is also the sharpest cut of the three.
+
+                   The card is 1176px wide, so a 2x screen wants 2352 device
+                   pixels — hence 2304 rather than 1080p, which was upscaled.
+                   A phone gets the 1280 cut; app.js picks before anything
+                   loads, and preload="none" keeps it all off the wire until
+                   the card is nearly in view. -->
               <video class="work-card__video" data-card-video
-                     data-src-narrow="/assets/terraiq-720.webm"
-                     poster="/assets/terraiq-cover.webp"
-                     width="2560" height="1440"
+                     data-src-narrow="/assets/terraiq-1280.webm"
+                     poster="/assets/terraiq-cover-2304.webp"
+                     width="2304" height="1296"
                      muted loop playsinline disablepictureinpicture
                      preload="none" tabindex="-1">
-                <source src="/assets/terraiq-1440.webm" type="video/webm; codecs=vp9" />
-                <source src="/assets/terraiq-1080.mp4" type="video/mp4; codecs=avc1.640028" />
+                <source src="/assets/terraiq-2304.webm" type="video/webm; codecs=vp9" />
+                <source src="/assets/terraiq-1920.mp4" type="video/mp4; codecs=avc1.640028" />
               </video>
             </div>
-            <span class="work-card__stamp">NT&middot;01 &mdash; 44 weather stations</span>
           </div>
           </a>
           <div class="work-item__meta">
