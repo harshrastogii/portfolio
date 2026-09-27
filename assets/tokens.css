@@ -73,7 +73,13 @@
   --surface-6:  var(--ink-6);
 
   --text-1:  var(--ink-1);
-  --text-8:  var(--ink-8);
+  /* The quietest text step. ink-8 measured 3.29:1 on the page and 3.09:1 on a
+     card, under the 4.5:1 that small text needs — and this colour carries
+     small text that matters: dates, read times, the article back-link and the
+     contents links. ink-9 is the dimmest shade that clears 4.5:1 on the card
+     surface (4.55:1), so text-8 now shares it and the hierarchy is carried by
+     the smaller mono type these lines are already set in. */
+  --text-8:  var(--ink-9);
   --text-9:  var(--ink-9);
   --text-10: var(--ink-10);
   --text-11: var(--ink-11);

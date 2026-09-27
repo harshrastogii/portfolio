@@ -132,6 +132,17 @@
     return hasLiveTransform(this.source, this.root);
   };
 
+  /* Everything build() derives its layout from: the word's size and where it
+     sits inside its own root. Scroll position is deliberately absent — both
+     offsets are relative to the root, so they hold still as the page moves. */
+  ParticleWord.prototype.signature = function () {
+    var r = this.source.getBoundingClientRect();
+    var rr = this.root.getBoundingClientRect();
+    return [r.width, r.height, r.top - rr.top, r.left - rr.left]
+      .map(function (n) { return Math.round(n); })
+      .join(",");
+  };
+
   ParticleWord.prototype.build = function () {
     var rect = this.source.getBoundingClientRect();
     if (!rect.width || !rect.height) return false;
@@ -175,6 +186,7 @@
     this.seed(pts);
     this.startedAt = null;
     this.lastT = null;
+    this._sig = this.signature();
     return this.p.count > 0;
   };
 
@@ -453,6 +465,14 @@
        stylesheet arriving after first paint. Without this the canvas keeps
        painting at a position the text no longer occupies. */
     this._remeasure = debounce(function () {
+      /* A phone fires resize on nearly every scroll: the URL bar shows and
+         hides, and only the viewport height changes. Nothing about the word
+         depends on height — it is sized in vw and the hero in svh — but
+         rebuilding regardless assigned canvas.width, which clears the canvas,
+         and re-seeded the particles, which replays the spawn. So the word
+         blinked out and reassembled every time the bar moved. Rebuild only
+         when the word's own box has actually changed. */
+      if (self._sig && self.signature() === self._sig) return;
       var wasRunning = !!self.raf;
       pause();
       if (self.build() && wasRunning) play();
