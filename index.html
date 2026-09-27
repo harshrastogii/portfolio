@@ -311,11 +311,18 @@
       <p class="section-label" data-reveal>Everything else</p>
       <div class="index" data-reveal>
 
-        <a class="index__row" href="https://github.com/harshrastogii/AvianObservatory" target="_blank" rel="noopener">
+        <!-- 0.88 is the independently reproduced, recording-level held-out
+             figure. Deliberately not the 92.7% (segment-level, leaked) or the
+             23/23 vs 18/23 comparison (p = 0.063, not significant) — the
+             project's own README refuses to headline either. No species count
+             either: the model has 25 classes but the showcase database lists
+             24, and a row that disagrees with the page it opens reads as an
+             error. -->
+        <a class="index__row" href="https://avianobservatory.vercel.app/" target="_blank" rel="noopener">
           <span class="index__num">NT&middot;04</span>
-          <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
-          <span class="index__note">Region-specific models identifying 25 local bird species from field audio, benchmarked against BirdNET. Rebuilt from a Streamlit thesis dashboard into a FastAPI and Next.js platform.</span>
-          <span class="index__go">Repo &rarr;</span>
+          <span class="index__name">Avian Observatory <span class="pill is-live">Live</span></span>
+          <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell&rsquo;s Thrush &mdash; a bird of the north-eastern US. A regional model reaches 0.88 accuracy on recordings it never saw.</span>
+          <span class="index__go">Open &rarr;</span>
         </a>
 
         <a class="index__row" href="https://github.com/harshrastogii/FairFix" target="_blank" rel="noopener">
