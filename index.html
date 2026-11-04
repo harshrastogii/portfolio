@@ -51,7 +51,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
-<link rel="stylesheet" href="/assets/site.css?v=2f3ed20d" />
+<link rel="stylesheet" href="/assets/site.css?v=d98da66a" />
 
 <script type="application/ld+json">
 {
@@ -188,16 +188,18 @@
         <div class="work-item" data-reveal>
           <a class="work-item__link" href="https://reachnt.vercel.app/" target="_blank" rel="noopener"
              data-cursor="Open ReachNT" aria-label="Open ReachNT (opens in a new tab)">
-          <div class="work-card" style="--panel-bg:#20343c">
+          <div class="work-card work-card--film" style="--panel-bg:var(--ink-1)">
             <div class="work-card__media" aria-hidden="true">
-              <!-- Each preview is a silent screen recording of the live site,
-                   edge to edge: the card's own corner is the only corner, so
-                   there is no window frame inside it to sit at a second radius.
-                   2560x1440 covers the 1176px card on a 2x screen. Cards 1280
-                   device pixels or narrower get the 1280 cut, and the 4:3
-                   phone card gets its own 4:3 recording instead of a crop.
-                   app.js chooses before anything loads; preload="none" keeps
-                   it all off the wire until the card is nearly in view. -->
+              <!-- Each preview is a short silent film made for this card:
+                   titles, figures and charts drawn in the frame at full
+                   resolution, with 3x screenshots of the live site animated
+                   inside it, on the site's own ground, type and colours. It
+                   loops seamlessly: the last frame is the first. 2560x1440
+                   covers the 1176px card on a 2x screen; cards 1280 device
+                   pixels or narrower get the 1280 cut, and the 4:3 phone card
+                   gets its own 4:3 edit, laid out for that shape rather than
+                   cropped. app.js chooses before anything loads; preload="none"
+                   keeps it all off the wire until the card is nearly in view. -->
               <video class="work-card__video" data-card-video
                      data-src-narrow="/assets/reachnt-1280.webm"
                      data-src-compact="/assets/reachnt-4x3-1280.webm"
@@ -225,9 +227,9 @@
         <div class="work-item" data-reveal>
           <a class="work-item__link" href="https://pyrantis.harshlabs.workers.dev/" target="_blank" rel="noopener"
              data-cursor="Open PYRANTIS" aria-label="Open PYRANTIS (opens in a new tab)">
-          <div class="work-card" style="--panel-bg:#f6f4ee">
+          <div class="work-card work-card--film" style="--panel-bg:var(--ink-1)">
             <div class="work-card__media" aria-hidden="true">
-              <!-- Same build as the card above: 16:9 and 4:3 recordings,
+              <!-- Same build as the card above: a 16:9 and a 4:3 edit,
                    chosen by app.js for the card's shape. -->
               <video class="work-card__video" data-card-video
                      data-src-narrow="/assets/pyrantis-1280.webm"
@@ -256,9 +258,9 @@
         <div class="work-item" data-reveal>
           <a class="work-item__link" href="https://underlink-nt.vercel.app/" target="_blank" rel="noopener"
              data-cursor="Open Underlink" aria-label="Open Underlink (opens in a new tab)">
-          <div class="work-card" style="--panel-bg:#eef2f9">
+          <div class="work-card work-card--film" style="--panel-bg:var(--ink-1)">
             <div class="work-card__media" aria-hidden="true">
-              <!-- Same build as the card above: 16:9 and 4:3 recordings,
+              <!-- Same build as the card above: a 16:9 and a 4:3 edit,
                    chosen by app.js for the card's shape. -->
               <video class="work-card__video" data-card-video
                      data-src-narrow="/assets/underlink-1280.webm"

@@ -570,6 +570,14 @@ a { color: inherit; text-decoration: none; }
    project's light ground rather than a dark hole in the page. */
 .work-card__video { background: var(--panel-bg, var(--ink-12)); }
 
+/* The films sit on the page's own ground, so without an edge the card would
+   dissolve into the page and its corner would vanish. A hairline drawn over
+   the video, not under it, keeps the tile's outline exact at its radius. */
+.work-card--film::after {
+  content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ink-12) 10%, transparent);
+}
+
 /* Video is composited on its own layer, and a layer is clipped by the
    parent's overflow as whole pixels — which is what leaves the stair-stepped
    corners you get when a <video> sits in a rounded box. Rounding the element
