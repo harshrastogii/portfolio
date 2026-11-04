@@ -534,12 +534,20 @@
 
        Choosing is free before playback: preload="none" means resource
        selection has run but nothing has been fetched, so load() re-points the
-       element without discarding a download. */
+       element without discarding a download.
+
+       The shape comes from the same media query that makes the card 4:3, not
+       from measuring it: Safari can run this before the stylesheet applies,
+       when the video still sits at its intrinsic 2560x1440 and every card
+       measures 16:9. The width is capped at the viewport for the same reason,
+       and the choice is made again just before the first play, by which point
+       layout is final. */
+    var phone = window.matchMedia("(max-width: 560px)");
     function variant(v) {
-      var box = v.getBoundingClientRect();
-      if (box.height && box.width / box.height < 1.5 && v.getAttribute("data-src-compact")) return "compact";
+      if (phone.matches && v.getAttribute("data-src-compact")) return "compact";
       var dpr = window.devicePixelRatio || 1;
-      return (box.width || window.innerWidth) * dpr > 1400 ? "wide" : "narrow";
+      var w = Math.min(v.getBoundingClientRect().width || window.innerWidth, window.innerWidth);
+      return w * dpr > 1400 ? "wide" : "narrow";
     }
 
     function apply(v, which) {
@@ -570,6 +578,8 @@
     }
 
     function start(v) {
+      // nothing has been fetched yet, so a late correction costs nothing
+      if (!v._started) { v._started = true; if (apply(v, variant(v))) v.load(); }
       if (v.getAttribute("preload") === "none") v.preload = "auto";
       // play() also triggers the fetch; calling load() first would abort it
       var p = v.play();
@@ -583,7 +593,6 @@
     /* A rotated phone or a resized window can carry a card across the
        breakpoint after it has started. Re-pick only when the shape changes;
        a size change inside one shape is not worth a second download. */
-    var phone = window.matchMedia("(max-width: 560px)");
     function reshape() {
       vids.forEach(function (v) {
         var next = variant(v);

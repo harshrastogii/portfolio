@@ -594,6 +594,9 @@ a { color: inherit; text-decoration: none; }
     transition: transform var(--duration-medium) var(--ease-in-out);
   }
   .work-item__link:hover .work-card__media { transform: scale(1.08); }
+  /* A film is composed to its frame, with titles and captions near the
+     edges, so pushing it past the frame would cut them off. It only lifts. */
+  .work-item__link:hover .work-card--film .work-card__media { transform: none; }
 }
 
 .work-card__stamp {
