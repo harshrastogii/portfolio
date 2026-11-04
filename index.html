@@ -51,7 +51,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
-<link rel="stylesheet" href="/assets/site.css?v=7aa1632b" />
+<link rel="stylesheet" href="/assets/site.css?v=2f3ed20d" />
 
 <script type="application/ld+json">
 {
@@ -172,10 +172,10 @@
       <span class="marquee__item">Treasury analyst turned data scientist</span>
       <span class="marquee__item">Environmental &amp; biodiversity intelligence</span>
       <span class="marquee__item">Spatial analysis &middot; Python &middot; Next.js</span>
-      <span class="marquee__item">Twelve shipped projects across the NT</span>
+      <span class="marquee__item">Fifteen shipped data projects</span>
     </div>
   </div>
-  <p class="sr-only">Master of Data Science at Charles Darwin University. Treasury analyst turned data scientist. Environmental and biodiversity intelligence, spatial analysis, and twelve shipped projects across the Northern Territory.</p>
+  <p class="sr-only">Master of Data Science at Charles Darwin University. Treasury analyst turned data scientist. Environmental and biodiversity intelligence, spatial analysis, and fifteen shipped data projects, most of them built on Northern Territory data.</p>
 
   <!-- ================================================================ WORK -->
   <section class="section" id="work">
@@ -184,125 +184,104 @@
 
       <div class="work__list">
 
-        <!-- ---- TerraIQ ---- -->
+        <!-- ---- ReachNT ---- -->
         <div class="work-item" data-reveal>
-          <a class="work-item__link" href="https://terraiq-nt.vercel.app/" target="_blank" rel="noopener"
-             data-cursor="Open TerraIQ" aria-label="Open TerraIQ (opens in a new tab)">
-          <div class="work-card" style="--panel-bg:#e9f5f7; --panel-ink:#20454d">
+          <a class="work-item__link" href="https://reachnt.vercel.app/" target="_blank" rel="noopener"
+             data-cursor="Open ReachNT" aria-label="Open ReachNT (opens in a new tab)">
+          <div class="work-card" style="--panel-bg:#20343c">
             <div class="work-card__media" aria-hidden="true">
-              <!-- The whole recorded frame, at its native 2634x1482: no crop,
-                   no rescale, so nothing of the window is lost and there is no
-                   resampling between the export and the card. The card is
-                   1176px wide, so a 2x screen wants 2352 device pixels and
-                   2634 clears that. A phone gets the 1280 cut; app.js picks
-                   before anything loads, and preload="none" keeps it all off
-                   the wire until the card is nearly in view. -->
+              <!-- Each preview is a silent screen recording of the live site,
+                   edge to edge: the card's own corner is the only corner, so
+                   there is no window frame inside it to sit at a second radius.
+                   2560x1440 covers the 1176px card on a 2x screen. Cards 1280
+                   device pixels or narrower get the 1280 cut, and the 4:3
+                   phone card gets its own 4:3 recording instead of a crop.
+                   app.js chooses before anything loads; preload="none" keeps
+                   it all off the wire until the card is nearly in view. -->
               <video class="work-card__video" data-card-video
-                     data-src-narrow="/assets/terraiq-full-1280.webm"
-                     poster="/assets/terraiq-full-cover.webp"
-                     width="2634" height="1482"
+                     data-src-narrow="/assets/reachnt-1280.webm"
+                     data-src-compact="/assets/reachnt-4x3-1280.webm"
+                     data-src-compact-mp4="/assets/reachnt-4x3-1024.mp4"
+                     data-poster-compact="/assets/reachnt-4x3-cover.webp"
+                     poster="/assets/reachnt-cover.webp"
+                     width="2560" height="1440"
                      muted loop playsinline disablepictureinpicture
                      preload="none" tabindex="-1">
-                <source src="/assets/terraiq-full-2634.webm" type="video/webm; codecs=vp9" />
-                <source src="/assets/terraiq-full-1920.mp4" type="video/mp4; codecs=avc1.640028" />
+                <source src="/assets/reachnt-2560.webm" type="video/webm; codecs=vp9" />
+                <source src="/assets/reachnt-1920.mp4" type="video/mp4; codecs=avc1.640028" />
               </video>
             </div>
           </div>
           </a>
           <div class="work-item__meta">
             <ul class="tag-row">
-              <li>Environmental data</li><li>Time series</li><li>Spatial</li>
-              <li>Python</li><li>SQLite</li><li>GitHub Actions</li><li>MapLibre GL</li>
+              <li>CDU Code Fair 2026 &middot; Team of two</li><li>Optimisation</li><li>Language model triage</li><li>H3</li><li>CP-SAT</li><li>Python</li><li>MapLibre GL</li>
             </ul>
-            <h2 class="work-item__title">A Territory-wide weather memory built from 44 BOM stations<span class="work-item__reveal"><span>&mdash; holding what the public feed drops after 72 hours.</span></span></h2>
+            <h2 class="work-item__title">Remote repairs ranked by need, with neighbouring communities sharing one trip<span class="work-item__reveal"><span>&mdash; 9 in 10 urgent remote repairs fixed within 3 days instead of 62, across a synthetic year.</span></span></h2>
           </div>
         </div>
 
-        <!-- ---- Conflux ---- -->
+        <!-- ---- PYRANTIS ---- -->
         <div class="work-item" data-reveal>
-          <a class="work-item__link" href="https://conflux.harshlabs.workers.dev/" target="_blank" rel="noopener"
-             data-cursor="Open Conflux" aria-label="Open Conflux (opens in a new tab)">
-          <div class="work-card" style="--panel-bg:#eef0fb; --panel-ink:#2a3160">
+          <a class="work-item__link" href="https://pyrantis.harshlabs.workers.dev/" target="_blank" rel="noopener"
+             data-cursor="Open PYRANTIS" aria-label="Open PYRANTIS (opens in a new tab)">
+          <div class="work-card" style="--panel-bg:#f6f4ee">
             <div class="work-card__media" aria-hidden="true">
-              <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="presentation">
-                <g stroke="#2563eb" stroke-opacity=".22" stroke-width="1.5">
-                  <path d="M0 450 H1600"/><path d="M800 0 V900"/>
-                </g>
-                <g fill="#2563eb" fill-opacity=".30">
-                  <circle cx="180" cy="520" r="6"/><circle cx="260" cy="430" r="5"/><circle cx="330" cy="560" r="7"/>
-                  <circle cx="410" cy="380" r="5"/><circle cx="470" cy="500" r="6"/><circle cx="560" cy="450" r="8"/>
-                  <circle cx="640" cy="600" r="5"/><circle cx="700" cy="340" r="6"/><circle cx="780" cy="480" r="7"/>
-                  <circle cx="860" cy="410" r="5"/><circle cx="930" cy="560" r="6"/><circle cx="1010" cy="460" r="7"/>
-                  <circle cx="1090" cy="360" r="5"/><circle cx="1160" cy="530" r="6"/><circle cx="1240" cy="440" r="8"/>
-                  <circle cx="1320" cy="580" r="5"/><circle cx="1400" cy="400" r="6"/><circle cx="1470" cy="500" r="7"/>
-                </g>
-                <g fill="none" stroke="#16a34a" stroke-width="3">
-                  <circle cx="560" cy="450" r="34"/><circle cx="1240" cy="440" r="34"/><circle cx="330" cy="560" r="28"/>
-                </g>
-              </svg>
+              <!-- Same build as the card above: 16:9 and 4:3 recordings,
+                   chosen by app.js for the card's shape. -->
+              <video class="work-card__video" data-card-video
+                     data-src-narrow="/assets/pyrantis-1280.webm"
+                     data-src-compact="/assets/pyrantis-4x3-1280.webm"
+                     data-src-compact-mp4="/assets/pyrantis-4x3-1024.mp4"
+                     data-poster-compact="/assets/pyrantis-4x3-cover.webp"
+                     poster="/assets/pyrantis-cover.webp"
+                     width="2560" height="1440"
+                     muted loop playsinline disablepictureinpicture
+                     preload="none" tabindex="-1">
+                <source src="/assets/pyrantis-2560.webm" type="video/webm; codecs=vp9" />
+                <source src="/assets/pyrantis-1920.mp4" type="video/mp4; codecs=avc1.640028" />
+              </video>
             </div>
-            <span class="work-card__badge is-live">Live</span>
-            <span class="work-card__stamp">NT&middot;02 &mdash; ~8,000 scores per run</span>
           </div>
           </a>
           <div class="work-item__meta">
             <ul class="tag-row">
-              <li>Anomaly detection</li><li>Machine learning</li><li>Serverless</li>
-              <li>scikit-learn</li><li>PyTorch</li><li>Next.js</li><li>Cloudflare Workers</li>
+              <li>Machine learning</li><li>Spatial</li><li>Forecasting</li><li>Gradient boosting</li><li>LSTM</li><li>Earth Engine</li><li>Python</li>
             </ul>
-            <h2 class="work-item__title">Air and sea, compared directly, every three hours<span class="work-item__reveal"><span>&mdash; two detectors that shared their inputs and still disagreed.</span></span></h2>
+            <h2 class="work-item__title">Every 5&nbsp;km of the Territory classified by when it burns, 2000 to 2025<span class="work-item__reveal"><span>&mdash; and a 2026 forecast: 51% expected to burn, most of it after July.</span></span></h2>
           </div>
         </div>
 
-        <!-- ---- BushMetrics ---- -->
+        <!-- ---- Underlink ---- -->
         <div class="work-item" data-reveal>
-          <a class="work-item__link" href="https://bushmetrics.vercel.app/" target="_blank" rel="noopener"
-             data-cursor="Open BushMetrics" aria-label="Open BushMetrics (opens in a new tab)">
-          <div class="work-card" style="--panel-bg:#ecf6ef; --panel-ink:#1e4a30">
+          <a class="work-item__link" href="https://underlink-nt.vercel.app/" target="_blank" rel="noopener"
+             data-cursor="Open Underlink" aria-label="Open Underlink (opens in a new tab)">
+          <div class="work-card" style="--panel-bg:#eef2f9">
             <div class="work-card__media" aria-hidden="true">
-              <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" role="presentation">
-                <g fill="#16a34a">
-                  <rect x="120"  y="140" width="150" height="150" fill-opacity=".55"/>
-                  <rect x="290"  y="140" width="150" height="150" fill-opacity=".38"/>
-                  <rect x="460"  y="140" width="150" height="150" fill-opacity=".62"/>
-                  <rect x="630"  y="140" width="150" height="150" fill-opacity=".22"/>
-                  <rect x="800"  y="140" width="150" height="150" fill-opacity=".46"/>
-                  <rect x="970"  y="140" width="150" height="150" fill-opacity=".30"/>
-                  <rect x="1140" y="140" width="150" height="150" fill-opacity=".52"/>
-                  <rect x="1310" y="140" width="150" height="150" fill-opacity=".18"/>
-                  <rect x="120"  y="310" width="150" height="150" fill-opacity=".28"/>
-                  <rect x="290"  y="310" width="150" height="150" fill-opacity=".14"/>
-                  <rect x="460"  y="310" width="150" height="150" fill-opacity=".40"/>
-                  <rect x="630"  y="310" width="150" height="150" fill-opacity=".08"/>
-                  <rect x="800"  y="310" width="150" height="150" fill-opacity=".33"/>
-                  <rect x="970"  y="310" width="150" height="150" fill-opacity=".11"/>
-                  <rect x="1140" y="310" width="150" height="150" fill-opacity=".44"/>
-                  <rect x="1310" y="310" width="150" height="150" fill-opacity=".26"/>
-                  <rect x="120"  y="480" width="150" height="150" fill-opacity=".10"/>
-                  <rect x="290"  y="480" width="150" height="150" fill-opacity=".06"/>
-                  <rect x="460"  y="480" width="150" height="150" fill-opacity=".16"/>
-                  <rect x="630"  y="480" width="150" height="150" fill-opacity=".04"/>
-                  <rect x="800"  y="480" width="150" height="150" fill-opacity=".12"/>
-                  <rect x="970"  y="480" width="150" height="150" fill-opacity=".05"/>
-                  <rect x="1140" y="480" width="150" height="150" fill-opacity=".20"/>
-                  <rect x="1310" y="480" width="150" height="150" fill-opacity=".09"/>
-                </g>
-                <rect x="630" y="480" width="150" height="150" fill="none" stroke="#16a34a" stroke-width="4"/>
-              </svg>
+              <!-- Same build as the card above: 16:9 and 4:3 recordings,
+                   chosen by app.js for the card's shape. -->
+              <video class="work-card__video" data-card-video
+                     data-src-narrow="/assets/underlink-1280.webm"
+                     data-src-compact="/assets/underlink-4x3-1280.webm"
+                     data-src-compact-mp4="/assets/underlink-4x3-1024.mp4"
+                     data-poster-compact="/assets/underlink-4x3-cover.webp"
+                     poster="/assets/underlink-cover.webp"
+                     width="2560" height="1440"
+                     muted loop playsinline disablepictureinpicture
+                     preload="none" tabindex="-1">
+                <source src="/assets/underlink-2560.webm" type="video/webm; codecs=vp9" />
+                <source src="/assets/underlink-1920.mp4" type="video/mp4; codecs=avc1.640028" />
+              </video>
             </div>
-            <span class="work-card__badge is-live">Live</span>
-            <span class="work-card__stamp">NT&middot;03 &mdash; Tanami at 0.6% coverage</span>
           </div>
           </a>
           <div class="work-item__meta">
             <ul class="tag-row">
-              <li>Spatial statistics</li><li>Conservation</li><li>Open data</li>
-              <li>React</li><li>Leaflet</li><li>FastAPI</li><li>GeoPandas</li>
+              <li>CDU Code Fair 2026 &middot; Team of two</li><li>Network analysis</li><li>Open data</li><li>ACMA register</li><li>Python</li>
             </ul>
-            <h2 class="work-item__title">The Territory's parks protect the rugged north and skip the arid interior<span class="work-item__reveal"><span>&mdash; the Tanami is a significant cold spot.</span></span></h2>
+            <h2 class="work-item__title">A coverage map shows a signal, not what it depends on<span class="work-item__reveal"><span>&mdash; 18 of 23 places on a radio chain rely on at least one relay with no other licensed path.</span></span></h2>
           </div>
         </div>
-
       </div>
     </div>
   </section>
@@ -313,6 +292,20 @@
       <p class="section-label" data-reveal>Everything else</p>
       <div class="index" data-reveal>
 
+        <a class="index__row" href="https://terraiq-nt.vercel.app/" target="_blank" rel="noopener">
+          <span class="index__num">NT&middot;04</span>
+          <span class="index__name">TerraIQ <span class="pill is-live">Live</span></span>
+          <span class="index__note">A Territory-wide weather memory built from 44 BOM stations, holding what the public feed drops after 72 hours. It collects and checks itself on a schedule, with no server to run.</span>
+          <span class="index__go">Open &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://conflux.harshlabs.workers.dev/" target="_blank" rel="noopener">
+          <span class="index__num">NT&middot;05</span>
+          <span class="index__name">Conflux <span class="pill is-live">Live</span></span>
+          <span class="index__note">Air and sea, compared directly every three hours. Two anomaly detectors that shared their inputs still disagreed, and the dashboard says so.</span>
+          <span class="index__go">Open &rarr;</span>
+        </a>
+
         <!-- 0.88 is the independently reproduced, recording-level held-out
              figure. Deliberately not the 92.7% (segment-level, leaked) or the
              23/23 vs 18/23 comparison (p = 0.063, not significant) — the
@@ -321,74 +314,88 @@
              24, and a row that disagrees with the page it opens reads as an
              error. -->
         <a class="index__row" href="https://avianobservatory.vercel.app/" target="_blank" rel="noopener">
-          <span class="index__num">NT&middot;04</span>
+          <span class="index__num">NT&middot;06</span>
           <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
           <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell&rsquo;s Thrush &mdash; a bird of the north-eastern US. A regional model reaches 0.88 accuracy on recordings it never saw.</span>
           <span class="index__go">Open &rarr;</span>
         </a>
 
-        <!-- Aggregates only. Underlink keeps relay locations, site keys and
-             per-place chains in a restricted tier and off its public pages,
-             so this row names no place. "No other licensed path" is the
-             project's own scoping: the ACMA register cannot show fibre,
-             satellite or unlicensed links, so a relay called single-path may
-             still have a route it cannot see. Figures from its numbers.json:
-             chains.radio_chain_places = 23, chains.with_ge1_spof = 18. -->
-        <a class="index__row" href="https://underlink-nt.vercel.app/" target="_blank" rel="noopener">
-          <span class="index__num">NT&middot;05</span>
-          <span class="index__name">Underlink <span class="pill">CDU Code Fair 2026 &middot; Team of two</span></span>
-          <span class="index__note">A coverage map shows a signal, not what it depends on. Of 23 remote NT places that reach fibre by radio relay, 18 rely on at least one relay with no other licensed path.</span>
+        <!-- Version 2 figures (CAPAD 2024 on IBRA v7), from the project's own
+             README. Version 1 reported the Tanami at 0.6% because it counted
+             NT parks only and missed Indigenous Protected Areas; the project
+             withdrew that figure, so this row must not repeat it. -->
+        <a class="index__row" href="https://bushmetrics.vercel.app/" target="_blank" rel="noopener">
+          <span class="index__num">NT&middot;07</span>
+          <span class="index__name">BushMetrics <span class="pill is-live">Live</span></span>
+          <span class="index__note">24.6% of the Territory is protected, and Traditional Owners manage or co-manage 92.6% of it. 8 of 25 bioregions meet the 30% target; the gaps run through the pastoral middle, down to 0.7% on the Sturt Plateau.</span>
+          <span class="index__go">Open &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://rainsignal.harshlabs.workers.dev/" target="_blank" rel="noopener">
+          <span class="index__num">ML&middot;08</span>
+          <span class="index__name">RainSignal AU <span class="pill">PRT565 &middot; Team of three</span></span>
+          <span class="index__note">Live Bureau of Meteorology observations run through frozen rainfall models trained on 267,317 station-days. An observation and an estimate are never shown as the same thing, and stale data is labelled stale.</span>
           <span class="index__go">Open &rarr;</span>
         </a>
 
         <a class="index__row" href="https://roadstate.harshrastogii.com" target="_blank" rel="noopener">
-          <span class="index__num">NT&middot;06</span>
+          <span class="index__num">NT&middot;09</span>
           <span class="index__name">RoadState <span class="pill is-live">Live</span></span>
           <span class="index__note">The Territory's real road problem is seasonal access, not congestion: 78% of traffic sits in Darwin, and 66% of the year's closures begin in the wet.</span>
           <span class="index__go">Open &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://github.com/harshrastogii/biodiversity-surrogate-validation" target="_blank" rel="noopener">
-          <span class="index__num">RE&middot;07</span>
-          <span class="index__name">Biodiversity Surrogate Validation <span class="pill">Research</span></span>
-          <span class="index__note">A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly — these are screens, not substitutes.</span>
-          <span class="index__go">Repo &rarr;</span>
-        </a>
-
-        <a class="index__row" href="https://armawatch.vercel.app/" target="_blank" rel="noopener">
-          <span class="index__num">CIV&middot;08</span>
-          <span class="index__name">ArmaWatch <span class="pill">Delivery</span></span>
-          <span class="index__note">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map — 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</span>
-          <span class="index__go">Open &rarr;</span>
-        </a>
-
         <a class="index__row" href="https://harshrastogii-nt-crime-dashboard.hf.space/" target="_blank" rel="noopener">
-          <span class="index__num">NT&middot;09</span>
+          <span class="index__num">NT&middot;10</span>
           <span class="index__name">NT Crime Intelligence <span class="pill is-live">Live</span></span>
           <span class="index__note">Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it.</span>
           <span class="index__go">Open &rarr;</span>
         </a>
 
+        <a class="index__row" href="https://github.com/harshrastogii/biodiversity-surrogate-validation" target="_blank" rel="noopener">
+          <span class="index__num">RE&middot;11</span>
+          <span class="index__name">Biodiversity Surrogate Validation <span class="pill">Research</span></span>
+          <span class="index__note">A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly — these are screens, not substitutes.</span>
+          <span class="index__go">Repo &rarr;</span>
+        </a>
+
+        <!-- rho 0.24, CI 0.05 to 0.43, p = 0.065: the README's key finding.
+             The interval clears zero but the p-value does not clear 0.05, so
+             the row says "weak", not "significant". -->
+        <a class="index__row" href="https://github.com/harshrastogii/nt-conservation-exposure" target="_blank" rel="noopener">
+          <span class="index__num">RE&middot;12</span>
+          <span class="index__name">NT Conservation Exposure <span class="pill">Research</span></span>
+          <span class="index__note">A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity.</span>
+          <span class="index__go">Repo &rarr;</span>
+        </a>
+
+        <a class="index__row" href="https://armawatch.vercel.app/" target="_blank" rel="noopener">
+          <span class="index__num">CIV&middot;13</span>
+          <span class="index__name">ArmaWatch <span class="pill">Delivery</span></span>
+          <span class="index__note">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map — 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</span>
+          <span class="index__go">Open &rarr;</span>
+        </a>
+
         <a class="index__row" href="https://gradaroo.com" target="_blank" rel="noopener">
-          <span class="index__num">ML&middot;10</span>
+          <span class="index__num">ML&middot;14</span>
           <span class="index__name">Gradaroo <span class="pill is-live">Live</span></span>
           <span class="index__note">An AI-assisted graduate job finder for Australia — 40 universities, live Adzuna listings, Gemini resume matching. Curated lists and approximations are labelled distinctly; nothing is scraped.</span>
           <span class="index__go">Open &rarr;</span>
         </a>
 
-        <div class="index__row">
-          <span class="index__num">ML&middot;11</span>
-          <span class="index__name">Student Central RAG <span class="pill">Early stage</span></span>
-          <span class="index__note">A retrieval-augmented assistant answering student questions from official CDU content with citations — and drafting an escalation email when it cannot confidently answer.</span>
-          <span class="index__go">In progress</span>
-        </div>
-
         <a class="index__row" href="https://github.com/harshrastogii/PRT564-Group2-CharityAnalysis" target="_blank" rel="noopener">
-          <span class="index__num">DA&middot;12</span>
+          <span class="index__num">DA&middot;15</span>
           <span class="index__name">Australian Charities Analytics <span class="pill">PRT564</span></span>
           <span class="index__note">Descriptive, predictive and diagnostic analysis on the ACNC Charity Register — research-question design through to a finished visualisation pipeline.</span>
           <span class="index__go">Repo &rarr;</span>
         </a>
+
+        <div class="index__row">
+          <span class="index__num">ML&middot;16</span>
+          <span class="index__name">Student Central RAG <span class="pill">Early stage</span></span>
+          <span class="index__note">A retrieval-augmented assistant answering student questions from official CDU content with citations — and drafting an escalation email when it cannot confidently answer.</span>
+          <span class="index__go">In progress</span>
+        </div>
 
       </div>
     </div>
@@ -512,7 +519,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
 <script src="/assets/articles-data.js?v=e7e26773" defer></script>
 <script src="/assets/articles.js?v=799fb2ee" defer></script>
-<script src="/assets/app.js?v=b07a6c40" defer></script>
+<script src="/assets/app.js?v=a240151c" defer></script>
 <script src="/assets/particle-text.js?v=5754c841" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
 

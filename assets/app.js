@@ -525,25 +525,48 @@
     var vids = [].slice.call(document.querySelectorAll("[data-card-video]"));
     if (!vids.length) return;
 
-    // the poster is a real frame, so holding it is a complete picture rather
-    // than a gap — which is exactly what reduced motion should get
-    if (reduced) return;
+    /* Each card carries two cuts of its recording. The 16:9 one fills the
+       card on every screen down to the phone breakpoint, where the card turns
+       4:3; there it gets a separate 4:3 recording rather than a crop, so the
+       picture is composed for the shape it is shown in. Inside the 16:9 cut,
+       a card a screen can resolve at 1280 pixels gets the 1280 file: a phone
+       or a narrow window spends a fraction of the bytes for the same picture.
 
-    /* A phone renders this card about 335px wide. Even at 3x that is barely
-       1000 device pixels, so the 1440p cut would spend several megabytes on
-       detail the screen cannot resolve. Swapping the source is free here:
-       preload="none" means resource selection has run but nothing has been
-       fetched, so load() re-points the element without discarding a download. */
-    function pickSource(v) {
-      var narrow = v.getAttribute("data-src-narrow");
-      if (!narrow) return;
+       Choosing is free before playback: preload="none" means resource
+       selection has run but nothing has been fetched, so load() re-points the
+       element without discarding a download. */
+    function variant(v) {
+      var box = v.getBoundingClientRect();
+      if (box.height && box.width / box.height < 1.5 && v.getAttribute("data-src-compact")) return "compact";
       var dpr = window.devicePixelRatio || 1;
-      var wide = (v.getBoundingClientRect().width || window.innerWidth) * dpr;
-      if (wide > 1400) return;
+      return (box.width || window.innerWidth) * dpr > 1400 ? "wide" : "narrow";
+    }
+
+    function apply(v, which) {
+      if (v._variant === which) return false;
       var webm = v.querySelector('source[type*="webm"]');
-      if (!webm) return;
-      webm.src = narrow;
-      v.load();
+      var mp4 = v.querySelector('source[type*="mp4"]');
+      if (!v._wide) v._wide = { webm: webm && webm.getAttribute("src"), mp4: mp4 && mp4.getAttribute("src"), poster: v.getAttribute("poster") };
+      var w = v._wide;
+      var pick = which === "compact"
+        ? { webm: v.getAttribute("data-src-compact"), mp4: v.getAttribute("data-src-compact-mp4") || w.mp4, poster: v.getAttribute("data-poster-compact") || w.poster }
+        : { webm: which === "narrow" ? (v.getAttribute("data-src-narrow") || w.webm) : w.webm, mp4: w.mp4, poster: w.poster };
+      var first = !v._variant;
+      v._variant = which;
+      // the first choice for a full-width 16:9 card is what the markup holds
+      if (first && which === "wide") return false;
+      if (pick.poster) v.setAttribute("poster", pick.poster);
+      if (webm && pick.webm) webm.src = pick.webm;
+      if (mp4 && pick.mp4) mp4.src = pick.mp4;
+      return true;
+    }
+
+    // the poster is a real frame, so holding it is a complete picture rather
+    // than a gap, which is exactly what reduced motion should get. It still
+    // needs the frame composed for the card's shape.
+    if (reduced) {
+      vids.forEach(function (v) { if (apply(v, variant(v))) v.load(); });
+      return;
     }
 
     function start(v) {
@@ -555,8 +578,26 @@
       if (p && p.catch) p.catch(function () {});
     }
 
+    vids.forEach(function (v) { if (apply(v, variant(v))) v.load(); });
+
+    /* A rotated phone or a resized window can carry a card across the
+       breakpoint after it has started. Re-pick only when the shape changes;
+       a size change inside one shape is not worth a second download. */
+    var phone = window.matchMedia("(max-width: 560px)");
+    function reshape() {
+      vids.forEach(function (v) {
+        var next = variant(v);
+        var shape = function (x) { return x === "compact" ? "compact" : "wide"; };
+        if (shape(next) === shape(v._variant)) return;
+        var playing = !v.paused;
+        if (apply(v, next)) { v.load(); if (playing) start(v); }
+      });
+    }
+    if (phone.addEventListener) phone.addEventListener("change", reshape);
+    else if (phone.addListener) phone.addListener(reshape);
+
     if (!("IntersectionObserver" in window)) {
-      vids.forEach(function (v) { pickSource(v); start(v); });
+      vids.forEach(start);
       return;
     }
 
@@ -568,8 +609,9 @@
       });
     }, { rootMargin: "300px 0px", threshold: 0.2 });
 
-    vids.forEach(function (v) { pickSource(v); io.observe(v); });
+    vids.forEach(function (v) { io.observe(v); });
   }
+
 
   /* ==========================================================================
      BOOT
