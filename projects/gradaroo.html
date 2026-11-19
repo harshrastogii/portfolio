@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gradaroo: an AI career platform for Australian students and graduates — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="Gradaroo: an AI career platform for Australian students and graduates" />
+<meta property="og:description" content="An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/gradaroo" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="Gradaroo — An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/gradaroo" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Gradaroo",
+  "headline": "Gradaroo: an AI career platform for Australian students and graduates",
+  "description": "An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant.",
+  "url": "https://harshrastogi.au/projects/gradaroo",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/gradaroo",
+  "keywords": "Next.js, TypeScript, Supabase, Google Gemini, Resend, Vercel",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  },
+  "sameAs": [
+    "https://gradaroo.com.au"
+  ]
+}
+</script>
+</head>
+<body data-slug="gradaroo">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#work">&larr; All work</a>
+      <p class="article-meta"><span>ML·14</span></p>
+      <h1 class="article-title">Gradaroo</h1>
+      <p class="article-dek">An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant.</p>
+      <div class="project-actions">
+        <a class="btn btn--solid btn--lg" href="https://gradaroo.com.au" target="_blank" rel="noopener">Open Gradaroo <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+      </div>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill is-live">Live</span></dd></div>
+        <div><dt>Made for</dt><dd>CDU IT Code Fair 2026</dd></div>
+        <div><dt>Built with</dt><dd>Next.js &middot; TypeScript &middot; Supabase &middot; Google Gemini &middot; Resend &middot; Vercel</dd></div>
+      </dl>
+    </header>
+
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The problem</h2>
+<p>Students and graduates in Australia, international students especially, face several hurdles at once. They don&#39;t know which employers hire from their university. Their resume isn&#39;t in the format Australian employers expect. Every application needs its own cover letter. And the advice they need is spread across a dozen sites.</p>
+<p>Gradaroo puts it in one place, free for students, from &quot;where do I start?&quot; to &quot;applied&quot;. It began as an entry in the CDU IT Code Fair 2026 and has kept growing.</p>
+<h2>What it does</h2>
+<ul>
+<li><strong>Jobs.</strong> Search any role and place in Australia, from job boards and from employers&#39; own careers pages, with each job shown once even when it&#39;s listed on several sites. Or pick one of <strong>40 universities</strong> and see the jobs open now at the employers its graduates commonly work for.</li>
+<li><strong>Roo, the assistant.</strong> Talk or type. Roo searches live jobs, explains any feature and opens the right page.</li>
+<li><strong>Resume Builder and Converter.</strong> Answer plain questions to build an Australian-format resume from scratch, or convert an existing one. Neither adds anything that isn&#39;t true.</li>
+<li><strong>Cover letters</strong> written for a specific job from the student&#39;s own resume, checked to fit one page.</li>
+<li><strong>What&#39;s on</strong>: networking nights, workshops and meetups gathered every morning from sites across Australia.</li>
+<li><strong>Portals for universities and employers</strong>, showing graduate outcomes and talent insights from anonymous, aggregated data only.</li>
+</ul>
+<h2>AI that is checked, not trusted</h2>
+<ul>
+<li><strong>No invented content.</strong> AI output is validated by code, not trusted: invented numbers and placeholders are removed from cover letters, and a page-fit check guarantees one page.</li>
+<li><strong>Reliability.</strong> Every AI call has a time limit and moves to another model when one is busy or out of quota, so a request finishes before the server would cut it off.</li>
+<li><strong>Security.</strong> API keys never reach the browser. The voice assistant gets a single-use token locked to its model, and it can only call four declared tools, one of which asks the student&#39;s permission first.</li>
+<li><strong>Privacy.</strong> Resume text for job matching is read in the browser. Employer insights appear only for groups of at least 10 students, rounded to the nearest 5, enforced in the database.</li>
+</ul>
+<h2>How it&#39;s built</h2>
+<p>Next.js and TypeScript on Vercel; Supabase for the database, sign-in, two-factor authentication and storage, with row-level security on every table; Google Gemini for AI, with a backup provider; Resend for email. An automated test suite covers the AI checks, Roo&#39;s routing and permissions, and provider fallback, with no network needed.</p>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/charities-analytics">
+          <span class="index__num">DA·15</span>
+          <span class="index__name">Australian Charities Analytics <span class="pill">PRT564</span></span>
+          <span class="index__note">Descriptive, predictive and diagnostic analysis of the ACNC Charity Register, from research-question design through to a finished visualisation pipeline.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/reachnt">
+          <span class="index__num"></span>
+          <span class="index__name">ReachNT <span class="pill is-live">Live</span></span>
+          <span class="index__note">Remote repairs ranked by need, with neighbouring communities sharing one trip. Across a synthetic year, 9 in 10 urgent remote repairs were fixed within 3 days instead of 62.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/pyrantis">
+          <span class="index__num"></span>
+          <span class="index__name">PYRANTIS <span class="pill is-live">Live</span></span>
+          <span class="index__note">Every 5 km of the Territory classified by when it burns, 2000 to 2025, and a forecast for 2026: 51% expected to burn, most of it after July.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=a94002e5" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

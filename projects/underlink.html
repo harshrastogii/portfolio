@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Underlink: the single radio relays remote NT mobile service depends on — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="A coverage map shows a signal, not what it depends on. 18 of 23 places on a radio chain rely on at least one relay with no other licensed path." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="Underlink: the single radio relays remote NT mobile service depends on" />
+<meta property="og:description" content="A coverage map shows a signal, not what it depends on. 18 of 23 places on a radio chain rely on at least one relay with no other licensed path." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/underlink" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="Underlink — A coverage map shows a signal, not what it depends on. 18 of 23 places on a radio chain rely on at least one relay with no other licensed path." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/underlink" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Underlink",
+  "headline": "Underlink: the single radio relays remote NT mobile service depends on",
+  "description": "A coverage map shows a signal, not what it depends on. 18 of 23 places on a radio chain rely on at least one relay with no other licensed path.",
+  "url": "https://harshrastogi.au/projects/underlink",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/underlink",
+  "keywords": "Python, NetworkX, ACMA licence register, Static web app",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  },
+  "sameAs": [
+    "https://underlink-nt.vercel.app/",
+    "https://github.com/harshrastogii/underlink-nt"
+  ]
+}
+</script>
+</head>
+<body data-slug="underlink">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#work">&larr; All work</a>
+      <p class="article-meta"><span>Project</span></p>
+      <h1 class="article-title">Underlink</h1>
+      <p class="article-dek">A coverage map shows a signal, not what it depends on. 18 of 23 places on a radio chain rely on at least one relay with no other licensed path.</p>
+      <div class="project-actions">
+        <a class="btn btn--solid btn--lg" href="https://underlink-nt.vercel.app/" target="_blank" rel="noopener">Open Underlink <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="https://github.com/harshrastogii/underlink-nt" target="_blank" rel="noopener">Code on GitHub <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+      </div>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill is-live">Live</span></dd></div>
+        <div><dt>Made for</dt><dd>CDU IT Code Fair 2026 · Team of two</dd></div>
+        <div><dt>Built with</dt><dd>Python &middot; NetworkX &middot; ACMA licence register &middot; Static web app</dd></div>
+      </dl>
+    </header>
+
+    <figure class="project-cover">
+      <picture>
+        <source media="(max-width: 560px)" srcset="/assets/underlink-4x3-cover.webp" />
+        <img src="/assets/underlink-cover.webp" alt="Underlink's map of radio relay chains to remote Northern Territory communities" width="2560" height="1440" />
+      </picture>
+    </figure>
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The question</h2>
+<p>A coverage map answers one question: is there signal? It doesn&#39;t say what that signal depends on.</p>
+<p>Many remote Northern Territory towers reach the wider network over a chain of licensed radio relays, up to six links long. If one relay in the chain fails and there is no other path, the community loses mobile service even when its own tower is fine. Underlink, built for the CDU IT Code Fair 2026 Data Innovation Challenge, finds those relays from public data.</p>
+<h2>How it works</h2>
+<ol>
+<li><strong>Build the graph.</strong> Every Telstra point-to-point licence in the ACMA radio register is an edge between two sites. A site within 10 km of a fibre town counts as fibre-connected.</li>
+<li><strong>Find each place&#39;s site.</strong> The nearest licensed radio site within 10 km stands in for the tower serving the place.</li>
+<li><strong>Find single-path relays.</strong> Every fibre-connected site is joined to one source, and the dominator tree is computed from it. A relay that dominates a place&#39;s site lies on every path from that site to fibre.</li>
+</ol>
+<p>Four other measures sit beside the chain analysis and are never merged into one score: cyclone replays, published backup power, repair windows by month, and what still works nearby.</p>
+<h2>What it found</h2>
+<p>Across the 116 larger places in the NT Government&#39;s remote communities list:</p>
+<ul>
+<li>Telstra&#39;s licensed radio links in the NT form a graph of 358 sites and 313 links in 51 separate pieces. Most of it is trees, and in a tree every relay is a single point of failure for everything beyond it.</li>
+<li><strong>18 of the 23 places that reach fibre over a radio chain depend on at least one single-path relay.</strong> 12 depend on three or more. About 7,100 people live in those 18 places.</li>
+<li>16 of those 18 sit inside Telstra&#39;s predicted 4G footprint, which is why a coverage map looks reassuring.</li>
+<li>Replaying five past cyclones would have cut 22 paths to fibre. In 4 of those the storm never came within 100 km of the place or its tower; a relay upstream was in its path.</li>
+<li>The median time to restore the slowest element on a chain is 0.9 days in July and 30.8 days in January, when wet-season access closes roads.</li>
+</ul>
+<p>Across the 9 sensitivity runs on the distance assumptions, the share of radio-chain places with a single-path relay stays between 78% and 84%.</p>
+<h2>Privacy</h2>
+<p>Underlink studies relays and paths, never people. The public web app shows counts for two land council groups only, suppresses people counts under 10, and uses a made-up network for its &quot;break a link&quot; demo. Relay locations and per-place chains stay in a restricted tier that is never published, and tests check that no public file leaks them.</p>
+<h2>Limits</h2>
+<ul>
+<li>Only licensed radio is visible. Fibre routes, satellite backhaul and unlicensed links are not, so a relay called single-path may have a bypass.</li>
+<li>The nearest site may not be the serving site; an ACCC cross-check confirms a Telstra mobile site at the end of 16 of the 18 flagged chains.</li>
+<li>Replays show exposure, not events, and repair days are assumptions shown as a breakdown, not a prediction.</li>
+<li>No community has reviewed any output.</li>
+</ul>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/terraiq">
+          <span class="index__num">NT·04</span>
+          <span class="index__name">TerraIQ <span class="pill is-live">Live</span></span>
+          <span class="index__note">A Territory-wide weather memory built from 44 BOM stations, holding what the public feed drops after 72 hours. It collects and checks itself on a schedule, with no server to run.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/conflux">
+          <span class="index__num">NT·05</span>
+          <span class="index__name">Conflux <span class="pill">Research</span></span>
+          <span class="index__note">Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/avian-observatory">
+          <span class="index__num">NT·06</span>
+          <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
+          <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell's Thrush, a bird of the north-eastern US. A model for 449 local species is right 80.6% of the time on 537 recordings from 2026, against 65.7% for BirdNET.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=a94002e5" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

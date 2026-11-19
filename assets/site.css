@@ -1001,6 +1001,38 @@ a { color: inherit; text-decoration: none; }
 .prose hr { border: 0; border-top: 1px solid var(--surface-3); margin-block: var(--space-12); }
 .prose img { border-radius: var(--radius-md); }
 
+/* Results tables in project write-ups. A table can be wider than a phone, so
+   it scrolls sideways inside its own box rather than pushing the page wide. */
+.prose table {
+  display: block; overflow-x: auto; max-width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm); line-height: var(--leading-snug);
+  font-variant-numeric: tabular-nums;
+}
+.prose th, .prose td { padding: var(--space-3) var(--space-4); text-align: left; vertical-align: top; border-bottom: 1px solid var(--surface-3); }
+.prose th { font-family: var(--font-mono); font-size: var(--text-2xs); font-weight: var(--weight-medium); letter-spacing: var(--tracking-wider); text-transform: uppercase; color: var(--text-9); white-space: nowrap; }
+.prose td:first-child, .prose th:first-child { padding-left: 0; }
+
+/* ---- project pages: the same reading view, plus what the work is and
+        where to open it ------------------------------------------------- */
+.project-actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
+.project-note { margin-top: var(--space-8); font-size: var(--text-sm); line-height: var(--leading-normal); color: var(--text-9); max-width: var(--measure-lg); }
+.project-facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-6) var(--space-10);
+  margin-top: var(--space-10); padding-top: var(--space-8);
+  border-top: 1px solid var(--surface-3);
+}
+.project-facts dt { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-8); }
+.project-facts dd { margin-top: var(--space-2); font-size: var(--text-sm); line-height: var(--leading-normal); color: var(--text-11); }
+.project-cover {
+  margin-bottom: var(--space-16);
+  aspect-ratio: 16 / 9; overflow: hidden;
+  border-radius: var(--radius-lg); background: var(--surface-2);
+}
+.project-cover img { display: block; width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 560px) { .project-cover { aspect-ratio: 4 / 3; border-radius: var(--radius-sm); margin-bottom: var(--space-12); } }
+
 .toc { display: none; }
 @media (min-width: 1100px) {
   .toc { display: block; position: sticky; top: calc(var(--nav-height) + 60px); font-size: var(--text-sm); }

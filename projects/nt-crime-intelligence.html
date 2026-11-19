@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NT Crime Intelligence: Northern Territory crime per capita, 2008–2026 — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="NT Crime Intelligence: Northern Territory crime per capita, 2008–2026" />
+<meta property="og:description" content="Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/nt-crime-intelligence" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="NT Crime Intelligence — Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/nt-crime-intelligence" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "NT Crime Intelligence",
+  "headline": "NT Crime Intelligence: Northern Territory crime per capita, 2008–2026",
+  "description": "Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it.",
+  "url": "https://harshrastogi.au/projects/nt-crime-intelligence",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/nt-crime-intelligence",
+  "keywords": "Python, Plotly Dash, GitHub Actions, Hugging Face Spaces",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  },
+  "sameAs": [
+    "https://harshrastogii-nt-crime-dashboard.hf.space/",
+    "https://github.com/harshrastogii/nt-crime-dashboard"
+  ]
+}
+</script>
+</head>
+<body data-slug="nt-crime-intelligence">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#work">&larr; All work</a>
+      <p class="article-meta"><span>NT·10</span></p>
+      <h1 class="article-title">NT Crime Intelligence</h1>
+      <p class="article-dek">Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it.</p>
+      <div class="project-actions">
+        <a class="btn btn--solid btn--lg" href="https://harshrastogii-nt-crime-dashboard.hf.space/" target="_blank" rel="noopener">Open the dashboard <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="https://github.com/harshrastogii/nt-crime-dashboard" target="_blank" rel="noopener">Code on GitHub <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+      </div>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill is-live">Live</span></dd></div>
+        <div><dt>Built with</dt><dd>Python &middot; Plotly Dash &middot; GitHub Actions &middot; Hugging Face Spaces</dd></div>
+      </dl>
+    </header>
+
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The question</h2>
+<p>Where in the Northern Territory does crime hit hardest? The answer depends on how you count.</p>
+<h2>What it found</h2>
+<p>Ranked by <strong>raw offence counts</strong>, Darwin looks like the Territory&#39;s crime centre. It has the largest population, so it has the most offences. Ranked <strong>per 1,000 residents</strong>, the picture inverts: <strong>Tennant Creek&#39;s rate is roughly 5 times Darwin&#39;s across 2008 to 2026, and about 7 times since December 2023.</strong></p>
+<p>Resourcing decisions made on raw volume alone systematically under-serve smaller remote communities. So the dashboard opens in per-capita mode, and a plain-English summary says so up front.</p>
+<h2>The dashboard</h2>
+<p>It began as a Power BI report that answered the data&#39;s questions rather than a decision-maker&#39;s. The rebuild in Python and Plotly Dash adds:</p>
+<ul>
+<li>a ranked &quot;where crime hits hardest&quot; chart beside a map of crime intensity;</li>
+<li>year-on-year change by region, in the format the NT Government uses to report progress;</li>
+<li>alcohol and domestic-violence involvement by location, the two factors tied to current alcohol-supply policy;</li>
+<li>click any place to focus every chart on it.</li>
+</ul>
+<h2>A clean public dataset</h2>
+<p>Behind the dashboard is a dataset published under CC BY 4.0: <strong>every month of recorded crime in the Territory from January 2008 to August 2026</strong>, 224 consecutive months, 56,848 rows, 572,532 recorded offences and 27 locations.</p>
+<p>Putting it together was harder than it looks:</p>
+<ul>
+<li>Every monthly file on the government portal is cumulative, so stacking downloads counts old months many times over.</li>
+<li>Filenames don&#39;t sort by date, and the file named &quot;November 2023&quot; held no November 2023 data. Files are chosen by reading their contents, never their names.</li>
+<li>NT Police changed recording systems between November and December 2023, and the government advises against comparing across that change. Every row carries a tag for its era.</li>
+</ul>
+<p>A GitHub Action checks the portal daily. If a new month appears, it rebuilds and validates the dataset, and publishes only if every check passes. If a month disappears, totals move too far or an unknown category appears, it stops and publishes nothing.</p>
+<h2>Limits</h2>
+<ul>
+<li>Per-capita rates are indicative. Population figures are the 2021 Census, applied only from December 2023 onward and only for locations with a defensible match. Historical rows are left blank rather than divided by the wrong population.</li>
+<li>Map points for the &quot;NT Balance&quot; areas are approximate.</li>
+</ul>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/biodiversity-surrogate-validation">
+          <span class="index__num">RE·11</span>
+          <span class="index__name">Biodiversity Surrogate Validation <span class="pill">Research</span></span>
+          <span class="index__note">A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly: these are screens, not substitutes.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/nt-conservation-exposure">
+          <span class="index__num">RE·12</span>
+          <span class="index__name">NT Conservation Exposure <span class="pill">Research</span></span>
+          <span class="index__note">A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/armawatch">
+          <span class="index__num">CIV·13</span>
+          <span class="index__name">ArmaWatch <span class="pill">Delivery</span></span>
+          <span class="index__note">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=a94002e5" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

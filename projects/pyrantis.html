@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PYRANTIS: classifying and forecasting Northern Territory fire seasons — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="Every 5 km of the Territory classified by when it burns, 2000 to 2025, and a forecast for 2026: 51% expected to burn, most of it after July." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="PYRANTIS: classifying and forecasting Northern Territory fire seasons" />
+<meta property="og:description" content="Every 5 km of the Territory classified by when it burns, 2000 to 2025, and a forecast for 2026: 51% expected to burn, most of it after July." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/pyrantis" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="PYRANTIS — Every 5 km of the Territory classified by when it burns, 2000 to 2025, and a forecast for 2026: 51% expected to burn, most of it after July." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/pyrantis" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "PYRANTIS",
+  "headline": "PYRANTIS: classifying and forecasting Northern Territory fire seasons",
+  "description": "Every 5 km of the Territory classified by when it burns, 2000 to 2025, and a forecast for 2026: 51% expected to burn, most of it after July.",
+  "url": "https://harshrastogi.au/projects/pyrantis",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/pyrantis",
+  "keywords": "Python, Gradient boosting, LSTM, Google Earth Engine, NAFI, SILO",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  },
+  "sameAs": [
+    "https://pyrantis.harshlabs.workers.dev/",
+    "https://github.com/harshrastogii/PYRANTIS"
+  ]
+}
+</script>
+</head>
+<body data-slug="pyrantis">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#work">&larr; All work</a>
+      <p class="article-meta"><span>Project</span></p>
+      <h1 class="article-title">PYRANTIS</h1>
+      <p class="article-dek">Every 5 km of the Territory classified by when it burns, 2000 to 2025, and a forecast for 2026: 51% expected to burn, most of it after July.</p>
+      <div class="project-actions">
+        <a class="btn btn--solid btn--lg" href="https://pyrantis.harshlabs.workers.dev/" target="_blank" rel="noopener">Open PYRANTIS <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="https://github.com/harshrastogii/PYRANTIS" target="_blank" rel="noopener">Code on GitHub <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+      </div>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill is-live">Live</span></dd></div>
+        <div><dt>Made for</dt><dd>PRT565</dd></div>
+        <div><dt>Built with</dt><dd>Python &middot; Gradient boosting &middot; LSTM &middot; Google Earth Engine &middot; NAFI &middot; SILO</dd></div>
+      </dl>
+    </header>
+
+    <figure class="project-cover">
+      <picture>
+        <source media="(max-width: 560px)" srcset="/assets/pyrantis-4x3-cover.webp" />
+        <img src="/assets/pyrantis-cover.webp" alt="PYRANTIS fire-regime map of the Northern Territory" width="2560" height="1440" />
+      </picture>
+    </figure>
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The question</h2>
+<p>Most of the Northern Territory&#39;s savanna burns every year. What matters is <em>when</em>. Fires before the end of July are cooler and patchier, and they are the basis of savanna fire management across northern Australia. Fires after July are hotter, larger and far more damaging.</p>
+<p>PYRANTIS classifies each 0.05° cell of the Territory, about 5 km across, for every year from 2000 to 2025, as <strong>unburnt</strong>, <strong>early</strong> (on or before 31 July) or <strong>late</strong> (after 31 July). That is 46,445 cells and 1,207,570 cell-years.</p>
+<h2>The data</h2>
+<ul>
+<li><strong>NAFI</strong> burnt-area mapping from Charles Darwin University, at 250 m. Each pixel carries the month it burnt, which is what makes the early and late split possible. Burnt area is used rather than satellite hotspots, which record heat at the moment of overpass and miss fires between passes.</li>
+<li><strong>SILO</strong> daily rainfall, temperature, vapour pressure deficit and radiation, interpolated from Bureau of Meteorology stations.</li>
+<li><strong>MODIS</strong> vegetation greenness through Google Earth Engine, which measures how much grass is standing when the dry season starts.</li>
+</ul>
+<h2>Two rules the model is built around</h2>
+<p><strong>Nothing may see the year it is predicting.</strong> Fire-history features come from the same table as the label, so an off-by-one would let the model read the answer. Tests recompute sampled features from the raw table and scramble a year&#39;s labels to prove no feature moves.</p>
+<p><strong>Everything stops at 30 April.</strong> The fire season runs May to October, so every input is known by the end of the wet season and the model can be run in May.</p>
+<h2>What it found</h2>
+<p>Trained on 2005 to 2019, tuned on 2020 to 2022, and scored once on 2023 to 2025:</p>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Macro F1</th>
+<th>F1 on late fire</th>
+<th>ROC-AUC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Gradient boosting</td>
+<td><strong>0.684</strong></td>
+<td>0.553</td>
+<td>0.862</td>
+</tr>
+<tr>
+<td>LSTM</td>
+<td>0.673</td>
+<td>0.561</td>
+<td>0.854</td>
+</tr>
+<tr>
+<td>Random forest</td>
+<td>0.660</td>
+<td>0.468</td>
+<td>0.859</td>
+</tr>
+<tr>
+<td>Same as last year (baseline)</td>
+<td>0.506</td>
+<td>0.241</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>The strongest predictors are not fire history. Wet-season vapour pressure deficit, greenness and rainfall rank highest: a wet growing season builds the grass, and how thirsty the air has been decides how early it cures enough to carry a fire.</p>
+<p>Walk-forward testing cut the record at every year from 2014 to 2024: 66 tests per model. Skill barely fades with distance, from 0.617 one year ahead to 0.604 eleven years ahead.</p>
+<h2>The 2026 forecast</h2>
+<p>Trained on every year through 2025, the model expects 51% of the Territory to burn in 2026, 14.5% before August and 36.4% after July, against a 2000 to 2025 average of 33%. The wet season behind it was the second wettest in 22 years. It can only be checked against NAFI&#39;s mapping in 2027.</p>
+<h2>Limits</h2>
+<ul>
+<li>Late fire, the class that matters most, is still the weakest at 0.553 F1.</li>
+<li>Every score is measured against NAFI&#39;s own mapping, not an independent record.</li>
+<li>A random cross-validation split would have reported 0.772; the honest time split gives 0.677 for the same model.</li>
+<li>The model is fitted to the Northern Territory only; transfer to other regions is untested.</li>
+</ul>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/underlink">
+          <span class="index__num"></span>
+          <span class="index__name">Underlink <span class="pill is-live">Live</span></span>
+          <span class="index__note">A coverage map shows a signal, not what it depends on. 18 of 23 places on a radio chain rely on at least one relay with no other licensed path.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/terraiq">
+          <span class="index__num">NT·04</span>
+          <span class="index__name">TerraIQ <span class="pill is-live">Live</span></span>
+          <span class="index__note">A Territory-wide weather memory built from 44 BOM stations, holding what the public feed drops after 72 hours. It collects and checks itself on a schedule, with no server to run.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/conflux">
+          <span class="index__num">NT·05</span>
+          <span class="index__name">Conflux <span class="pill">Research</span></span>
+          <span class="index__note">Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=a94002e5" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

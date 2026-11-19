@@ -51,7 +51,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
-<link rel="stylesheet" href="/assets/site.css?v=270cc45c" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
 
 <script type="application/ld+json">
 {
@@ -188,8 +188,8 @@
 
         <!-- ---- ReachNT ---- -->
         <div class="work-item" data-reveal>
-          <a class="work-item__link" href="https://reachnt.vercel.app/" target="_blank" rel="noopener"
-             data-cursor="Open ReachNT" aria-label="Open ReachNT (opens in a new tab)">
+          <a class="work-item__link" href="/projects/reachnt"
+             data-cursor="View project" aria-label="ReachNT: the full project write-up">
           <div class="work-card work-card--film" style="--panel-bg:var(--ink-1)">
             <div class="work-card__media" aria-hidden="true">
               <!-- Each preview is a short silent film made for this card:
@@ -227,8 +227,8 @@
 
         <!-- ---- PYRANTIS ---- -->
         <div class="work-item" data-reveal>
-          <a class="work-item__link" href="https://pyrantis.harshlabs.workers.dev/" target="_blank" rel="noopener"
-             data-cursor="Open PYRANTIS" aria-label="Open PYRANTIS (opens in a new tab)">
+          <a class="work-item__link" href="/projects/pyrantis"
+             data-cursor="View project" aria-label="PYRANTIS: the full project write-up">
           <div class="work-card work-card--film" style="--panel-bg:var(--ink-1)">
             <div class="work-card__media" aria-hidden="true">
               <!-- Same build as the card above: a 16:9 and a 4:3 edit,
@@ -258,8 +258,8 @@
 
         <!-- ---- Underlink ---- -->
         <div class="work-item" data-reveal>
-          <a class="work-item__link" href="https://underlink-nt.vercel.app/" target="_blank" rel="noopener"
-             data-cursor="Open Underlink" aria-label="Open Underlink (opens in a new tab)">
+          <a class="work-item__link" href="/projects/underlink"
+             data-cursor="View project" aria-label="Underlink: the full project write-up">
           <div class="work-card work-card--film" style="--panel-bg:var(--ink-1)">
             <div class="work-card__media" aria-hidden="true">
               <!-- Same build as the card above: a 16:9 and a 4:3 edit,
@@ -296,23 +296,23 @@
       <p class="section-label" data-reveal>Everything else</p>
       <div class="index" data-reveal>
 
-        <a class="index__row" href="https://terraiq-nt.vercel.app/" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/terraiq">
           <span class="index__num">NT&middot;04</span>
           <span class="index__name">TerraIQ <span class="pill is-live">Live</span></span>
           <span class="index__note">A Territory-wide weather memory built from 44 BOM stations, holding what the public feed drops after 72 hours. It collects and checks itself on a schedule, with no server to run.</span>
-          <span class="index__go">Open &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
-        <!-- Not a link: the dashboard sits behind a password until the paper is
-             published (conflux PR #8, agreed 16 Nov 2026). The evaluation's
-             figures are kept off this page for the same reason; restore the
-             link and the "Live" pill once the paper is out. -->
-        <div class="index__row">
+        <!-- The dashboard sits behind a password until the paper is published
+             (conflux PR #8, agreed 16 Nov 2026), so this row and its project
+             page never link to it. The evaluation's figures stay off both for
+             the same reason; add them, and the "Live" pill, once it is out. -->
+        <a class="index__row" href="/projects/conflux">
           <span class="index__num">NT&middot;05</span>
           <span class="index__name">Conflux <span class="pill">Research</span></span>
           <span class="index__note">Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin. Five detectors, tested on real sensor faults Australia-wide, and a language model that says whether each alarm looks like a broken sensor or real weather.</span>
-          <span class="index__go">Private for now</span>
-        </div>
+          <span class="index__go">Read &rarr;</span>
+        </a>
 
         <!-- 80.6% (95% range 77.1 to 83.8%) is the live 449-species model's
              single pre-registered test on 537 clean recordings uploaded in 2026
@@ -322,81 +322,81 @@
              Online uploads: commit 6d2967e (the deployed model reproduces all
              537 answers). Night birds: 10 of 11 genus-declared nocturnal taxa
              recovered from 23,386 recordings, commit 4ea4b1a. -->
-        <a class="index__row" href="https://avianobservatory.vercel.app/" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/avian-observatory">
           <span class="index__num">NT&middot;06</span>
           <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
           <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell&rsquo;s Thrush &mdash; a bird of the north-eastern US. A model for 449 local species is right 80.6% of the time on 537 recordings from 2026 (BirdNET: 65.7%) and identifies uploads online. Call times alone pick out 10 of 11 night birds.</span>
-          <span class="index__go">Open &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
         <!-- Version 2 figures (CAPAD 2024 on IBRA v7), from the project's own
              README. Version 1 reported the Tanami at 0.6% because it counted
              NT parks only and missed Indigenous Protected Areas; the project
              withdrew that figure, so this row must not repeat it. -->
-        <a class="index__row" href="https://bushmetrics.vercel.app/" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/bushmetrics">
           <span class="index__num">NT&middot;07</span>
           <span class="index__name">BushMetrics <span class="pill is-live">Live</span></span>
           <span class="index__note">24.6% of the Territory is protected, and Traditional Owners manage or co-manage 92.6% of it. 8 of 25 bioregions meet the 30% target; the gaps run through the pastoral middle, down to 0.7% on the Sturt Plateau.</span>
-          <span class="index__go">Open &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://rainsignal.harshlabs.workers.dev/" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/rainsignal">
           <span class="index__num">ML&middot;08</span>
           <span class="index__name">RainSignal AU <span class="pill">PRT565</span></span>
           <span class="index__note">Live Bureau of Meteorology observations run through frozen rainfall models trained on 267,317 station-days. An observation and an estimate are never shown as the same thing, and stale data is labelled stale.</span>
-          <span class="index__go">Open &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://roadstate.harshrastogii.com" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/roadstate">
           <span class="index__num">NT&middot;09</span>
           <span class="index__name">RoadState <span class="pill is-live">Live</span></span>
           <span class="index__note">The Territory's real road problem is seasonal access, not congestion: 78% of traffic sits in Darwin, and 66% of the year's closures begin in the wet.</span>
-          <span class="index__go">Open &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://harshrastogii-nt-crime-dashboard.hf.space/" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/nt-crime-intelligence">
           <span class="index__num">NT&middot;10</span>
           <span class="index__name">NT Crime Intelligence <span class="pill is-live">Live</span></span>
           <span class="index__note">Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it.</span>
-          <span class="index__go">Open &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://github.com/harshrastogii/biodiversity-surrogate-validation" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/biodiversity-surrogate-validation">
           <span class="index__num">RE&middot;11</span>
           <span class="index__name">Biodiversity Surrogate Validation <span class="pill">Research</span></span>
           <span class="index__note">A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly — these are screens, not substitutes.</span>
-          <span class="index__go">Repo &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
         <!-- rho 0.24, CI 0.05 to 0.43, p = 0.065: the README's key finding.
              The interval clears zero but the p-value does not clear 0.05, so
              the row says "weak", not "significant". -->
-        <a class="index__row" href="https://github.com/harshrastogii/nt-conservation-exposure" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/nt-conservation-exposure">
           <span class="index__num">RE&middot;12</span>
           <span class="index__name">NT Conservation Exposure <span class="pill">Research</span></span>
           <span class="index__note">A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity.</span>
-          <span class="index__go">Repo &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://armawatch.vercel.app/" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/armawatch">
           <span class="index__num">CIV&middot;13</span>
           <span class="index__name">ArmaWatch <span class="pill">Delivery</span></span>
           <span class="index__note">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map — 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</span>
-          <span class="index__go">Open &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://gradaroo.com.au" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/gradaroo">
           <span class="index__num">ML&middot;14</span>
           <span class="index__name">Gradaroo <span class="pill is-live">Live</span></span>
           <span class="index__note">An AI career platform for Australian students and graduates — live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant. AI output is checked by code, not taken on trust.</span>
-          <span class="index__go">Open &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://github.com/harshrastogii/PRT564-Group2-CharityAnalysis" target="_blank" rel="noopener">
+        <a class="index__row" href="/projects/charities-analytics">
           <span class="index__num">DA&middot;15</span>
           <span class="index__name">Australian Charities Analytics <span class="pill">PRT564</span></span>
           <span class="index__note">Descriptive, predictive and diagnostic analysis on the ACNC Charity Register — research-question design through to a finished visualisation pipeline.</span>
-          <span class="index__go">Repo &rarr;</span>
+          <span class="index__go">Read &rarr;</span>
         </a>
 
         <div class="index__row">

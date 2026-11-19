@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Which open-data surrogate agrees with expert biodiversity assessment? A multiverse validation in the Northern Territory — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly: these are screens, not substitutes." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="Which open-data surrogate agrees with expert biodiversity assessment? A multiverse validation in the Northern Territory" />
+<meta property="og:description" content="A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly: these are screens, not substitutes." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/biodiversity-surrogate-validation" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="Biodiversity Surrogate Validation — A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly: these are screens, not substitutes." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/biodiversity-surrogate-validation" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Biodiversity Surrogate Validation",
+  "headline": "Which open-data surrogate agrees with expert biodiversity assessment? A multiverse validation in the Northern Territory",
+  "description": "A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly: these are screens, not substitutes.",
+  "url": "https://harshrastogi.au/projects/biodiversity-surrogate-validation",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/biodiversity-surrogate-validation",
+  "keywords": "Python, GDAL, NVIS v7, NT Land Systems, DEA Fractional Cover",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  },
+  "sameAs": [
+    "https://github.com/harshrastogii/biodiversity-surrogate-validation"
+  ]
+}
+</script>
+</head>
+<body data-slug="biodiversity-surrogate-validation">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#work">&larr; All work</a>
+      <p class="article-meta"><span>RE·11</span></p>
+      <h1 class="article-title">Biodiversity Surrogate Validation</h1>
+      <p class="article-dek">A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly: these are screens, not substitutes.</p>
+      <div class="project-actions">
+        <a class="btn btn--solid btn--lg" href="https://github.com/harshrastogii/biodiversity-surrogate-validation" target="_blank" rel="noopener">Code and data on GitHub <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+      </div>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill">Research</span></dd></div>
+        <div><dt>Built with</dt><dd>Python &middot; GDAL &middot; NVIS v7 &middot; NT Land Systems &middot; DEA Fractional Cover</dd></div>
+      </dl>
+    </header>
+
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The question</h2>
+<p>Expert biodiversity assessments are slow and expensive, so planners often reach for open spatial layers instead: vegetation rarity, land-system rarity, how convertible the land is. Do those surrogates agree with what experts conclude on the ground? And does the answer survive defensible changes to how the comparison is made?</p>
+<p>This study compares five open-access surrogates with the Northern Territory Government&#39;s expert biodiversity-risk assessments across several catchments, and runs the comparison 30 different ways: a multiverse analysis.</p>
+<h2>What it found</h2>
+<ul>
+<li><strong>Vegetation-type rarity agrees best</strong>, per polygon, in the three large assessment areas (Spearman&#39;s ρ = 0.22, 0.51 and 0.22), and best separates the highest expert classes from the rest.</li>
+<li><strong>But not everywhere.</strong> Land-system rarity agrees better under area weighting in the Roper and at Larrimah, and better identifies the very highest class at Gunn Point and Greater Weddell.</li>
+<li><strong>Across 30 specifications</strong>, vegetation rarity scores highest in 21 and land-system rarity in 9, but the difference between them is clearly non-zero in only one.</li>
+<li>A joint model transfers to each catchment with more than six polygons, but its gain over vegetation rarity alone is not distinguishable from zero.</li>
+</ul>
+<p>So the surrogates are useful screens, not substitutes for expert assessment.</p>
+<h2>Why the answer flips</h2>
+<p>The reversals have three causes:</p>
+<ul>
+<li><strong>Small polygons.</strong> 76 to 85% of polygons in the two most finely mapped assessments are under 1 hectare. Removing them lifts land-system rarity at Gunn Point from ρ = 0.14 to 0.29.</li>
+<li><strong>A few rare vegetation groups</strong> carry the vegetation signal. Without them, Gunn Point falls from ρ = 0.22 to −0.04.</li>
+<li><strong>Already-modified land.</strong> Convertibility partly just identifies land that has already been changed.</li>
+</ul>
+<h2>A data check that mattered</h2>
+<p>An earlier copy of the Roper benchmark had been cut along land-use boundaries, and made convertibility look positively related to expert risk. On the published layer, the relationship is negative. The analysis now reads the benchmark from the published layer, and the check is documented.</p>
+<h2>Status</h2>
+<p>The manuscript is in preparation. Code is MIT-licensed, and the manuscript, figures and derived data are CC BY 4.0.</p>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/nt-conservation-exposure">
+          <span class="index__num">RE·12</span>
+          <span class="index__name">NT Conservation Exposure <span class="pill">Research</span></span>
+          <span class="index__note">A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/armawatch">
+          <span class="index__num">CIV·13</span>
+          <span class="index__name">ArmaWatch <span class="pill">Delivery</span></span>
+          <span class="index__note">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/gradaroo">
+          <span class="index__num">ML·14</span>
+          <span class="index__name">Gradaroo <span class="pill is-live">Live</span></span>
+          <span class="index__note">An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=a94002e5" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

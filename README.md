@@ -40,6 +40,39 @@ tag filters, related articles, the no-script fallback list and the sitemap all
 update on their own. The URL is `/articles/my-slug` — `cleanUrls` in
 `vercel.json` drops the `.html`.
 
+## Adding or editing a project page
+
+Every project has a page at `/projects/<slug>`, written in
+`projects/posts/<slug>.md` and rendered through
+`projects/_project.template.html`. The homepage rows and featured films link to
+these pages, and the build fails if the homepage links to one that doesn't
+exist.
+
+```markdown
+---
+title: PYRANTIS
+seo_title: "PYRANTIS: classifying and forecasting Northern Territory fire seasons"
+dek: One or two sentences: the finding, shown under the title and in search results.
+order: 2                     # position in the list; "More work" follows this order
+code: NT·04                  # optional, as on the homepage row
+pill: Live                   # status label
+live: true                   # green pill
+context: PRT565              # optional: the unit or competition it was made for
+built_with: [Python, LSTM]
+links:
+  - { label: "Open PYRANTIS", href: "https://…" }      # first is the main button
+  - { label: "Code on GitHub", href: "https://…" }
+note: Optional line shown instead of, or under, the buttons.
+cover: { src: "/assets/x-cover.webp", compact: "/assets/x-4x3-cover.webp", alt: "…" }
+# Keep each figure's source here as a YAML comment. Comments are not shipped.
+---
+
+## The question
+…
+```
+
+A new project also needs its row on the homepage, linking to `/projects/<slug>`.
+
 ### Frontmatter
 - `title`, `dek`, `date` — required
 - `tags` — drives the filter bar, uppercased automatically
@@ -53,15 +86,16 @@ update on their own. The URL is `/articles/my-slug` — `cleanUrls` in
 1. fills the shared nav and footer from `partials/` into every page (see below)
 2. renders every `articles/posts/*.md` through `articles/_article.template.html`
 3. regenerates `assets/articles-data.js` (the array the front end reads)
-4. writes `sitemap.xml`
-5. stamps every `assets/*.css|js` reference in every page with `?v=<content hash>`,
+4. renders every `projects/posts/*.md` through `projects/_project.template.html`
+5. writes `sitemap.xml`
+6. stamps every `assets/*.css|js` reference in every page with `?v=<content hash>`,
    so a deploy can't serve a visitor a stale stylesheet
-6. refreshes the `<noscript>` article list on the library page
+7. refreshes the `<noscript>` article list on the library page
 
 It is idempotent — running it twice produces identical files.
 
 **Do not hand-edit** `assets/articles-data.js`, `sitemap.xml`, the generated
-`articles/<slug>.html` files, the `?v=` stamps, or anything between
+`articles/<slug>.html` and `projects/<slug>.html` files, the `?v=` stamps, or anything between
 `<!-- PARTIAL:… -->` markers.
 
 ### The shared nav and footer
@@ -89,6 +123,8 @@ index.html                     home
 articles/index.html            the library
 articles/_article.template.html  the page every post is rendered into
 articles/posts/*.md            the posts themselves
+projects/_project.template.html  the page every project is rendered into
+projects/posts/*.md            the project write-ups
 partials/nav.html              the nav, shared by every page
 partials/footer.html           the shared part of the footer
 

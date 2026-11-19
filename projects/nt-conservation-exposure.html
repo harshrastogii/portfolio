@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>A transparent conservation exposure index for the Northern Territory, validated against expert assessment — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="A transparent conservation exposure index for the Northern Territory, validated against expert assessment" />
+<meta property="og:description" content="A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/nt-conservation-exposure" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="NT Conservation Exposure — A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/nt-conservation-exposure" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "NT Conservation Exposure",
+  "headline": "A transparent conservation exposure index for the Northern Territory, validated against expert assessment",
+  "description": "A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity.",
+  "url": "https://harshrastogi.au/projects/nt-conservation-exposure",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/nt-conservation-exposure",
+  "keywords": "Python, Hexagonal grid (EPSG:3577), Spatial statistics, Open NT data",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  },
+  "sameAs": [
+    "https://github.com/harshrastogii/nt-conservation-exposure"
+  ]
+}
+</script>
+</head>
+<body data-slug="nt-conservation-exposure">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#work">&larr; All work</a>
+      <p class="article-meta"><span>RE·12</span></p>
+      <h1 class="article-title">NT Conservation Exposure</h1>
+      <p class="article-dek">A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity.</p>
+      <div class="project-actions">
+        <a class="btn btn--solid btn--lg" href="https://github.com/harshrastogii/nt-conservation-exposure" target="_blank" rel="noopener">Code and data on GitHub <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+      </div>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill">Research</span></dd></div>
+        <div><dt>Built with</dt><dd>Python &middot; Hexagonal grid (EPSG:3577) &middot; Spatial statistics &middot; Open NT data</dd></div>
+      </dl>
+    </header>
+
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The question</h2>
+<p>Where in the Northern Territory is biodiversity most exposed to land being converted? A conservation exposure index tries to answer that from open data, combining how significant a place is for biodiversity with how readily its land could be cleared or developed.</p>
+<p>Most such indices are built and published without being checked. This one was built transparently across the whole Territory and then tested against an independent expert benchmark.</p>
+<h2>How it works</h2>
+<ul>
+<li>The Territory is divided into <strong>16,229 hexagons of 86.6 km²</strong> each, in Australian Albers.</li>
+<li>Each hexagon gets a biodiversity-significance score and a land-convertibility score from open NT and Australian layers, combined into one exposure score.</li>
+<li>Because every index involves judgement calls, the index was rebuilt <strong>30 different ways</strong>, varying the construction choices, to see which priorities survive.</li>
+<li>The result was compared with the NT Government&#39;s expert biodiversity assessment of the central Roper River catchment (Buckley et al., 2024).</li>
+</ul>
+<h2>What it found</h2>
+<ul>
+<li><strong>Agreement with expert assessment was weak</strong>: Spearman&#39;s ρ = 0.24, with a 95% interval of 0.05 to 0.43 after correcting for spatial autocorrelation, and p = 0.065.</li>
+<li><strong>That agreement came from the convertibility side of the index, not the biodiversity side</strong> it was built around.</li>
+<li>Priorities split into a <strong>robust core of 946 hexagons</strong> that stay high across all 30 variants, and a <strong>construction-sensitive fringe of 860</strong> that depend on the choices made.</li>
+</ul>
+<p>The honest reading: an open-data index can flag where land is convertible, but it is not yet a reliable stand-in for expert judgement about biodiversity.</p>
+<h2>Reproducibility</h2>
+<p>Every number in the manuscript traces to a file in the analysis outputs, regenerated from two input files with fixed random seeds. The derived inputs are shared under CC BY 4.0 with attribution to the NT Government.</p>
+<h2>Status</h2>
+<p>The full manuscript draft is complete; references and journal formatting are pending.</p>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/armawatch">
+          <span class="index__num">CIV·13</span>
+          <span class="index__name">ArmaWatch <span class="pill">Delivery</span></span>
+          <span class="index__note">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/gradaroo">
+          <span class="index__num">ML·14</span>
+          <span class="index__name">Gradaroo <span class="pill is-live">Live</span></span>
+          <span class="index__note">An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/charities-analytics">
+          <span class="index__num">DA·15</span>
+          <span class="index__name">Australian Charities Analytics <span class="pill">PRT564</span></span>
+          <span class="index__note">Descriptive, predictive and diagnostic analysis of the ACNC Charity Register, from research-question design through to a finished visualisation pipeline.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=a94002e5" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

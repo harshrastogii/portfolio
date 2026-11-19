@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ArmaWatch: a modern, mobile-friendly map of Australia's weapons industry — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="ArmaWatch: a modern, mobile-friendly map of Australia's weapons industry" />
+<meta property="og:description" content="A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/armawatch" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="ArmaWatch — A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/armawatch" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "ArmaWatch",
+  "headline": "ArmaWatch: a modern, mobile-friendly map of Australia's weapons industry",
+  "description": "A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.",
+  "url": "https://harshrastogi.au/projects/armawatch",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/armawatch",
+  "keywords": "React, TypeScript, MapLibre GL, Tailwind CSS, Vite",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  },
+  "sameAs": [
+    "https://armawatch.vercel.app/",
+    "https://github.com/harshrastogii/ArmaWatch"
+  ]
+}
+</script>
+</head>
+<body data-slug="armawatch">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#work">&larr; All work</a>
+      <p class="article-meta"><span>CIV·13</span></p>
+      <h1 class="article-title">ArmaWatch</h1>
+      <p class="article-dek">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</p>
+      <div class="project-actions">
+        <a class="btn btn--solid btn--lg" href="https://armawatch.vercel.app/" target="_blank" rel="noopener">Open ArmaWatch <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+        <a class="btn btn--ghost btn--lg" href="https://github.com/harshrastogii/ArmaWatch" target="_blank" rel="noopener">Code on GitHub <span class="btn__arrow" aria-hidden="true">&nearr;</span></a>
+      </div>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill">Delivery</span></dd></div>
+        <div><dt>Built with</dt><dd>React &middot; TypeScript &middot; MapLibre GL &middot; Tailwind CSS &middot; Vite</dd></div>
+      </dl>
+    </header>
+
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The brief</h2>
+<p>Wage Peace publishes a map of the companies and facilities that make up Australia&#39;s weapons industry, used by researchers, journalists and campaigners. ArmaWatch rebuilds it as a fast, modern, mobile-friendly map application, keeping every piece of the original data and everything the original could do.</p>
+<h2>What changed</h2>
+<ul>
+<li><strong>A modern map.</strong> MapLibre GL with clustering, smooth fly-to and colour-coded companies. No Google Maps API key is needed.</li>
+<li><strong>Search and filters</strong> by facility type and program, with a live counter.</li>
+<li><strong>A company panel</strong> for each site: facility, address, details, source, a link to Street View, sharing, and a &quot;take action&quot; link back to Wage Peace.</li>
+<li><strong>Live summaries</strong>: sites by program, and header totals for sites, prime contractors and states.</li>
+<li><strong>My location</strong>: how many weapons sites are within 25 km of the viewer.</li>
+<li><strong>Download data</strong>: the currently filtered companies as a CSV, for researchers and journalists.</li>
+</ul>
+<h2>Built to hand over</h2>
+<p>The application was prepared as a handover for Wage Peace, so it was designed for someone else to maintain:</p>
+<ul>
+<li><strong>The data is one file.</strong> All 127 sites live in a single GeoJSON file with plain fields: name, program, facility, address, coordinates, details and source. Adding or removing a company means editing that file, with no code changes.</li>
+<li><strong>It drops into the existing page.</strong> The new map mounts into the same container the old one used, so the page&#39;s address and everything around it stay the same. Publishing means uploading the built files.</li>
+<li><strong>The full source is included</strong>, in React and TypeScript, for future changes.</li>
+</ul>
+<h2>Data</h2>
+<p>All locations come from Wage Peace&#39;s original map. Basemap © CARTO and © OpenStreetMap contributors.</p>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/gradaroo">
+          <span class="index__num">ML·14</span>
+          <span class="index__name">Gradaroo <span class="pill is-live">Live</span></span>
+          <span class="index__note">An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/charities-analytics">
+          <span class="index__num">DA·15</span>
+          <span class="index__name">Australian Charities Analytics <span class="pill">PRT564</span></span>
+          <span class="index__note">Descriptive, predictive and diagnostic analysis of the ACNC Charity Register, from research-question design through to a finished visualisation pipeline.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/reachnt">
+          <span class="index__num"></span>
+          <span class="index__name">ReachNT <span class="pill is-live">Live</span></span>
+          <span class="index__note">Remote repairs ranked by need, with neighbouring communities sharing one trip. Across a synthetic year, 9 in 10 urgent remote repairs were fixed within 3 days instead of 62.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=a94002e5" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

@@ -25,6 +25,8 @@ if (!process.env.VERCEL) {
 const SOURCES = [
   "articles/_article.template.html",
   "articles/posts",
+  "projects/_project.template.html",
+  "projects/posts",
   "partials",
   "scripts",
   "README.md",

@@ -61,11 +61,16 @@ function toISODate(v) {
    the template has to be current before any post is rendered through it.
 --------------------------------------------------------------------------- */
 const PARTIALS_DIR = join(ROOT, "partials");
+const PROJECTS_DIR = join(ROOT, "projects");
+const PROJECT_POSTS = join(PROJECTS_DIR, "posts");
+const PROJECT_TEMPLATE = join(PROJECTS_DIR, "_project.template.html");
+
 const PARTIAL_PAGES = [
   join(ROOT, "index.html"),
   join(ROOT, "404.html"),
   join(ROOT, "articles", "index.html"),
   TEMPLATE,
+  PROJECT_TEMPLATE,
 ];
 
 function renderPartial(name, attrString, page) {
@@ -150,6 +155,138 @@ const dataJs =
 writeFileSync(DATA_OUT, dataJs);
 console.log(`\nBuilt ${articles.length} article(s) -> assets/articles-data.js`);
 
+/* ---------------------------------------------------------------------------
+   Project pages.
+
+   Every project gets its own page, written in projects/posts/<slug>.md and
+   rendered through projects/_project.template.html to projects/<slug>.html
+   (served at /projects/<slug>). The homepage stays hand-written; it links to
+   these pages, and the build fails if it links to one that does not exist.
+
+   Frontmatter:
+     title, dek, order (required)  name, one-line summary, position in the list
+     pill, live                    status label, and whether it is a live tool
+     seo_title                     a descriptive <title>; defaults to title
+     code, context                 "NT·04"; what it was made for (a unit, a competition)
+     built_with                    list, shown under "Built with"
+     links                         list of {label, href}; the first is the main button
+     note                          a line shown where the buttons would be
+     cover                         {src, compact, alt} for the featured films' posters
+
+   Where a figure needs its source kept beside it, put a YAML comment in the
+   frontmatter: comments are read by people, not shipped.
+--------------------------------------------------------------------------- */
+function fill(template, values) {
+  // Replacement through a function, so a "$" in the copy is never read as a
+  // replacement pattern ("$821" must stay "$821").
+  return template.replace(/\{\{([A-Z_]+)\}\}/g, (whole, key) => {
+    if (!(key in values)) throw new Error(`template placeholder {{${key}}} has no value`);
+    return values[key];
+  });
+}
+
+const projects = [];
+if (existsSync(PROJECT_POSTS)) {
+  const ptpl = readFileSync(PROJECT_TEMPLATE, "utf8");
+
+  for (const file of readdirSync(PROJECT_POSTS).filter((f) => f.endsWith(".md"))) {
+    const slug = basename(file, ".md");
+    const { data, content } = matter(readFileSync(join(PROJECT_POSTS, file), "utf8"));
+    for (const k of ["title", "dek", "order", "pill"]) {
+      if (data[k] === undefined || data[k] === "") throw new Error(`projects/posts/${file}: missing frontmatter "${k}"`);
+    }
+    projects.push({ slug, data, body: marked.parse(content) });
+  }
+  projects.sort((a, b) => a.data.order - b.data.order);
+
+  const pill = (d) => `<span class="pill${d.live ? " is-live" : ""}">${esc(d.pill)}</span>`;
+  const external = (href) => /^https?:\/\//.test(href);
+
+  projects.forEach((p, i) => {
+    const d = p.data;
+    const canonical = `${SITE}/projects/${p.slug}`;
+
+    // what it was made for is listed under the title, so the line above the
+    // title carries only the project's code
+    const metaHtml = `<span>${esc(d.code || "Project")}</span>`;
+
+    const links = d.links || [];
+    let actions = "";
+    if (links.length) {
+      actions = '      <div class="project-actions">\n' + links.map((l, j) => {
+        const ext = external(l.href);
+        return `        <a class="btn ${j ? "btn--ghost" : "btn--solid"} btn--lg" href="${esc(l.href)}"` +
+          (ext ? ' target="_blank" rel="noopener"' : "") +
+          `>${esc(l.label)} <span class="btn__arrow" aria-hidden="true">${ext ? "&nearr;" : "&rarr;"}</span></a>`;
+      }).join("\n") + "\n      </div>";
+    }
+    if (d.note) actions += `\n      <p class="project-note">${esc(d.note)}</p>`;
+
+    const facts = [["Status", pill(d)]];
+    if (d.context) facts.push(["Made for", esc(d.context)]);
+    if (d.built_with?.length) facts.push(["Built with", d.built_with.map(esc).join(" &middot; ")]);
+    const factsHtml = facts.map(([k, v]) => `        <div><dt>${k}</dt><dd>${v}</dd></div>`).join("\n");
+
+    let cover = "";
+    if (d.cover?.src) {
+      cover =
+        '    <figure class="project-cover">\n      <picture>\n' +
+        (d.cover.compact ? `        <source media="(max-width: 560px)" srcset="${esc(d.cover.compact)}" />\n` : "") +
+        `        <img src="${esc(d.cover.src)}" alt="${esc(d.cover.alt || "")}" width="2560" height="1440" />\n` +
+        "      </picture>\n    </figure>\n";
+    }
+
+    // the next three projects in list order, wrapping round, so every page
+    // leads on to more work and every project is linked from three others
+    const more = [1, 2, 3].map((k) => projects[(i + k) % projects.length]).map((q) =>
+      `        <a class="index__row" href="/projects/${q.slug}">\n` +
+      `          <span class="index__num">${esc(q.data.code || "")}</span>\n` +
+      `          <span class="index__name">${esc(q.data.title)} ${pill(q.data)}</span>\n` +
+      `          <span class="index__note">${esc(q.data.dek)}</span>\n` +
+      `          <span class="index__go">Read &rarr;</span>\n` +
+      `        </a>`).join("\n\n");
+
+    const jsonld = {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      name: d.title,
+      headline: d.seo_title || d.title,
+      description: d.dek,
+      url: canonical,
+      mainEntityOfPage: canonical,
+      keywords: (d.built_with || []).join(", ") || undefined,
+      author: { "@type": "Person", "@id": `${SITE}/#harsh-rastogi`, name: "Harsh Rastogi", url: `${SITE}/` },
+      ...(links.find((l) => external(l.href)) ? { sameAs: links.filter((l) => external(l.href)).map((l) => l.href) } : {}),
+    };
+
+    const page = fill(ptpl, {
+      SLUG: esc(p.slug),
+      TITLE: esc(d.title),
+      SEO_TITLE: esc(d.seo_title || d.title),
+      DEK: esc(d.dek),
+      CANONICAL: canonical,
+      // the posters are WebP, which LinkedIn's link previews do not show
+      OG_IMAGE: `${SITE}/assets/og-card.jpg`,
+      JSONLD: JSON.stringify(jsonld, null, 2).replace(/</g, "\\u003c"),
+      META: metaHtml,
+      ACTIONS: actions,
+      FACTS: factsHtml,
+      COVER: cover,
+      BODY: p.body,
+      MORE: more,
+    });
+    writeFileSync(join(PROJECTS_DIR, `${p.slug}.html`), page);
+  });
+  console.log(`Built ${projects.length} project page(s)`);
+
+  // every /projects/<slug> the homepage links to must exist
+  const home = readFileSync(join(ROOT, "index.html"), "utf8");
+  const known = new Set(projects.map((p) => p.slug));
+  for (const [, slug] of home.matchAll(/href="\/projects\/([\w-]+)"/g)) {
+    if (!known.has(slug)) throw new Error(`index.html links to /projects/${slug}, which has no projects/posts/${slug}.md`);
+  }
+}
+
 // sitemap
 // lastmod is only written where the build knows it is true. The library and
 // each article change when a post is published, so their dates are exact.
@@ -161,6 +298,7 @@ const urls = [
   { loc: `${SITE}/` },
   { loc: `${SITE}/articles`, lastmod: latestDate },
   ...articles.map((a) => ({ loc: `${SITE}/articles/${a.slug}`, lastmod: a.date })),
+  ...projects.map((p) => ({ loc: `${SITE}/projects/${p.slug}` })),
 ];
 const sm =
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
@@ -195,6 +333,7 @@ const pages = [
   join(ROOT, "404.html"),
   join(ROOT, "articles", "index.html"),
   ...articles.map((a) => join(OUT_DIR, `${a.slug}.html`)),
+  ...projects.map((p) => join(PROJECTS_DIR, `${p.slug}.html`)),
 ];
 
 let stamped = 0;

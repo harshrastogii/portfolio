@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Conflux: air–sea anomaly detection for Northern Territory environmental data — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="Conflux: air–sea anomaly detection for Northern Territory environmental data" />
+<meta property="og:description" content="Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/conflux" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="Conflux — Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/conflux" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=17e8c4c0" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "Conflux",
+  "headline": "Conflux: air–sea anomaly detection for Northern Territory environmental data",
+  "description": "Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm.",
+  "url": "https://harshrastogi.au/projects/conflux",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/conflux",
+  "keywords": "Python, Isolation Forest, LSTM autoencoder, STL, Next.js, Cloudflare Workers, GitHub Actions",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  }
+}
+</script>
+</head>
+<body data-slug="conflux">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#work">&larr; All work</a>
+      <p class="article-meta"><span>NT·05</span></p>
+      <h1 class="article-title">Conflux</h1>
+      <p class="article-dek">Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm.</p>
+
+      <p class="project-note">The dashboard is private until the research paper is published, so there is no link to it yet.</p>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill">Research</span></dd></div>
+        <div><dt>Made for</dt><dd>PRT661</dd></div>
+        <div><dt>Built with</dt><dd>Python &middot; Isolation Forest &middot; LSTM autoencoder &middot; STL &middot; Next.js &middot; Cloudflare Workers &middot; GitHub Actions</dd></div>
+      </dl>
+    </header>
+
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The question</h2>
+<p>Environmental monitoring in the Territory comes from separate networks that rarely meet. The Bureau of Meteorology watches the air; the Australian Institute of Marine Science watches the sea. Conflux puts them on one clock and looks for anomalies in each, and for air–sea anomalies that neither source shows on its own, using Darwin as the case study.</p>
+<h2>How it works</h2>
+<p>Conflux runs with no always-on backend. <strong>GitHub Actions is the backend</strong>: every three hours a scheduled workflow collects live BOM and AIMS observations, aligns them in time, runs the detectors and commits the dashboard&#39;s processed data. A static Next.js dashboard, served by Cloudflare Workers, reads those files directly.</p>
+<p>Five detectors look at the data in different ways:</p>
+<ul>
+<li><strong>Isolation Forest</strong>, for readings that are unusual against everything else</li>
+<li>an <strong>LSTM autoencoder</strong>, for sequences it can&#39;t reconstruct</li>
+<li><strong>STL seasonal decomposition</strong>, for departures from the daily and seasonal pattern</li>
+<li>a <strong>cross-domain</strong> detector, for air and sea disagreeing</li>
+<li>a <strong>stuck-sensor</strong> rule, for values that stop moving</li>
+</ul>
+<p>Their output becomes ranked, plain-English events and a &quot;what changed&quot; brief. Only derived data is committed, never raw observations.</p>
+<h2>Detectors that disagree</h2>
+<p>The design expected detectors sharing the same inputs to agree. They didn&#39;t, and the dashboard says so rather than averaging the disagreement away. Each detector&#39;s ability to find real faults was then measured against recorded sensor faults at weather stations across Australia, not just the Territory. Those results are part of a paper in preparation.</p>
+<h2>A second opinion on every alarm</h2>
+<p>A language model reads the hours around an alarm, at the station and its nearest neighbours, and says whether it looks like a sensor fault or real weather. Its reading sits beside the fixed text, never in place of it:</p>
+<ul>
+<li>it is off unless a key is set;</li>
+<li>it makes at most three new calls per run, to stay inside a free limit, and reuses an explanation while its event lasts;</li>
+<li>any failure leaves the fixed text and never stops the pipeline.</li>
+</ul>
+<h2>Status</h2>
+<p>Conflux runs live every three hours. The dashboard is private until the research paper is published, when it will be linked here.</p>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/avian-observatory">
+          <span class="index__num">NT·06</span>
+          <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
+          <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell's Thrush, a bird of the north-eastern US. A model for 449 local species is right 80.6% of the time on 537 recordings from 2026, against 65.7% for BirdNET.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/bushmetrics">
+          <span class="index__num">NT·07</span>
+          <span class="index__name">BushMetrics <span class="pill is-live">Live</span></span>
+          <span class="index__note">24.6% of the Territory is protected, and Traditional Owners manage or co-manage 92.6% of it. 8 of 25 bioregions meet the 30% target; the gaps run through the pastoral middle.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/rainsignal">
+          <span class="index__num">ML·08</span>
+          <span class="index__name">RainSignal AU <span class="pill">PRT565</span></span>
+          <span class="index__note">Live Bureau of Meteorology observations run through frozen rainfall models trained on 267,317 station-days. An observation and an estimate are never shown as the same thing.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=a94002e5" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>
