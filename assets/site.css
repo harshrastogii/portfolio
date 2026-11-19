@@ -860,6 +860,92 @@ a { color: inherit; text-decoration: none; }
 .offer-card__foot { margin-top: auto; padding-top: var(--space-10); }
 
 /* ============================================================================
+   8b. ABOUT (/about) — the person behind the work: a portrait beside the story.
+   It is the page's first section, so it clears the nav the way the article
+   and project headers do.
+   The photo is cropped to 4:5 so it reads as a portrait at any width;
+   on narrow screens it sits above the text at a modest size, so the words,
+   not the picture, fill the first screen.
+============================================================================ */
+.about-page { padding-block-start: calc(var(--nav-height) + 90px); }
+.about {
+  display: grid;
+  grid-template-columns: minmax(220px, 4fr) 7fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+.about__photo {
+  aspect-ratio: 4 / 5; overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+}
+.about__photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.about__title { max-width: 24ch; text-wrap: balance; }
+.about__text { margin-top: var(--space-8); max-width: var(--measure-xl); }
+.about__text p { font-size: var(--text-lg); line-height: var(--leading-relaxed); color: var(--text-10); }
+.about__text p + p { margin-top: var(--space-5); }
+.about__facts {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6) var(--space-10);
+  margin-top: var(--space-10); padding-top: var(--space-8);
+  border-top: 1px solid var(--surface-3);
+  max-width: var(--measure-xl);
+}
+.about__facts dt { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-8); }
+.about__facts dd { margin-top: var(--space-2); font-size: var(--text-sm); line-height: var(--leading-normal); color: var(--text-11); }
+.about__actions { display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-8); }
+
+/* ---- the CV below the introduction: dates in a narrow column on the
+        left, the role and what was done on the right ----------------- */
+.cv { padding-bottom: var(--space-section); }
+.cv__block + .cv__block { margin-top: var(--space-20); }
+.cv__heading {
+  font-size: var(--text-xs); font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest); text-transform: uppercase;
+  color: var(--text-9);
+  padding-bottom: var(--space-5); border-bottom: 1px solid var(--surface-3);
+}
+.cv-item {
+  display: grid; grid-template-columns: 200px minmax(0, 1fr);
+  gap: var(--space-10);
+  padding-block: var(--space-8);
+  border-bottom: 1px solid var(--surface-3);
+}
+.cv-item__when { font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: var(--tracking-wide); color: var(--text-8); padding-top: 5px; }
+.cv-item__role { font-size: var(--text-xl); font-weight: var(--weight-medium); letter-spacing: var(--tracking-snug); line-height: var(--leading-snug); color: var(--text-12); }
+.cv-item__role span { font-weight: var(--weight-regular); color: var(--text-9); }
+.cv-item__org { margin-top: var(--space-1); font-size: var(--text-base); color: var(--text-10); }
+.cv-item__lede { margin-top: var(--space-4); font-size: var(--text-base); line-height: var(--leading-relaxed); color: var(--text-10); max-width: var(--measure-xl); }
+.cv-item__sub { margin-top: var(--space-6); font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-9); }
+.cv-item ul { margin-top: var(--space-3); padding-left: var(--space-5); max-width: var(--measure-xl); }
+.cv-item__sub + ul { margin-top: var(--space-3); }
+.cv-item li { font-size: var(--text-base); line-height: var(--leading-relaxed); color: var(--text-10); }
+.cv-item li + li { margin-top: var(--space-2); }
+.cv-item li::marker { color: var(--text-8); }
+.cv a, .about__text a { color: var(--accent); border-bottom: 1px solid color-mix(in srgb, var(--accent) 40%, transparent); transition: border-color var(--duration-base); }
+.cv a:hover { border-bottom-color: var(--accent); }
+.cv__more { margin-top: var(--space-8); font-size: var(--text-base); color: var(--text-10); }
+.cv-skills { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-8) var(--space-12); padding-top: var(--space-8); }
+.cv-skills dt { font-family: var(--font-mono); font-size: var(--text-2xs); letter-spacing: var(--tracking-widest); text-transform: uppercase; color: var(--text-8); }
+.cv-skills dd { margin-top: var(--space-2); font-size: var(--text-base); line-height: var(--leading-relaxed); color: var(--text-10); }
+
+@media (max-width: 860px) {
+  .cv-item { grid-template-columns: 1fr; gap: var(--space-2); padding-block: var(--space-6); }
+  .cv-item__when { padding-top: 0; }
+  .cv-skills { grid-template-columns: 1fr; }
+  .cv__block + .cv__block { margin-top: var(--space-16); }
+}
+@media (max-width: 860px) {
+  .about { grid-template-columns: 1fr; gap: var(--space-10); }
+  .about__photo { max-width: 240px; }
+}
+@media (max-width: 560px) {
+  .about__photo { max-width: 180px; border-radius: var(--radius-md); }
+  .about__text p { font-size: var(--text-base); }
+  .about__facts { grid-template-columns: 1fr; }
+}
+
+/* ============================================================================
    9. WRITING
 ============================================================================ */
 .writing__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-5); }

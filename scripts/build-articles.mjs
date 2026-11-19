@@ -67,6 +67,7 @@ const PROJECT_TEMPLATE = join(PROJECTS_DIR, "_project.template.html");
 
 const PARTIAL_PAGES = [
   join(ROOT, "index.html"),
+  join(ROOT, "about.html"),
   join(ROOT, "404.html"),
   join(ROOT, "articles", "index.html"),
   TEMPLATE,
@@ -296,6 +297,7 @@ if (existsSync(PROJECT_POSTS)) {
 const latestDate = articles[0]?.date;
 const urls = [
   { loc: `${SITE}/` },
+  { loc: `${SITE}/about` },
   { loc: `${SITE}/articles`, lastmod: latestDate },
   ...articles.map((a) => ({ loc: `${SITE}/articles/${a.slug}`, lastmod: a.date })),
   ...projects.map((p) => ({ loc: `${SITE}/projects/${p.slug}` })),
@@ -330,6 +332,7 @@ for (const file of readdirSync(ASSET_DIR)) {
 
 const pages = [
   join(ROOT, "index.html"),
+  join(ROOT, "about.html"),
   join(ROOT, "404.html"),
   join(ROOT, "articles", "index.html"),
   ...articles.map((a) => join(OUT_DIR, `${a.slug}.html`)),
