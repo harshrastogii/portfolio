@@ -151,9 +151,14 @@ writeFileSync(DATA_OUT, dataJs);
 console.log(`\nBuilt ${articles.length} article(s) -> assets/articles-data.js`);
 
 // sitemap
+// lastmod is only written where the build knows it is true. The library and
+// each article change when a post is published, so their dates are exact.
+// The homepage changes whenever its copy is edited, which the build cannot
+// see, and Google stops trusting a sitemap's dates once they prove wrong, so
+// the homepage gets none rather than a guess.
 const latestDate = articles[0]?.date;
 const urls = [
-  { loc: `${SITE}/`, lastmod: latestDate },
+  { loc: `${SITE}/` },
   { loc: `${SITE}/articles`, lastmod: latestDate },
   ...articles.map((a) => ({ loc: `${SITE}/articles/${a.slug}`, lastmod: a.date })),
 ];

@@ -2,6 +2,7 @@
   "buildCommand": "npm run build && node scripts/prune-deploy.mjs",
   "outputDirectory": ".",
   "cleanUrls": true,
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/(.*)",
