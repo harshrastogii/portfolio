@@ -50,17 +50,37 @@ update on their own. The URL is `/articles/my-slug` — `cleanUrls` in
 
 `npm run build` runs `scripts/build-articles.mjs`, which:
 
-1. renders every `articles/posts/*.md` through `articles/_article.template.html`
-2. regenerates `assets/articles-data.js` (the array the front end reads)
-3. writes `sitemap.xml`
-4. stamps every `assets/*.css|js` reference in every page with `?v=<content hash>`,
+1. fills the shared nav and footer from `partials/` into every page (see below)
+2. renders every `articles/posts/*.md` through `articles/_article.template.html`
+3. regenerates `assets/articles-data.js` (the array the front end reads)
+4. writes `sitemap.xml`
+5. stamps every `assets/*.css|js` reference in every page with `?v=<content hash>`,
    so a deploy can't serve a visitor a stale stylesheet
-5. refreshes the `<noscript>` article list on the library page
+6. refreshes the `<noscript>` article list on the library page
 
 It is idempotent — running it twice produces identical files.
 
 **Do not hand-edit** `assets/articles-data.js`, `sitemap.xml`, the generated
-`articles/<slug>.html` files, or the `?v=` stamps.
+`articles/<slug>.html` files, the `?v=` stamps, or anything between
+`<!-- PARTIAL:… -->` markers.
+
+### The shared nav and footer
+
+The nav and the shared part of the footer (wordmark, tagline, links, legal line)
+are written once, in `partials/nav.html` and `partials/footer.html`. Each page
+marks where they go, and the build fills them in:
+
+```html
+<!-- PARTIAL:nav current="/articles" -->
+…filled in by the build…
+<!-- /PARTIAL:nav -->
+```
+
+To change the nav or footer on every page, edit the file in `partials/` and run
+`npm run build`. Attributes on a marker fill `{{name}}` slots in the partial;
+the footer's last link uses `link-href` and `link-label`. `current` marks the
+nav links that point at the current page. Each page keeps its own footer call
+to action above the shared part.
 
 ## Layout
 
@@ -69,6 +89,8 @@ index.html                     home
 articles/index.html            the library
 articles/_article.template.html  the page every post is rendered into
 articles/posts/*.md            the posts themselves
+partials/nav.html              the nav, shared by every page
+partials/footer.html           the shared part of the footer
 
 assets/tokens.css              design tokens — colour scales, type, space, motion
 assets/site.css                every component, built only from those tokens

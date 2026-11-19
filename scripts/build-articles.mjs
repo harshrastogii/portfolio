@@ -39,6 +39,63 @@ function toISODate(v) {
   return String(v).slice(0, 10);
 }
 
+/* ---------------------------------------------------------------------------
+   Shared partials.
+
+   The nav and the shared part of the footer used to be copied by hand into
+   every page, so one change (a new email address, say) meant four edits and a
+   chance to miss one. They now live once in partials/*.html, and every page
+   marks where each goes:
+
+     <!-- PARTIAL:nav current="/articles" -->
+     ...filled in by the build...
+     <!-- /PARTIAL:nav -->
+
+   The build replaces whatever sits between a pair of markers with the named
+   partial, so edit partials/, never the copies. Attributes on the opening
+   marker fill {{name}} slots in the partial; `current` is special and marks
+   the links that point at it with aria-current="page". The markers stay in
+   place, which keeps this idempotent like everything else here.
+
+   This runs first: the article template is one of the pages it fills, and
+   the template has to be current before any post is rendered through it.
+--------------------------------------------------------------------------- */
+const PARTIALS_DIR = join(ROOT, "partials");
+const PARTIAL_PAGES = [
+  join(ROOT, "index.html"),
+  join(ROOT, "404.html"),
+  join(ROOT, "articles", "index.html"),
+  TEMPLATE,
+];
+
+function renderPartial(name, attrString, page) {
+  const file = join(PARTIALS_DIR, `${name}.html`);
+  if (!existsSync(file)) throw new Error(`${basename(page)}: no partial named "${name}" (looked for partials/${name}.html)`);
+  const attrs = {};
+  for (const [, k, v] of attrString.matchAll(/([\w-]+)="([^"]*)"/g)) attrs[k] = v;
+
+  let html = readFileSync(file, "utf8").replace(/\{\{([a-z][\w-]*)\}\}/g, (whole, key) => {
+    if (!(key in attrs)) throw new Error(`${basename(page)}: partial "${name}" needs ${key}="…" on its marker`);
+    return attrs[key];
+  });
+  if (attrs.current) {
+    html = html.replaceAll(`href="${attrs.current}"`, `href="${attrs.current}" aria-current="page"`);
+  }
+  return html.endsWith("\n") ? html : html + "\n";
+}
+
+let partialPages = 0;
+for (const page of PARTIAL_PAGES) {
+  if (!existsSync(page)) continue;
+  const before = readFileSync(page, "utf8");
+  const after = before.replace(
+    /(<!-- PARTIAL:([\w-]+)((?:\s+[\w-]+="[^"]*")*)\s*-->\n)[\s\S]*?([ \t]*<!-- \/PARTIAL:\2 -->)/g,
+    (whole, open, name, attrs, close) => open + renderPartial(name, attrs, page) + close
+  );
+  if (after !== before) { writeFileSync(page, after); partialPages++; }
+}
+console.log(`Filled partials in ${partialPages} page(s)`);
+
 if (!existsSync(POSTS_DIR)) { mkdirSync(POSTS_DIR, { recursive: true }); }
 const tpl = readFileSync(TEMPLATE, "utf8");
 

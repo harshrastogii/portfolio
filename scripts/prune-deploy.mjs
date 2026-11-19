@@ -25,6 +25,7 @@ if (!process.env.VERCEL) {
 const SOURCES = [
   "articles/_article.template.html",
   "articles/posts",
+  "partials",
   "scripts",
   "README.md",
   ".gitignore",
