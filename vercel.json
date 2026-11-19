@@ -3,6 +3,9 @@
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/projects", "destination": "/#work", "permanent": false }
+  ],
   "headers": [
     {
       "source": "/(.*)",
