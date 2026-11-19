@@ -623,6 +623,71 @@
 
 
   /* ==========================================================================
+     13. EMAIL — a mailto link that never does nothing
+
+     A mailto: link only asks the operating system for its mail app. Anyone
+     who reads mail in a browser tab (most people) has none set up, and the
+     click silently goes nowhere. So every email link also copies the address
+     and says so in a toast. The link itself is left alone: where a mail app
+     does exist it still opens, with the address already filled in.
+  ========================================================================== */
+  function initEmail() {
+    var toast = null, hideTimer = 0;
+
+    function show(label, address) {
+      if (!toast) {
+        toast = document.createElement("div");
+        toast.className = "email-toast";
+        toast.setAttribute("role", "status");
+        toast.setAttribute("aria-live", "polite");
+        toast.innerHTML = '<span class="email-toast__label"></span><span class="email-toast__address"></span>';
+        document.body.appendChild(toast);
+        void toast.offsetWidth; // let the first show transition in
+      }
+      toast.querySelector(".email-toast__label").textContent = label;
+      toast.querySelector(".email-toast__address").textContent = address;
+      toast.classList.add("is-visible");
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () { toast.classList.remove("is-visible"); }, 3200);
+    }
+
+    // the async clipboard API first; if it is missing or refused, the older
+    // select-and-copy route, which some browsers still allow on a click
+    function copy(text) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(text).catch(function () { return legacyCopy(text); });
+      }
+      return legacyCopy(text);
+    }
+
+    function legacyCopy(text) {
+      return new Promise(function (resolve, reject) {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.cssText = "position:fixed;top:0;left:0;opacity:0;";
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (err) {}
+        document.body.removeChild(ta);
+        ok ? resolve() : reject();
+      });
+    }
+
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest('a[href^="mailto:"]');
+      if (!a || e.button !== 0) return;
+      var address = decodeURIComponent(a.getAttribute("href").slice(7).split("?")[0]);
+      copy(address).then(
+        function () { show("Email copied", address); },
+        function () { show("Email me at", address); }
+      );
+    });
+  }
+
+
+  /* ==========================================================================
      BOOT
   ========================================================================== */
   function boot() {
@@ -639,6 +704,7 @@
     initIntro();
     initCurtain();
     initCardVideos();
+    initEmail();
     // reveals run last so any markup the other modules injected is observed
     initReveals();
     honourInboundHash();

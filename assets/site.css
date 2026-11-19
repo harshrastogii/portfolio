@@ -210,6 +210,38 @@ a { color: inherit; text-decoration: none; }
 .cursor-pill.is-visible { opacity: 1; transform: translate(-50%, -50%) scale(1); }
 @media (pointer: coarse) { .cursor-pill { display: none; } }
 
+/* the confirmation an email link shows when it copies the address.
+   Bottom-centre, clear of the nav; on phones the nav moves to the bottom,
+   so the toast moves to the top (see 3. NAV's phone block). */
+.email-toast {
+  position: fixed; left: 50%; bottom: calc(var(--space-8) + env(safe-area-inset-bottom));
+  z-index: var(--z-nav);
+  display: inline-flex; align-items: center; gap: var(--space-3);
+  max-width: calc(100% - 40px);
+  height: 44px; padding: 0 var(--space-5) 0 var(--space-4);
+  background: var(--accent); color: var(--ink-1);
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-lift);
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, 12px) scale(.96);
+  transition: opacity var(--duration-medium) var(--ease-out-expo),
+              transform var(--duration-slow) var(--ease-out-expo);
+}
+.email-toast.is-visible { opacity: 1; transform: translate(-50%, 0) scale(1); }
+.email-toast__label {
+  font-size: var(--text-2xs);
+  font-weight: var(--weight-bold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.email-toast__address {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+
 /* ---- the button with the blob that grows from where you entered ----- */
 .btn {
   position: relative; overflow: hidden;
@@ -352,6 +384,11 @@ a { color: inherit; text-decoration: none; }
    unsigned on a phone.
 -------------------------------------------------------------------- */
 @media (max-width: 768px) and (orientation: portrait), (max-width: 599px) {
+  .email-toast {
+    bottom: auto; top: calc(var(--space-5) + env(safe-area-inset-top));
+    transform: translate(-50%, -12px) scale(.96);
+  }
+  .email-toast.is-visible { transform: translate(-50%, 0) scale(1); }
   .nav {
     top: auto;
     bottom: calc(var(--space-5) + env(safe-area-inset-bottom));
