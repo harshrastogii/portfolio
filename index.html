@@ -303,22 +303,29 @@
           <span class="index__go">Open &rarr;</span>
         </a>
 
-        <a class="index__row" href="https://conflux.harshlabs.workers.dev/" target="_blank" rel="noopener">
+        <!-- Not a link: the dashboard sits behind a password until the paper is
+             published (conflux PR #8, agreed 16 Nov 2026). The evaluation's
+             figures are kept off this page for the same reason; restore the
+             link and the "Live" pill once the paper is out. -->
+        <div class="index__row">
           <span class="index__num">NT&middot;05</span>
-          <span class="index__name">Conflux <span class="pill is-live">Live</span></span>
-          <span class="index__note">Air and sea, compared directly every three hours. Two anomaly detectors that shared their inputs still disagreed, and the dashboard says so.</span>
-          <span class="index__go">Open &rarr;</span>
-        </a>
+          <span class="index__name">Conflux <span class="pill">Research</span></span>
+          <span class="index__note">Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin. Five detectors, tested on real sensor faults Australia-wide, and a language model that says whether each alarm looks like a broken sensor or real weather.</span>
+          <span class="index__go">Private for now</span>
+        </div>
 
         <!-- 80.6% (95% range 77.1 to 83.8%) is the live 449-species model's
              single pre-registered test on 537 clean recordings uploaded in 2026
              (deploy/live_model/space/README.md); BirdNET got 65.7% on the same
              species list. The site itself lists the 449 species. Not the 92.7%
-             (segment-level, leaked), and no field-audio claim until verified. -->
+             (segment-level, leaked), and no field-audio claim until verified.
+             Online uploads: commit 6d2967e (the deployed model reproduces all
+             537 answers). Night birds: 10 of 11 genus-declared nocturnal taxa
+             recovered from 23,386 recordings, commit 4ea4b1a. -->
         <a class="index__row" href="https://avianobservatory.vercel.app/" target="_blank" rel="noopener">
           <span class="index__num">NT&middot;06</span>
           <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
-          <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell&rsquo;s Thrush &mdash; a bird of the north-eastern US. A regional model for 449 species names the right bird 80.6% of the time on 537 recordings from 2026, against 65.7% for BirdNET.</span>
+          <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell&rsquo;s Thrush &mdash; a bird of the north-eastern US. A model for 449 local species is right 80.6% of the time on 537 recordings from 2026 (BirdNET: 65.7%) and identifies uploads online. Call times alone pick out 10 of 11 night birds.</span>
           <span class="index__go">Open &rarr;</span>
         </a>
 
