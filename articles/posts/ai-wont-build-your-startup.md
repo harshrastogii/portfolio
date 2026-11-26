@@ -4,6 +4,7 @@ dek: One of the biggest misconceptions today is that having access to AI means y
 date: 2026-06-23
 tags: [AI, STARTUPS, OPINION]
 featured: true
+projects: [gradaroo, avian-observatory, bushmetrics]   # shown under "From the work"
 ---
 
 Over the past few months, I have spent countless hours building products with AI.

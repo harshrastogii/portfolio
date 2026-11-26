@@ -78,6 +78,8 @@ A new project also needs its row on the homepage, linking to `/projects/<slug>`.
 - `tags` — drives the filter bar, uppercased automatically
 - `featured: true` — eligible for the wide slot at the top of the library
 - `read_mins` — optional; estimated from length at ~220 wpm if omitted
+- `projects: [slug, …]` — the projects listed under "From the work" at the end
+  of the article; the three featured projects if omitted
 
 ## What the build does
 

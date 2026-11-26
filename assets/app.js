@@ -728,10 +728,16 @@
     try { target = document.querySelector(hash); } catch (e) { return; }
     if (!target) return;
 
+    var landed = null;
+    function here() { return lenis ? lenis.scroll : window.scrollY; }
     function jump() {
       if (lenis) lenis.scrollTo(target, { offset: -90, immediate: true });
       else target.scrollIntoView({ block: "start" });
+      landed = here();
     }
+    // a correction must never yank the page from under someone who has
+    // already started scrolling from where the first jump left them
+    function untouched() { return landed === null || Math.abs(here() - landed) < 4; }
 
     /* The frame after layout is the right moment to measure, but rAF does
        not fire in a background tab — open the link in one and the jump would
@@ -753,7 +759,12 @@
       ? document.fonts.ready
       : Promise.resolve();
 
-    fonts.then(function () { if (!waiting) settleThenJump(); });
+    /* Jump straight away, then once more when the web fonts have arrived,
+       since their arrival can move the target. Waiting for the fonts alone
+       left a slow connection looking at the top of the page for seconds
+       (coming back from a project page, say) before it suddenly moved. */
+    if (!waiting) settleThenJump();
+    fonts.then(function () { if (!waiting && untouched()) settleThenJump(); });
 
     if (waiting) {
       // the panel adds is-done when it has finished lifting away

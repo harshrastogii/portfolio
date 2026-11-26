@@ -4,6 +4,7 @@ dek: Each AI has a personality, and the real skill is knowing which to use, when
 date: 2026-01-17
 tags: [AI, OPINION]
 featured: true
+projects: [reachnt, gradaroo, conflux]   # shown under "From the work"
 ---
 
 Lately, I've been noticing something that keeps bothering me. People pick one AI tool and expect it to do everything. Writing, research, coding, images, opinions, even judgement. And when it doesn't perform perfectly in all of those areas, the conclusion is simple: the AI is bad.

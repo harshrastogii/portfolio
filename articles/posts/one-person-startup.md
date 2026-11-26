@@ -4,6 +4,7 @@ dek: AI is lowering the barriers to building a business — letting a single fou
 date: 2026-01-24
 tags: [AI, OPINION]
 featured: true
+projects: [gradaroo, terraiq, avian-observatory]   # shown under "From the work"
 ---
 
 Over the past few months, I have noticed a growing trend: startups being run by a single founder. At first, this sounds unrealistic. Running a business involves product development, customer support, finances, sales, marketing, communication, operations, and countless other responsibilities. Traditionally, these functions would require multiple employees or contractors. Today, however, AI is changing that equation.

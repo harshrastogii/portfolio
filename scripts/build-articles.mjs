@@ -102,6 +102,33 @@ for (const page of PARTIAL_PAGES) {
 }
 console.log(`Filled partials in ${partialPages} page(s)`);
 
+/* ---------------------------------------------------------------------------
+   Project metadata is read first: articles list related projects under
+   "From the work", and project pages list "More work", from the same rows.
+--------------------------------------------------------------------------- */
+const projects = [];
+if (existsSync(PROJECT_POSTS)) {
+  for (const file of readdirSync(PROJECT_POSTS).filter((f) => f.endsWith(".md"))) {
+    const slug = basename(file, ".md");
+    const { data, content } = matter(readFileSync(join(PROJECT_POSTS, file), "utf8"));
+    for (const k of ["title", "dek", "order", "pill"]) {
+      if (data[k] === undefined || data[k] === "") throw new Error(`projects/posts/${file}: missing frontmatter "${k}"`);
+    }
+    projects.push({ slug, data, body: marked.parse(content) });
+  }
+  projects.sort((a, b) => a.data.order - b.data.order);
+}
+const projectBySlug = new Map(projects.map((p) => [p.slug, p]));
+
+const pill = (d) => `<span class="pill${d.live ? " is-live" : ""}">${esc(d.pill)}</span>`;
+const projectRow = (q) =>
+  `        <a class="index__row" href="/projects/${q.slug}">\n` +
+  `          <span class="index__num">${esc(q.data.code || "")}</span>\n` +
+  `          <span class="index__name">${esc(q.data.title)} ${pill(q.data)}</span>\n` +
+  `          <span class="index__note">${esc(q.data.dek)}</span>\n` +
+  `          <span class="index__go">Read &rarr;</span>\n` +
+  `        </a>`;
+
 if (!existsSync(POSTS_DIR)) { mkdirSync(POSTS_DIR, { recursive: true }); }
 const tpl = readFileSync(TEMPLATE, "utf8");
 
@@ -131,9 +158,18 @@ for (const file of files) {
     featured: !!data.featured,
   });
 
+  // "From the work": the projects the article names in its frontmatter
+  // (projects: [slug, ...]), or the three featured projects if it names none
+  const picks = (data.projects || []).map((s) => {
+    if (!projectBySlug.has(s)) throw new Error(`${file}: projects lists "${s}", which has no projects/posts/${s}.md`);
+    return projectBySlug.get(s);
+  });
+  const related = (picks.length ? picks : projects.slice(0, 3)).map(projectRow).join("\n\n");
+
   // fill the template
   const canonical = `${SITE}/articles/${slug}`;
   let page = tpl
+    .replace("{{PROJECTS}}", () => related)
     .replaceAll("{{SLUG}}", esc(slug))
     .replaceAll("{{TITLE}}", esc(data.title))
     .replaceAll("{{DEK}}", esc(data.dek))
@@ -186,21 +222,8 @@ function fill(template, values) {
   });
 }
 
-const projects = [];
-if (existsSync(PROJECT_POSTS)) {
+if (projects.length) {
   const ptpl = readFileSync(PROJECT_TEMPLATE, "utf8");
-
-  for (const file of readdirSync(PROJECT_POSTS).filter((f) => f.endsWith(".md"))) {
-    const slug = basename(file, ".md");
-    const { data, content } = matter(readFileSync(join(PROJECT_POSTS, file), "utf8"));
-    for (const k of ["title", "dek", "order", "pill"]) {
-      if (data[k] === undefined || data[k] === "") throw new Error(`projects/posts/${file}: missing frontmatter "${k}"`);
-    }
-    projects.push({ slug, data, body: marked.parse(content) });
-  }
-  projects.sort((a, b) => a.data.order - b.data.order);
-
-  const pill = (d) => `<span class="pill${d.live ? " is-live" : ""}">${esc(d.pill)}</span>`;
   const external = (href) => /^https?:\/\//.test(href);
 
   projects.forEach((p, i) => {
@@ -239,13 +262,7 @@ if (existsSync(PROJECT_POSTS)) {
 
     // the next three projects in list order, wrapping round, so every page
     // leads on to more work and every project is linked from three others
-    const more = [1, 2, 3].map((k) => projects[(i + k) % projects.length]).map((q) =>
-      `        <a class="index__row" href="/projects/${q.slug}">\n` +
-      `          <span class="index__num">${esc(q.data.code || "")}</span>\n` +
-      `          <span class="index__name">${esc(q.data.title)} ${pill(q.data)}</span>\n` +
-      `          <span class="index__note">${esc(q.data.dek)}</span>\n` +
-      `          <span class="index__go">Read &rarr;</span>\n` +
-      `        </a>`).join("\n\n");
+    const more = [1, 2, 3].map((k) => projects[(i + k) % projects.length]).map(projectRow).join("\n\n");
 
     const jsonld = {
       "@context": "https://schema.org",
@@ -285,6 +302,11 @@ if (existsSync(PROJECT_POSTS)) {
   const known = new Set(projects.map((p) => p.slug));
   for (const [, slug] of home.matchAll(/href="\/projects\/([\w-]+)"/g)) {
     if (!known.has(slug)) throw new Error(`index.html links to /projects/${slug}, which has no projects/posts/${slug}.md`);
+  }
+  // and every project page's "All work" link returns to /#<slug>, so the
+  // homepage needs that anchor, or the link drops the visitor at the top
+  for (const slug of known) {
+    if (!home.includes(`id="${slug}"`)) throw new Error(`projects/${slug}: its back link goes to /#${slug}, but index.html has no element with id="${slug}"`);
   }
 }
 
