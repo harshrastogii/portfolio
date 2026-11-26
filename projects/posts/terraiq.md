@@ -9,7 +9,9 @@ live: true
 built_with: [Python, SQLite, GitHub Actions, BOM observations]
 links:
   - { label: "Open TerraIQ", href: "https://terraiq-nt.vercel.app/" }
-# Facts: the TerraIQ collector README; 44 stations from the live site.
+# Facts: the TerraIQ collector README; 44 stations from the live site; the
+# fire-score test, fuel-age result and incident-feed decision from Harsh's
+# LinkedIn project write-up (checked 26 Nov 2026).
 ---
 
 ## The question
@@ -36,6 +38,23 @@ A collector that polls a government feed has to behave, or it gets blocked. Terr
 - **Rely on the overlap** instead of re-requesting.
 - **One collector touches BOM.** Every dashboard reads the database, never the feed.
 - **Know what the feed rejects.** A placeholder contact address in the request header gets a 403, which was found and documented rather than guessed at.
+
+## From archive to a question worth asking
+
+The archive now holds more than 40,000 observations. The turning point was changing the question from "what's the temperature?" to "what should someone know right now?" TerraIQ combines heat, dryness and wind into a composite fire-weather score that isn't published anywhere else, and lays it over roughly 10,000 satellite fire detections from NAFI, the fire service run by Charles Darwin University.
+
+## Does the fire score mean anything?
+
+It was tested against 6,575 days of NAFI fire records around Lajamanu.
+
+- Across the whole record it looked useful, but most of that was the calendar. **Compared only with days in the same month, it fell to 0.52 to 0.56**, where 0.50 is a coin toss, and it was weakest in the dry-season months that hold most fires.
+- **Fuel age did predict fire.** In the months a patch burned, its fuel was 15.3 months older on average, in 105 of 107 patches.
+
+So the score is defensible for ranking wet-season days and not beyond that, and the site says so.
+
+## What it chose not to do
+
+The NT's official bushfire incident feed carries one line: "Please do not use, scrape or re-publish this file." The integration was already built. It was switched off, and the agency was asked for permission instead.
 
 ## Why keep it
 

@@ -46,7 +46,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
-<link rel="stylesheet" href="/assets/site.css?v=d09bf3c0" />
+<link rel="stylesheet" href="/assets/site.css?v=5cfd81a5" />
 
 <script type="application/ld+json">
 {
@@ -158,6 +158,11 @@
 <li>Every monthly file on the government portal is cumulative, so stacking downloads counts old months many times over.</li>
 <li>Filenames don&#39;t sort by date, and the file named &quot;November 2023&quot; held no November 2023 data. Files are chosen by reading their contents, never their names.</li>
 <li>NT Police changed recording systems between November and December 2023, and the government advises against comparing across that change. Every row carries a tag for its era.</li>
+</ul>
+<p>Two more problems surfaced in the data itself:</p>
+<ul>
+<li><strong>Around twenty remote localities were hidden under a single &quot;NT Balance&quot; label</strong>, which are exactly the communities policy attention is focused on. Restructuring brought East Arnhem, the Tiwi Islands and West Arnhem back into view.</li>
+<li><strong>Two years held only partial data.</strong> Plotted as full years, they produced a rise and fall that never happened. Correcting it changed the trend story entirely.</li>
 </ul>
 <p>A GitHub Action checks the portal daily. If a new month appears, it rebuilds and validates the dataset, and publishes only if every check passes. If a month disappears, totals move too far or an unknown category appears, it stops and publishes nothing.</p>
 <h2>Limits</h2>

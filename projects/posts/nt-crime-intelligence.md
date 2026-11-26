@@ -42,6 +42,11 @@ Putting it together was harder than it looks:
 - Filenames don't sort by date, and the file named "November 2023" held no November 2023 data. Files are chosen by reading their contents, never their names.
 - NT Police changed recording systems between November and December 2023, and the government advises against comparing across that change. Every row carries a tag for its era.
 
+Two more problems surfaced in the data itself:
+
+- **Around twenty remote localities were hidden under a single "NT Balance" label**, which are exactly the communities policy attention is focused on. Restructuring brought East Arnhem, the Tiwi Islands and West Arnhem back into view.
+- **Two years held only partial data.** Plotted as full years, they produced a rise and fall that never happened. Correcting it changed the trend story entirely.
+
 A GitHub Action checks the portal daily. If a new month appears, it rebuilds and validates the dataset, and publishes only if every check passes. If a month disappears, totals move too far or an unknown category appears, it stops and publishes nothing.
 
 ## Limits

@@ -48,7 +48,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
-<link rel="stylesheet" href="/assets/site.css?v=d09bf3c0" />
+<link rel="stylesheet" href="/assets/site.css?v=5cfd81a5" />
 
 <script type="application/ld+json">
 {
@@ -106,14 +106,15 @@
 <!-- /PARTIAL:nav -->
 
 <main id="main">
-  <!-- Source: Harsh's CV (November 2026). Contact details and referees stay
-       on the CV, not here. Keep this page in step with the CV. -->
+  <!-- Sources: Harsh's CV (November 2026) and LinkedIn profile (checked
+       26 November 2026). Contact details and referees stay on the CV, not
+       here. Keep this page in step with both. -->
   <section class="section about-page" id="about" aria-labelledby="about-title">
     <div class="container">
       <p class="section-label" data-reveal>About</p>
       <div class="about">
         <figure class="about__photo" data-reveal>
-          <img src="/assets/harsh-rastogi-headshot.webp" width="720" height="720"
+          <img src="/assets/harsh-rastogi-portrait.webp" width="720" height="900"
                alt="Harsh Rastogi" decoding="async" fetchpriority="high" />
         </figure>
 
@@ -130,9 +131,10 @@
                burnt-area mapping and weather, and identifying Territory birds from their calls.
                I test models on data they haven't seen, report results that don't support the
                hypothesis, and go after the reference data needed to measure accuracy properly.</p>
-            <p>I came to data science from finance: two years in treasury and reconciliation at
-               WNS in India, then a Master of Data Science at Charles Darwin University, with
-               coursework completed in October 2026.</p>
+            <p>I came to data science from finance: two years as a financial data analyst at WNS
+               in India, reconciling up to a million payment transactions a day in SQL, then a
+               Master of Data Science at Charles Darwin University, with coursework completed in
+               October 2026.</p>
           </div>
 
           <div class="about__actions" data-reveal>
@@ -182,6 +184,11 @@
           <ul>
             <li>Field-tested Landcare NT's AudioMoth recorders, set the standard configuration across 16 devices, and am writing the volunteer guide. Presenting them at the Tools for Monitoring Wildlife Workshop in Palmerston in December 2026.</li>
           </ul>
+
+          <p class="cv-item__sub">Handing it on</p>
+          <ul>
+            <li>Writing plain-language guides and training staff and volunteers, so the mapping and monitoring carry on after the contract ends.</li>
+          </ul>
         </div>
       </article>
 
@@ -205,7 +212,7 @@
           <p class="cv-item__org">CDU Information Technology Student Association</p>
           <ul>
             <li>Designed and delivered Data Bytes, a four-part workshop series teaching data preparation, transformation and visualisation in Excel, Power Query, Power Apps and Power BI on real NT Government open data.</li>
-            <li>Recognised by CDU's Vice-Chancellor, Professor Scott Bowman AO, in all-staff communications.</li>
+            <li>Recognised by CDU's Vice-Chancellor, Professor Scott Bowman AO, in all-staff communications after the first cohort's final presentations.</li>
           </ul>
         </div>
       </article>
@@ -222,15 +229,23 @@
         </div>
       </article>
 
+      <!-- WNS dates and designations: experience letter of 20 December 2024
+           (employed 2 Sep 2022 to 20 Nov 2024, last designated Senior Associate
+           - Operations) and LinkedIn (Associate - Operations Sep 2022 to Mar 2024,
+           promoted Apr 2024; 15-member team). "Financial Data Analyst" is the
+           functional title Harsh uses on LinkedIn; the official designation is
+           shown alongside it. -->
       <article class="cv-item" data-reveal>
         <p class="cv-item__when">Sep 2022 – Nov 2024</p>
         <div class="cv-item__body">
-          <h3 class="cv-item__role">Treasury, Reconciliation and Analytics</h3>
+          <h3 class="cv-item__role">Financial Data Analyst</h3>
           <p class="cv-item__org">WNS Global Services, Gurugram, India</p>
+          <p class="cv-item__note">Official designation: Associate – Operations, promoted to Senior Associate – Operations in April 2024.</p>
           <ul>
-            <li>Progressed from Reconciliation Analyst to Senior Treasury and Reconciliation Specialist, coordinating the daily workflow of a 20-member team: training, task priorities and service levels against regulatory deadlines.</li>
-            <li>Produced management reporting for senior stakeholders from treasury and transaction data in SQL and Power BI, across systems including Kyriba and Trintech Cadency.</li>
-            <li>Resolved complex discrepancies through root-cause analysis, automated recurring reconciliation steps in Excel and Power Query, and designed quality controls that reduced processing errors.</li>
+            <li>Analysed and reconciled payment data in SQL for Payoneer's Global Payment Transfer process: 100,000 to over 1,000,000 transactions a day that automatic matching could not clear, matched across source systems, bank data and ledgers.</li>
+            <li>Traced 100 to 200 unidentified suspense-account transactions a day, cross-checking global bank portals, including Citibank branches in several countries, and decoding inconsistent transaction references so each item could be cleared.</li>
+            <li>Monitored payment flows, balances and exceptions, found the root causes of discrepancies, and built Power BI reports and dashboards for management and business reviews.</li>
+            <li>Designed quality-control checks that reduced processing errors, coordinated the daily workflow of a 15-member team and trained new members. Tools: SQL, Power BI, Power Query, Excel, Kyriba and Trintech Cadency.</li>
           </ul>
         </div>
       </article>
@@ -303,6 +318,15 @@
       </article>
 
       <article class="cv-item" data-reveal>
+        <p class="cv-item__when">Oct 2026 – present</p>
+        <div class="cv-item__body">
+          <h3 class="cv-item__role">Council Member, Multicultural Youth Council of the NT</h3>
+          <p class="cv-item__org">MyNT, governed by Melaleuca Australia</p>
+          <p class="cv-item__lede">Selected by application and interview to represent multicultural, migrant and refugee young people across the Territory. Contribute to the Council's direction at monthly meetings, support its 60+ members, and MC'd its "Get Job Ready" employment event, including the Acknowledgement of Country.</p>
+        </div>
+      </article>
+
+      <article class="cv-item" data-reveal>
         <p class="cv-item__when">Sep 2026 – present</p>
         <div class="cv-item__body">
           <h3 class="cv-item__role">Invasive Species Surveillance Volunteer</h3>
@@ -330,10 +354,29 @@
       </article>
 
       <article class="cv-item" data-reveal>
+        <p class="cv-item__when">Feb 2025 – Oct 2026</p>
+        <div class="cv-item__body">
+          <h3 class="cv-item__role">Student Representative, Your Voice Student Network</h3>
+          <p class="cv-item__org">Charles Darwin University</p>
+          <p class="cv-item__lede">Gave student feedback on university services, policies and campus experience through focus groups, workshops and consultations.</p>
+        </div>
+      </article>
+
+      <article class="cv-item" data-reveal>
         <p class="cv-item__when">Feb 2025 – Jun 2026</p>
         <div class="cv-item__body">
-          <h3 class="cv-item__role">Secretary, Vice President and Event Coordinator</h3>
+          <h3 class="cv-item__role">Event Coordinator, Vice President, then Secretary</h3>
           <p class="cv-item__org">Indian Student Forum, Charles Darwin University</p>
+          <p class="cv-item__lede">Planned and ran cultural and community events, helped lead the forum as Vice President (Jul – Nov 2025), then served as Secretary (Nov 2025 – Jun 2026): agendas, minutes, official communication, budgets and risk assessments.</p>
+        </div>
+      </article>
+
+      <article class="cv-item" data-reveal>
+        <p class="cv-item__when">Jul – Nov 2025</p>
+        <div class="cv-item__body">
+          <h3 class="cv-item__role">Senior Buddy Mentor</h3>
+          <p class="cv-item__org">Charles Darwin University</p>
+          <p class="cv-item__lede">Mentored international and new students through their move to university life in Australia, with academic, cultural and wellbeing support.</p>
         </div>
       </article>
     </section>
@@ -342,14 +385,14 @@
     <section class="cv__block" aria-labelledby="cv-recognition">
       <h2 class="cv__heading" id="cv-recognition" data-reveal>Recognition</h2>
       <article class="cv-item" data-reveal>
-        <p class="cv-item__when">2025</p>
+        <p class="cv-item__when">Jul 2025</p>
         <div class="cv-item__body">
           <h3 class="cv-item__role">Vice-Chancellor recognition</h3>
-          <p class="cv-item__org">Charles Darwin University · for the Data Bytes workshop series</p>
+          <p class="cv-item__org">Charles Darwin University · for the Data Bytes workshop series, also cited by the Vice-Chancellor in a meeting with the Consulate General of India</p>
         </div>
       </article>
       <article class="cv-item" data-reveal>
-        <p class="cv-item__when">2025</p>
+        <p class="cv-item__when">Nov 2025</p>
         <div class="cv-item__body">
           <h3 class="cv-item__role">On the Spot Award</h3>
           <p class="cv-item__org">UniLodge Australia · for leadership during Severe Tropical Cyclone Fina</p>
