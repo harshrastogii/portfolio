@@ -11,13 +11,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
 <link rel="manifest" href="/site.webmanifest"/>
 
-<meta name="description" content="Harsh Rastogi is a Darwin-based data scientist building environmental intelligence, biodiversity, public-service and not-for-profit data tools for the Northern Territory." />
+<meta name="description" content="Harsh Rastogi is a Darwin data scientist working in environmental data science: satellite Earth observation, spatial machine learning and ecological monitoring on Northern Territory data. Available for work." />
 <meta name="robots" content="index,follow,max-image-preview:large" />
 <meta name="theme-color" content="#101112" />
 <meta name="color-scheme" content="dark" />
 
 <meta property="og:title" content="Harsh Rastogi — Data Scientist, Northern Territory" />
-<meta property="og:description" content="Environmental intelligence, spatial analysis and full-stack delivery — from raw open data to a tool people actually use." />
+<meta property="og:description" content="Satellite Earth observation, spatial machine learning and ecological monitoring on Northern Territory data, each shipped as a tool people can act on." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://harshrastogi.au/" />
 <meta property="og:locale" content="en_AU" />
@@ -27,7 +27,7 @@
 <meta property="og:image:alt" content="Harsh Rastogi — I turn Territory data into decisions, not just dashboards. A night-lights map of the Northern Territory, Australia." />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Harsh Rastogi — Data Scientist, Northern Territory" />
-<meta name="twitter:description" content="Environmental intelligence, spatial analysis and full-stack delivery from Darwin." />
+<meta name="twitter:description" content="Environmental data science from Darwin: satellite Earth observation, spatial machine learning and ecological monitoring." />
 <meta name="twitter:image" content="https://harshrastogi.au/assets/og-card.jpg" />
 <link rel="canonical" href="https://harshrastogi.au/" />
 
@@ -71,7 +71,7 @@
         { "@type": "CollegeOrUniversity", "name": "Charles Darwin University", "url": "https://www.cdu.edu.au/" },
         { "@type": "CollegeOrUniversity", "name": "University of Delhi" }
       ],
-      "knowsAbout": ["Data science", "Spatial analysis", "Biodiversity", "Environmental intelligence", "Machine learning"]
+      "knowsAbout": ["Environmental data science", "Satellite Earth observation", "Remote sensing", "Spatial machine learning", "Ecological monitoring", "Biodiversity", "Machine learning", "Spatial analysis"]
     },
     {
       "@type": "WebSite",
@@ -162,9 +162,10 @@
       </h1>
 
       <p class="lede hero__sub" data-reveal data-reveal-stagger="0.55">
-        Environmental intelligence, spatial analysis and full-stack delivery — taking open
-        Territory data from a raw feed to something a council, a researcher or a traveller
-        can actually act on.
+        Environmental data science for the Territory: satellite Earth observation, spatial
+        machine learning and ecological monitoring, from mapping invasive grasses and fire
+        seasons to identifying birds by their calls, each shipped as something a land
+        manager, a researcher or a council can act on.
       </p>
 
       <div class="hero__actions" data-reveal data-reveal-stagger="0.68">
@@ -177,14 +178,15 @@
   <!-- ============================================================= MARQUEE -->
   <div class="marquee" data-marquee aria-hidden="true">
     <div class="marquee__track">
+      <span class="marquee__item">Satellite Earth observation</span>
+      <span class="marquee__item">Spatial machine learning</span>
+      <span class="marquee__item">Ecological monitoring</span>
       <span class="marquee__item">Master of Data Science &middot; Charles Darwin University</span>
       <span class="marquee__item">Financial data analyst turned data scientist</span>
-      <span class="marquee__item">Environmental &amp; biodiversity intelligence</span>
-      <span class="marquee__item">Spatial analysis &middot; Python &middot; Next.js</span>
-      <span class="marquee__item">Fifteen shipped data projects</span>
+      <span class="marquee__item">Sixteen shipped data projects</span>
     </div>
   </div>
-  <p class="sr-only">Master of Data Science at Charles Darwin University. Financial data analyst turned data scientist. Environmental and biodiversity intelligence, spatial analysis, and fifteen shipped data projects, most of them built on Northern Territory data.</p>
+  <p class="sr-only">Satellite Earth observation, spatial machine learning and ecological monitoring. Master of Data Science at Charles Darwin University. Financial data analyst turned data scientist. Sixteen shipped data projects, most of them built on Northern Territory data.</p>
 
   <!-- ================================================================ WORK -->
   <section class="section" id="work">
@@ -303,8 +305,17 @@
       <p class="section-label" data-reveal>Everything else</p>
       <div class="index" data-reveal>
 
-        <a class="index__row" id="terraiq" href="/projects/terraiq">
+        <!-- Figures: CV (November 2026) and LinkedIn. Research in progress; the
+             repository is private, so the row opens the write-up only. -->
+        <a class="index__row" id="gambawatch" href="/projects/gambawatch">
           <span class="index__num">NT&middot;04</span>
+          <span class="index__name">GambaWatch NT <span class="pill">Research</span></span>
+          <span class="index__note">Free Sentinel-1 and Sentinel-2 imagery mapped where invasive gamba grass is likely across Darwin–Litchfield. Tested against the NT Government's aerial weed surveys, the map found gamba country rather than the grass itself, so the next version trains on recorded absences.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" id="terraiq" href="/projects/terraiq">
+          <span class="index__num">NT&middot;05</span>
           <span class="index__name">TerraIQ <span class="pill is-live">Live</span></span>
           <span class="index__note">A Territory-wide weather memory built from 44 BOM stations, holding what the public feed drops after 72 hours. It collects and checks itself on a schedule, with no server to run.</span>
           <span class="index__go">Read &rarr;</span>
@@ -315,7 +326,7 @@
              page never link to it. The evaluation's figures stay off both for
              the same reason; add them, and the "Live" pill, once it is out. -->
         <a class="index__row" id="conflux" href="/projects/conflux">
-          <span class="index__num">NT&middot;05</span>
+          <span class="index__num">NT&middot;06</span>
           <span class="index__name">Conflux <span class="pill">Research</span></span>
           <span class="index__note">Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin. Five detectors, tested on real sensor faults Australia-wide, and a language model that says whether each alarm looks like a broken sensor or real weather.</span>
           <span class="index__go">Read &rarr;</span>
@@ -330,7 +341,7 @@
              537 answers). Night birds: 10 of 11 genus-declared nocturnal taxa
              recovered from 23,386 recordings, commit 4ea4b1a. -->
         <a class="index__row" id="avian-observatory" href="/projects/avian-observatory">
-          <span class="index__num">NT&middot;06</span>
+          <span class="index__num">NT&middot;07</span>
           <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
           <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell&rsquo;s Thrush &mdash; a bird of the north-eastern US. A model for 449 local species is right 80.6% of the time on 537 recordings from 2026 (BirdNET: 65.7%) and identifies uploads online. Call times alone pick out 10 of 11 night birds.</span>
           <span class="index__go">Read &rarr;</span>
@@ -341,35 +352,35 @@
              NT parks only and missed Indigenous Protected Areas; the project
              withdrew that figure, so this row must not repeat it. -->
         <a class="index__row" id="bushmetrics" href="/projects/bushmetrics">
-          <span class="index__num">NT&middot;07</span>
+          <span class="index__num">NT&middot;08</span>
           <span class="index__name">BushMetrics <span class="pill is-live">Live</span></span>
           <span class="index__note">24.6% of the Territory is protected, and Traditional Owners manage or co-manage 92.6% of it. 8 of 25 bioregions meet the 30% target; the gaps run through the pastoral middle, down to 0.7% on the Sturt Plateau.</span>
           <span class="index__go">Read &rarr;</span>
         </a>
 
         <a class="index__row" id="rainsignal" href="/projects/rainsignal">
-          <span class="index__num">ML&middot;08</span>
+          <span class="index__num">ML&middot;09</span>
           <span class="index__name">RainSignal AU <span class="pill">PRT565</span></span>
           <span class="index__note">Live Bureau of Meteorology observations run through frozen rainfall models trained on 267,317 station-days. An observation and an estimate are never shown as the same thing, and stale data is labelled stale.</span>
           <span class="index__go">Read &rarr;</span>
         </a>
 
         <a class="index__row" id="roadstate" href="/projects/roadstate">
-          <span class="index__num">NT&middot;09</span>
+          <span class="index__num">NT&middot;10</span>
           <span class="index__name">RoadState <span class="pill is-live">Live</span></span>
           <span class="index__note">The Territory's real road problem is seasonal access, not congestion: 78% of traffic sits in Darwin, and 66% of the year's closures begin in the wet.</span>
           <span class="index__go">Read &rarr;</span>
         </a>
 
         <a class="index__row" id="nt-crime-intelligence" href="/projects/nt-crime-intelligence">
-          <span class="index__num">NT&middot;10</span>
+          <span class="index__num">NT&middot;11</span>
           <span class="index__name">NT Crime Intelligence <span class="pill is-live">Live</span></span>
           <span class="index__note">Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it.</span>
           <span class="index__go">Read &rarr;</span>
         </a>
 
         <a class="index__row" id="biodiversity-surrogate-validation" href="/projects/biodiversity-surrogate-validation">
-          <span class="index__num">RE&middot;11</span>
+          <span class="index__num">RE&middot;12</span>
           <span class="index__name">Biodiversity Surrogate Validation <span class="pill">Research</span></span>
           <span class="index__note">A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly — these are screens, not substitutes.</span>
           <span class="index__go">Read &rarr;</span>
@@ -379,35 +390,35 @@
              The interval clears zero but the p-value does not clear 0.05, so
              the row says "weak", not "significant". -->
         <a class="index__row" id="nt-conservation-exposure" href="/projects/nt-conservation-exposure">
-          <span class="index__num">RE&middot;12</span>
+          <span class="index__num">RE&middot;13</span>
           <span class="index__name">NT Conservation Exposure <span class="pill">Research</span></span>
           <span class="index__note">A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity.</span>
           <span class="index__go">Read &rarr;</span>
         </a>
 
         <a class="index__row" id="armawatch" href="/projects/armawatch">
-          <span class="index__num">CIV&middot;13</span>
+          <span class="index__num">CIV&middot;14</span>
           <span class="index__name">ArmaWatch <span class="pill">Delivery</span></span>
           <span class="index__note">A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map — 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism.</span>
           <span class="index__go">Read &rarr;</span>
         </a>
 
         <a class="index__row" id="gradaroo" href="/projects/gradaroo">
-          <span class="index__num">ML&middot;14</span>
+          <span class="index__num">ML&middot;15</span>
           <span class="index__name">Gradaroo <span class="pill is-live">Live</span></span>
           <span class="index__note">An AI career platform for Australian students and graduates — live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant. AI output is checked by code, not taken on trust.</span>
           <span class="index__go">Read &rarr;</span>
         </a>
 
         <a class="index__row" id="charities-analytics" href="/projects/charities-analytics">
-          <span class="index__num">DA&middot;15</span>
+          <span class="index__num">DA&middot;16</span>
           <span class="index__name">Australian Charities Analytics <span class="pill">PRT564</span></span>
           <span class="index__note">Descriptive, predictive and diagnostic analysis on the ACNC Charity Register — research-question design through to a finished visualisation pipeline.</span>
           <span class="index__go">Read &rarr;</span>
         </a>
 
         <div class="index__row">
-          <span class="index__num">ML&middot;16</span>
+          <span class="index__num">ML&middot;17</span>
           <span class="index__name">Student Central RAG <span class="pill">Early stage</span></span>
           <span class="index__note">A retrieval-augmented assistant answering student questions from official CDU content with citations — and drafting an escalation email when it cannot confidently answer.</span>
           <span class="index__go">In progress</span>
@@ -469,20 +480,21 @@
           <p class="eyebrow">For teams</p>
           <h3>Data science roles</h3>
           <p>For teams who need someone who can do the analysis <em>and</em> ship the thing
-             around it — the model, the pipeline, the map, the deploy. Master of Data Science
-             coursework completed at CDU, with a financial data analyst's instinct for what a number is
-             actually going to be used for.</p>
+             around it: the satellite model, the spatial pipeline, the field app, the map.
+             Master of Data Science coursework completed at CDU, with a financial data analyst's
+             instinct for what a number is actually going to be used for.</p>
           <div class="offer-card__foot">
             <a class="btn btn--on-light" href="mailto:contact@harshrastogi.au">Get in touch <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
           </div>
         </article>
 
         <article class="offer-card" style="--card-bg:#a8c3fb" data-reveal data-reveal-stagger="0.08">
-          <p class="eyebrow">For researchers, councils &amp; not-for-profits</p>
+          <p class="eyebrow">For researchers, land managers &amp; not-for-profits</p>
           <h3>Project collaborations</h3>
-          <p>For people sitting on data they can't yet use. Biodiversity records, sensor feeds,
-             service statistics, survey work — I'll help turn it into something reproducible
-             and public-facing, the way ArmaWatch and the surrogate validation were done.</p>
+          <p>For people sitting on data they can't yet use: satellite imagery, weed and
+             biodiversity records, acoustic recordings, field surveys, sensor feeds. I'll help
+             turn it into something reproducible and usable, the way BushMetrics and the
+             surrogate validation were done.</p>
           <div class="offer-card__foot">
             <a class="btn btn--on-light" href="mailto:contact@harshrastogi.au">Start a conversation <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
           </div>
@@ -517,7 +529,7 @@
 
     <!-- PARTIAL:footer link-href="/articles" link-label="Writing" -->
     <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
-    <p class="footer__tagline">Data science for the environment, public services and the not-for-profit sector — from Darwin, Northern Territory.</p>
+    <p class="footer__tagline">Environmental data science — satellite Earth observation, spatial machine learning and ecological monitoring — from Darwin, Northern Territory.</p>
 
     <div class="footer__links">
       <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>

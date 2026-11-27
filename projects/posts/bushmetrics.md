@@ -2,8 +2,8 @@
 title: BushMetrics
 seo_title: "BushMetrics: how much of each Northern Territory bioregion is protected"
 dek: "24.6% of the Territory is protected, and Traditional Owners manage or co-manage 92.6% of it. 8 of 25 bioregions meet the 30% target; the gaps run through the pastoral middle."
-order: 7
-code: NT·07
+order: 8
+code: NT·08
 pill: Live
 live: true
 built_with: [Python, Shapely, CAPAD 2024, IBRA v7, Getis-Ord Gi*]

@@ -2,8 +2,8 @@
 title: ArmaWatch
 seo_title: "ArmaWatch: a modern, mobile-friendly map of Australia's weapons industry"
 dek: "A mobile-friendly rebuild of Wage Peace's Australian weapons-industry map: 127 sites, clustered mapping, filters, live summaries and CSV export for research and journalism."
-order: 13
-code: CIV·13
+order: 14
+code: CIV·14
 pill: Delivery
 built_with: [React, TypeScript, MapLibre GL, Tailwind CSS, Vite]
 links:

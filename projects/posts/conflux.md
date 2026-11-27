@@ -2,8 +2,8 @@
 title: Conflux
 seo_title: "Conflux: air–sea anomaly detection for Northern Territory environmental data"
 dek: "Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm."
-order: 5
-code: NT·05
+order: 6
+code: NT·06
 pill: Research
 context: PRT661
 built_with: [Python, Isolation Forest, LSTM autoencoder, STL, Next.js, Cloudflare Workers, GitHub Actions]

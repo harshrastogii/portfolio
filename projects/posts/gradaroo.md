@@ -2,8 +2,8 @@
 title: Gradaroo
 seo_title: "Gradaroo: an AI career platform for Australian students and graduates"
 dek: "An AI career platform for Australian students and graduates: live jobs from job boards and employers' own careers pages, who hires from each of 40 universities, resume and cover-letter tools, local events, and Roo, a voice assistant."
-order: 14
-code: ML·14
+order: 15
+code: ML·15
 pill: Live
 live: true
 context: "CDU IT Code Fair 2026"

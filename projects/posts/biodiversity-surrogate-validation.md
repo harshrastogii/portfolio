@@ -2,8 +2,8 @@
 title: Biodiversity Surrogate Validation
 seo_title: "Which open-data surrogate agrees with expert biodiversity assessment? A multiverse validation in the Northern Territory"
 dek: "A pre-registered, multi-catchment test of open spatial surrogates against expert assessment. Vegetation-type rarity won, but only modestly: these are screens, not substitutes."
-order: 11
-code: RE·11
+order: 12
+code: RE·12
 pill: Research
 built_with: [Python, GDAL, NVIS v7, NT Land Systems, DEA Fractional Cover]
 links:

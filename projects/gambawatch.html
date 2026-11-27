@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GambaWatch NT: satellite mapping of invasive gamba grass in the Top End — Harsh Rastogi</title>
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="16x16 32x32 48x48"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+
+<meta name="description" content="A 20 m map of where gamba grass is likely across Darwin–Litchfield, from free Sentinel-1 and Sentinel-2 imagery. Tested against the NT Government's aerial weed surveys, it turned out to map gamba country, not the grass itself." />
+<meta name="robots" content="index,follow,max-image-preview:large" />
+<meta name="theme-color" content="#101112" />
+<meta name="color-scheme" content="dark" />
+
+<meta property="og:title" content="GambaWatch NT: satellite mapping of invasive gamba grass in the Top End" />
+<meta property="og:description" content="A 20 m map of where gamba grass is likely across Darwin–Litchfield, from free Sentinel-1 and Sentinel-2 imagery. Tested against the NT Government's aerial weed surveys, it turned out to map gamba country, not the grass itself." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://harshrastogi.au/projects/gambawatch" />
+<meta property="og:locale" content="en_AU" />
+<meta property="og:image" content="https://harshrastogi.au/assets/og-card.jpg" />
+<meta property="og:image:alt" content="GambaWatch NT — A 20 m map of where gamba grass is likely across Darwin–Litchfield, from free Sentinel-1 and Sentinel-2 imagery. Tested against the NT Government's aerial weed surveys, it turned out to map gamba country, not the grass itself." />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="canonical" href="https://harshrastogi.au/projects/gambawatch" />
+
+<script>
+/* Reveal styles are gated behind html.js so the page reads fine with
+   scripting off. That leaves one failure mode: the class is set, then the
+   scripts fail to load or throw, and the gated content stays hidden. The
+   timer below removes the gate if the app never reports that it booted, so
+   the worst case is a page without animation rather than a blank one. */
+(function () {
+  var el = document.documentElement;
+  el.classList.add('js');
+  setTimeout(function () {
+    if (!el.hasAttribute('data-booted')) el.classList.remove('js');
+  }, 4000);
+})();
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<link rel="stylesheet" href="/assets/tokens.css?v=63a46c14" />
+<link rel="stylesheet" href="/assets/site.css?v=5cfd81a5" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  "name": "GambaWatch NT",
+  "headline": "GambaWatch NT: satellite mapping of invasive gamba grass in the Top End",
+  "description": "A 20 m map of where gamba grass is likely across Darwin–Litchfield, from free Sentinel-1 and Sentinel-2 imagery. Tested against the NT Government's aerial weed surveys, it turned out to map gamba country, not the grass itself.",
+  "url": "https://harshrastogi.au/projects/gambawatch",
+  "mainEntityOfPage": "https://harshrastogi.au/projects/gambawatch",
+  "keywords": "Google Earth Engine, Sentinel-1, Sentinel-2, MODIS, Gradient boosting, QGIS, Python",
+  "author": {
+    "@type": "Person",
+    "@id": "https://harshrastogi.au/#harsh-rastogi",
+    "name": "Harsh Rastogi",
+    "url": "https://harshrastogi.au/"
+  }
+}
+</script>
+</head>
+<body data-slug="gambawatch">
+
+<a class="skip-link" href="#prose">Skip to the write-up</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<div class="intro" id="intro" aria-hidden="true">
+  <span class="intro__name">Harsh Rastogi</span>
+</div>
+<div class="grain" data-grain aria-hidden="true"></div>
+<div class="curtain" data-curtain aria-hidden="true"></div>
+
+<!-- PARTIAL:nav -->
+<nav class="nav" aria-label="Primary">
+  <div class="nav__header">
+    <div class="nav__logo">
+      <a class="nav__name" href="/" data-wordmark="Harsh Rastogi">Harsh Rastogi</a>
+    </div>
+    <button class="nav__caret" type="button" aria-expanded="false" aria-controls="nav-menu"
+            aria-label="Open menu" data-nav-toggle>
+      <svg width="14" height="9" viewBox="0 0 14 9" fill="none" aria-hidden="true">
+        <path d="M1 1l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+  <div class="nav__menu">
+    <ul class="nav__links">
+      <li><a href="/#work" data-roll>Work</a></li>
+      <li><a href="/#approach" data-roll>Approach</a></li>
+      <li><a href="/articles" data-roll>Writing</a></li>
+      <li><a href="/about" data-roll>About</a></li>
+    </ul>
+  </div>
+  <div class="nav__actions">
+    <a class="btn nav__cta" href="mailto:contact@harshrastogi.au">Email <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+  </div>
+  <div class="nav__drawer" id="nav-menu">
+    <ul class="nav__drawer-links">
+      <li><a href="/#work">Work</a></li>
+      <li><a href="/#approach">Approach</a></li>
+      <li><a href="/articles">Writing</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="mailto:contact@harshrastogi.au">Email</a></li>
+    </ul>
+  </div>
+</nav>
+<!-- /PARTIAL:nav -->
+
+<main>
+  <div class="container">
+
+    <header class="article-head">
+      <a class="article-back" href="/#gambawatch">&larr; All work</a>
+      <p class="article-meta"><span>NT·04</span></p>
+      <h1 class="article-title">GambaWatch NT</h1>
+      <p class="article-dek">A 20 m map of where gamba grass is likely across Darwin–Litchfield, from free Sentinel-1 and Sentinel-2 imagery. Tested against the NT Government's aerial weed surveys, it turned out to map gamba country, not the grass itself.</p>
+
+      <p class="project-note">Research in progress since November 2026. The map and code aren't public yet.</p>
+      <dl class="project-facts">
+        <div><dt>Status</dt><dd><span class="pill">Research</span></dd></div>
+        <div><dt>Made for</dt><dd>Independent research</dd></div>
+        <div><dt>Built with</dt><dd>Google Earth Engine &middot; Sentinel-1 &middot; Sentinel-2 &middot; MODIS &middot; Gradient boosting &middot; QGIS &middot; Python</dd></div>
+      </dl>
+    </header>
+
+
+    <div class="reading">
+      <article class="prose" id="prose">
+<h2>The question</h2>
+<p>Gamba grass is one of the Top End&#39;s most damaging weeds. It grows taller and denser than native grasses and fuels fires far hotter than the savanna is adapted to. Knowing where it is decides where control effort goes, but much of the country is hard to survey on foot.</p>
+<p>GambaWatch asks whether free satellite imagery can map where gamba grass and other exotic tall grasses are likely, at 20 m, across Darwin and Litchfield.</p>
+<h2>The data</h2>
+<ul>
+<li><strong>Sentinel-1</strong> radar, which sees through cloud and responds to the height and density of grass.</li>
+<li><strong>Sentinel-2</strong> optical imagery through the dry season, plus fire-robust features that still work on burnt ground.</li>
+<li><strong>MODIS</strong> burn dates, because gamba changes when and how country burns.</li>
+<li><strong>Labels</strong> from the NT Government&#39;s 312,667 public weed records, NT Flora Atlas native-grass records, and random points across the landscape.</li>
+</ul>
+<p>Everything is processed in Google Earth Engine.</p>
+<h2>The model</h2>
+<p>Gradient-boosted trees on 67 seasonal radar, optical and burn-date features plus 10 fire-robust Sentinel-2 features, mapped for the 2025 dry season. It was tested with spatial cross-validation and by transferring it to two other regions, Katherine–Daly and Kakadu–West Arnhem.</p>
+<h2>The first results</h2>
+<p>Against random land, on records the model never saw:</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>AUC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5,955 treated gamba records</td>
+<td>0.86</td>
+</tr>
+<tr>
+<td>Gamba Eradication Register&#39;s active 1 ha cells</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>19,227 aerial-survey records</td>
+<td>0.69</td>
+</tr>
+</tbody></table>
+<p>An independent 200-point check found all 9 points inside recorded patches scored 50% or more.</p>
+<h2>The test that mattered</h2>
+<p>Public weed records only say where gamba was found, not where it wasn&#39;t, so they can rank a map but can&#39;t measure its accuracy. So GambaWatch went after the missing half: <strong>27,469 recorded absences</strong> from the NT Government&#39;s Weed Management Branch, and four aerial grid surveys flown from 2023 to 2026, covering 36,468 cells.</p>
+<p>Within surveyed gamba country, the map barely separates cells with gamba from cells without: a pooled AUC of <strong>0.54</strong> at the pixel and 0.63 over a 220 m window. Only the highest scores carry signal; at 90 or above, gamba was found in 42% of cells, against 25 to 30% elsewhere.</p>
+<h2>What it means</h2>
+<p>The earlier scores were measuring where gamba country is, not the grass itself. That is still useful for deciding where to look, but it isn&#39;t a map of the weed. The project&#39;s claims were restated to match.</p>
+<p>The next version trains on the survey absences as hard negatives, and will be tested on whole surveys it has never seen.</p>
+
+      </article>
+
+      <aside class="toc" id="toc" aria-label="On this page">
+        <p class="toc__label">On this page</p>
+        <ul id="toc-list"></ul>
+      </aside>
+    </div>
+
+    <section class="section section--flush" aria-label="More work">
+      <p class="section-label">More work</p>
+      <div class="index">
+        <a class="index__row" href="/projects/terraiq">
+          <span class="index__num">NT·05</span>
+          <span class="index__name">TerraIQ <span class="pill is-live">Live</span></span>
+          <span class="index__note">A Territory-wide weather memory built from 44 BOM stations, holding what the public feed drops after 72 hours. It collects and checks itself on a schedule, with no server to run.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/conflux">
+          <span class="index__num">NT·06</span>
+          <span class="index__name">Conflux <span class="pill">Research</span></span>
+          <span class="index__note">Weather and sea, checked together every three hours: BOM stations across the Territory and AIMS sensors off Darwin, with five detectors and a language model that reads each alarm.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+
+        <a class="index__row" href="/projects/avian-observatory">
+          <span class="index__num">NT·07</span>
+          <span class="index__name">Avian Observatory <span class="pill">Research</span></span>
+          <span class="index__note">Pointed at Territory audio, BirdNET confidently answers Bicknell's Thrush, a bird of the north-eastern US. A model for 449 local species is right 80.6% of the time on 537 recordings from 2026, against 65.7% for BirdNET.</span>
+          <span class="index__go">Read &rarr;</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <p class="footer__cta display h2" data-reveal-lines>Got Territory data that isn't doing anything yet?</p>
+    <a class="btn btn--solid btn--lg" href="mailto:contact@harshrastogi.au" data-reveal>Email me <span class="btn__arrow" aria-hidden="true">&rarr;</span></a>
+
+    <!-- PARTIAL:footer link-href="/" link-label="Home" -->
+    <p class="footer__wordmark" aria-hidden="true">Harsh Rastogi</p>
+    <p class="footer__tagline">Environmental data science — satellite Earth observation, spatial machine learning and ecological monitoring — from Darwin, Northern Territory.</p>
+
+    <div class="footer__links">
+      <a class="footer__link" href="mailto:contact@harshrastogi.au">contact@harshrastogi.au</a>
+      <a class="footer__link" href="https://www.linkedin.com/in/harshrastogii/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer__link" href="https://github.com/harshrastogii" target="_blank" rel="noopener">GitHub</a>
+      <a class="footer__link" href="/">Home</a>
+    </div>
+
+    <div class="footer__legal">
+      <span>&copy; 2026 Harsh Rastogi. Built and deployed from Darwin.</span>
+      <span>12.4637&deg;S, 130.8444&deg;E</span>
+    </div>
+    <!-- /PARTIAL:footer -->
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js" defer></script>
+<script src="/assets/app.js?v=05366344" defer></script>
+<script src="/assets/article-page.js?v=870a72bf" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
+
+</body>
+</html>

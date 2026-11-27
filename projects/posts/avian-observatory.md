@@ -2,8 +2,8 @@
 title: Avian Observatory
 seo_title: "Avian Observatory: identifying Northern Territory birds from audio"
 dek: "Pointed at Territory audio, BirdNET confidently answers Bicknell's Thrush, a bird of the north-eastern US. A model for 449 local species is right 80.6% of the time on 537 recordings from 2026, against 65.7% for BirdNET."
-order: 6
-code: NT·06
+order: 7
+code: NT·07
 pill: Research
 context: "PRT840 IT thesis · Master of Data Science"
 built_with: [Python, Perch 2.0, FastAPI, Next.js, PostgreSQL]

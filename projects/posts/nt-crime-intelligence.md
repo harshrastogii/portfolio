@@ -2,8 +2,8 @@
 title: NT Crime Intelligence
 seo_title: "NT Crime Intelligence: Northern Territory crime per capita, 2008–2026"
 dek: "Switching from raw counts to per capita completely reorders which communities are most affected. How you frame the data decides who gets served by it."
-order: 10
-code: NT·10
+order: 11
+code: NT·11
 pill: Live
 live: true
 built_with: [Python, Plotly Dash, GitHub Actions, Hugging Face Spaces]

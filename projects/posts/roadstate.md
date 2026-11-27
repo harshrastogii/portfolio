@@ -2,8 +2,8 @@
 title: RoadState
 seo_title: "RoadState: Northern Territory road access, not congestion"
 dek: "The Territory's real road problem is seasonal access, not congestion: 78% of traffic sits in Darwin, and 66% of the year's closures begin in the wet."
-order: 9
-code: NT·09
+order: 10
+code: NT·10
 pill: Live
 live: true
 built_with: [Next.js, Visx, Python, NT Annual Traffic Report]

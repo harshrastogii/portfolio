@@ -2,8 +2,8 @@
 title: TerraIQ
 seo_title: "TerraIQ: a long-term memory for Northern Territory weather stations"
 dek: "A Territory-wide weather memory built from 44 BOM stations, holding what the public feed drops after 72 hours. It collects and checks itself on a schedule, with no server to run."
-order: 4
-code: NT·04
+order: 5
+code: NT·05
 pill: Live
 live: true
 built_with: [Python, SQLite, GitHub Actions, BOM observations]

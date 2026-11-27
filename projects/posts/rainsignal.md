@@ -2,8 +2,8 @@
 title: RainSignal AU
 seo_title: "RainSignal AU: live rainfall observations and machine-learning predictions"
 dek: "Live Bureau of Meteorology observations run through frozen rainfall models trained on 267,317 station-days. An observation and an estimate are never shown as the same thing."
-order: 8
-code: ML·08
+order: 9
+code: ML·09
 pill: PRT565
 context: PRT565
 built_with: [Python, Frozen ML models, BOM observations, Cloudflare Workers]

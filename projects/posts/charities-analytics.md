@@ -2,8 +2,8 @@
 title: Australian Charities Analytics
 seo_title: "What predicts a charity's board size? Regression on the ACNC Charity Register"
 dek: "Descriptive, predictive and diagnostic analysis of the ACNC Charity Register, from research-question design through to a finished visualisation pipeline."
-order: 15
-code: DA·15
+order: 16
+code: DA·16
 pill: PRT564
 context: "PRT564 · Analysis lead in a team of four"
 built_with: [Python, OLS, Ridge and Lasso regression, Jupyter]

@@ -2,8 +2,8 @@
 title: NT Conservation Exposure
 seo_title: "A transparent conservation exposure index for the Northern Territory, validated against expert assessment"
 dek: "A transparent, open-data conservation exposure index for the whole Territory, tested against expert biodiversity assessment of the Roper River. Agreement was weak, and it came from land convertibility, not biodiversity."
-order: 12
-code: RE·12
+order: 13
+code: RE·13
 pill: Research
 built_with: [Python, Hexagonal grid (EPSG:3577), Spatial statistics, Open NT data]
 links:
